@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContratTable extends Migration
+class CreateContratsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateContratTable extends Migration
      */
     public function up()
     {
-        Schema::create('contrat', function (Blueprint $table) {
+        Schema::create('contrats', function (Blueprint $table) {
             $table->integer('idClient')->unsigned();
             $table->string('matricule')->index();
             $table->date('dateDebut');
@@ -27,7 +27,7 @@ class CreateContratTable extends Migration
             $table->foreign('idClient')->references('id')->on('clients')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreign('matricule')->references('matricule')->on('vehicule')
+            $table->foreign('matricule')->references('matricule')->on('vehicules')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });
@@ -40,6 +40,6 @@ class CreateContratTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contrat');
+        Schema::dropIfExists('contrats');
     }
 }

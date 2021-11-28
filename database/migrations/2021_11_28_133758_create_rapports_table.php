@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRapportTable extends Migration
+class CreateRapportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRapportTable extends Migration
      */
     public function up()
     {
-        Schema::create('rapport', function (Blueprint $table) {
+        Schema::create('rapports', function (Blueprint $table) {
             $table->increments('id');
             $table->string('panne', 50);
             $table->string('desc');
@@ -23,7 +23,7 @@ class CreateRapportTable extends Migration
             $table->string('matricule')->index();
             $table->integer('idEmploye')->unsigned();
             $table->timestamps();
-            $table->foreign('matricule')->references('matricule')->on('vehicule')
+            $table->foreign('matricule')->references('matricule')->on('vehicules')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->foreign('idEmploye')->references('id')->on('employes')
@@ -39,6 +39,6 @@ class CreateRapportTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rapport');
+        Schema::dropIfExists('rapports');
     }
 }

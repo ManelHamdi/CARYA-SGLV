@@ -24,7 +24,7 @@ class CreateAdminsTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('idEntreprise')->references('id')->on('entreprise')
+            $table->foreign('idEntreprise')->references('id')->on('entreprises')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });
