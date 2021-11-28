@@ -9,6 +9,10 @@ class Vehicule extends Model
 {
     use HasFactory;
 
+    protected $table = 'vehicules';
+    protected $primaryKey = 'matricule';
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
         'matricule', 'prixLoc',
         'dateAchat',

@@ -15,7 +15,7 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->binary('image');
+            $table->string('image');
             $table->string('matricule')->index();
             $table->timestamps();
             $table->foreign('matricule')->references('matricule')->on('vehicules')
