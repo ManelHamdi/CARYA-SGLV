@@ -20,13 +20,13 @@ class CreateRapportsTable extends Migration
             $table->double('prix');
             $table->date('datePanna');
             $table->integer('nbrJour');
-            $table->string('matricule')->index();
-            $table->integer('idEmploye')->unsigned();
+            $table->string('vehicule_matricule')->index();
+            $table->integer('employe_id')->unsigned();
             $table->timestamps();
-            $table->foreign('matricule')->references('matricule')->on('vehicules')
+            $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreign('idEmploye')->references('id')->on('employes')
+            $table->foreign('employe_id')->references('id')->on('employes')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

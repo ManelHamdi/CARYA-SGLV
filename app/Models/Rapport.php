@@ -13,7 +13,7 @@ class Rapport extends Model
         'panne', 'desc',
         'prix',
         'datePanna', 'nbrJour',
-        'matricule', 'idEmploye',
+        'vehicule_matricule', 'employe_id',
     ];
 
     public function vehicule()

@@ -21,11 +21,11 @@ class CreateEmployesTable extends Migration
             $table->string('email', 35);
             $table->string('password', 35);
             $table->string('statut');
-            $table->integer('idEntreprise')->unsigned();
+            $table->integer('entreprise_id')->unsigned();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('idEntreprise')->references('id')->on('entreprises')
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

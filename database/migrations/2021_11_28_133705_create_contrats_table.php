@@ -14,8 +14,8 @@ class CreateContratsTable extends Migration
     public function up()
     {
         Schema::create('contrats', function (Blueprint $table) {
-            $table->integer('idClient')->unsigned();
-            $table->string('matricule')->index();
+            $table->integer('client_id')->unsigned();
+            $table->string('vehicule_matricule')->index();
             $table->date('dateDebut');
             $table->date('dateFin');
             $table->integer('nbrJour');
@@ -24,10 +24,10 @@ class CreateContratsTable extends Migration
             $table->double('fraisLivraison');
             $table->double('fraisReprise');
             $table->timestamps();
-            $table->foreign('idClient')->references('id')->on('clients')
+            $table->foreign('client_id')->references('id')->on('clients')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreign('matricule')->references('matricule')->on('vehicules')
+            $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

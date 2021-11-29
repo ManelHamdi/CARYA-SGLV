@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Contrat;
+use App\Models\Vehicule;
 use Illuminate\Http\Request;
 
 class ContratController extends Controller
@@ -81,5 +83,17 @@ class ContratController extends Controller
     public function destroy(Contrat $contrat)
     {
         //
+    }
+
+    // To get all vehicules of a client
+    public function getVehicules($client_id)
+    {
+        return Client::find($client_id)->vehicules;
+    }
+
+    // To get all clients by vehicule
+    public function getUsers($vehicule_matricule)
+    {
+        return Vehicule::find($vehicule_matricule)->clients;
     }
 }

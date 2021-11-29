@@ -10,7 +10,7 @@ class Photo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image', 'matricule',
+        'image', 'path', 'vehicule_matricule',
     ];
 
     public function vehicule()

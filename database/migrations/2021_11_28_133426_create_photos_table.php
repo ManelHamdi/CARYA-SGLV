@@ -16,9 +16,9 @@ class CreatePhotosTable extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image');
-            $table->string('matricule')->index();
+            $table->string('vehicule_matricule')->index();
             $table->timestamps();
-            $table->foreign('matricule')->references('matricule')->on('vehicules')
+            $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

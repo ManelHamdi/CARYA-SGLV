@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use SebastianBergmann\Environment\Console;
 
 class VehiculeController extends Controller
 {
@@ -15,6 +18,8 @@ class VehiculeController extends Controller
     public function index()
     {
         $vehicules = Vehicule::latest()->paginate(5);
+
+        //$photos = Photo::with('vehicule')->get();
 
         return view('vehicules.index', compact('vehicules'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -39,17 +44,36 @@ class VehiculeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'matricule' => 'required',
-            'marque' => 'required',
-            'type' => 'required',
+            'matricule' => 'required', 'prixLoc' => 'required',
+            'marque' => 'required', 'dateAchat' => 'required',
+            'type' => 'required', 'model' => 'required',
+            'couleur' => 'required', 'disponibilite' => 'required',
+            'nbrPlaces' => 'required', 'climatisation' => 'required',
+            'description' => 'required', 'carburation' => 'required',
+            'kilometrage' => 'required', 'puissance' => 'required',
+            'boiteVitesse' => 'required', 'tailleMoteur' => 'required',
+            'imageFile' => 'required',
+            'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048',
         ]);
 
         $input = $request->all();
 
         Vehicule::create($input);
 
+        if ($request->hasfile('imageFile')) {
+            foreach ($request->file('imageFile') as $file) {
+                $name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path() . '/uploads/', $name);
+                $fileModal = new Photo();
+                $fileModal->image = $name;
+                $fileModal->vehicule_matricule = $request->matricule;
+                $fileModal->save();
+            }
+            //return back()->with('success', 'File has successfully uploaded!');
+        }
+
         return redirect()->route('vehicules.index')
-                        ->with('success','Vehicule created successfully.');
+            ->with('success', 'Vehicule created successfully.');
     }
 
     /**
@@ -71,7 +95,7 @@ class VehiculeController extends Controller
      */
     public function edit(Vehicule $vehicule)
     {
-        return view('vehicules.edit',compact('vehicule'));
+        return view('vehicules.edit', compact('vehicule'));
     }
 
     /**
@@ -84,16 +108,43 @@ class VehiculeController extends Controller
     public function update(Request $request, Vehicule $vehicule)
     {
         $request->validate([
-            'matricule' => 'required',
-            'marque' => 'required',
-            'type' => 'required',
+            'matricule' => 'required', 'prixLoc' => 'required',
+            'marque' => 'required', 'dateAchat' => 'required',
+            'type' => 'required', 'model' => 'required',
+            'couleur' => 'required', 'disponibilite' => 'required',
+            'nbrPlaces' => 'required', 'climatisation' => 'required',
+            'description' => 'required', 'carburation' => 'required',
+            'kilometrage' => 'required', 'puissance' => 'required',
+            'boiteVitesse' => 'required', 'tailleMoteur' => 'required',
         ]);
 
         $input = $request->all();
         $vehicule->update($input);
 
+        if ($request->hasfile('imageFile')) {
+            $images = Photo::where("vehicule_matricule", $vehicule->matricule)->get();
+            foreach ($images as $img) {
+
+                if (File::exists("uploads/" . $img->image)) {
+                    File::delete("uploads/" . $img->image);
+                }
+                $img->delete();
+            }
+
+            foreach ($request->file('imageFile') as $file) {
+                $name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path() . '/uploads/', $name);
+                $fileModal = new Photo();
+                $fileModal->image = $name;
+                $fileModal->vehicule_matricule = $vehicule->matricule;
+                $fileModal->save();
+            }
+            //return back()->with('success', 'File has successfully uploaded!');
+        }
+
+
         return redirect()->route('vehicules.index')
-                        ->with('success','Vehicule updated successfully');
+            ->with('success', 'Vehicule updated successfully');
     }
 
     /**
@@ -104,9 +155,31 @@ class VehiculeController extends Controller
      */
     public function destroy(Vehicule $vehicule)
     {
+        $images = Photo::where("vehicule_matricule", $vehicule->matricule)->get();
+        foreach ($images as $image) {
+            if (File::exists("uploads/" . $image->image)) {
+                File::delete("uploads/" . $image->image);
+            }
+        }
         $vehicule->delete();
 
         return redirect()->route('vehicules.index')
-                        ->with('success','Vehicule deleted successfully');
+            ->with('success', 'Vehicule deleted successfully');
     }
+
+
+
+
+    public function getPhotos($vehicule_matricule)
+    {
+        // Passing vehicule matricule into find()
+        return Vehicule::find($vehicule_matricule)->photos;
+    }
+    /*
+    public function getVehicule($photo_id)
+    {
+        // Passing photo id into find()
+        return Photo::find($photo_id)->vehicule;
+    }
+    */
 }

@@ -10,7 +10,7 @@ class Contrat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'idClient', 'matricule',
+        'client_id', 'vehicule_matricule',
         'dateDebut', 'dateFin',
         'nbrJour',
         'remise', 'montant',

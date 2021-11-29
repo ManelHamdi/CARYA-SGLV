@@ -16,7 +16,7 @@ class Employe extends Authenticatable
         'nom', 'prenom',
         'tel', 'email',
         'password', 'statut',
-        'idEntreprise',
+        'entreprise_id',
     ];
 
     /**
@@ -38,7 +38,7 @@ class Employe extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+
     public function entreprise()
     {
         return $this->belongsTo(Entreprise::class);
