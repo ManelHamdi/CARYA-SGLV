@@ -6,7 +6,6 @@ use App\Models\Photo;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use SebastianBergmann\Environment\Console;
 
 class VehiculeController extends Controller
 {
@@ -43,34 +42,58 @@ class VehiculeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'matricule' => 'required', 'prixLoc' => 'required',
-            'marque' => 'required', 'dateAchat' => 'required',
-            'type' => 'required', 'model' => 'required',
-            'couleur' => 'required', 'disponibilite' => 'required',
-            'nbrPlaces' => 'required', 'climatisation' => 'required',
-            'description' => 'required', 'carburation' => 'required',
-            'kilometrage' => 'required', 'puissance' => 'required',
-            'boiteVitesse' => 'required', 'tailleMoteur' => 'required',
-            'imageFile' => 'required',
-            'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048',
-        ]);
+        try {
+            $request->validate([
+                'matricule' => 'required', 'prixLoc' => 'required',
+                'marque' => 'required', 'dateAchat' => 'required',
+                'type' => 'required', 'model' => 'required',
+                'couleur' => 'required',
+                'nbrPlaces' => 'required',
+                'description' => 'required', 'carburation' => 'required',
+                'kilometrage' => 'required', 'puissance' => 'required',
+                'boiteVitesse' => 'required', 'tailleMoteur' => 'required',
+                'imageFile' => 'required',
+                'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048',
+            ]);
 
-        $input = $request->all();
+            //$input = new Vehicule();
+            $input = $request->all();
+            /*if ($request->disponibilite == 'on') {
+                $input->disponibilite = '1';
+                dd('onn');
+            } else{
+                $input->disponibilite = '0';
+                dd('of');
+            }*/
 
-        Vehicule::create($input);
+            Vehicule::create($input);
 
-        if ($request->hasfile('imageFile')) {
-            foreach ($request->file('imageFile') as $file) {
-                $name = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path() . '/uploads/', $name);
-                $fileModal = new Photo();
-                $fileModal->image = $name;
-                $fileModal->vehicule_matricule = $request->matricule;
-                $fileModal->save();
+            if ($request->hasfile('imageFile')) {
+                foreach ($request->file('imageFile') as $file) {
+                    // Get the contents of the file
+                    //$contents = $file->openFile()->fread($file->getSize());
+                    $contents = $file->openFile()->fread($file->getSize());
+
+                    $name = time() . '_' . $file->getClientOriginalName();
+                    //$file->move(public_path() . '/uploads/', $name);
+                    $fileModal = new Photo();
+                    $fileModal->name = $name;
+                    $fileModal->vehicule_matricule = $request->matricule;
+                    //$fileModal->save();
+
+                    //
+                    // Get the file from the request
+                    //$mfile = $request->file('imageFile');
+                    // Store the contents to the database
+                    $fileModal->image = $contents;
+                    $fileModal->save();
+                }
             }
-            //return back()->with('success', 'File has successfully uploaded!');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
         }
+        //return back()->with('success', 'File has successfully uploaded!');
+
 
         return redirect()->route('vehicules.index')
             ->with('success', 'Vehicule created successfully.');
@@ -111,8 +134,8 @@ class VehiculeController extends Controller
             'matricule' => 'required', 'prixLoc' => 'required',
             'marque' => 'required', 'dateAchat' => 'required',
             'type' => 'required', 'model' => 'required',
-            'couleur' => 'required', 'disponibilite' => 'required',
-            'nbrPlaces' => 'required', 'climatisation' => 'required',
+            'couleur' => 'required',
+            'nbrPlaces' => 'required',
             'description' => 'required', 'carburation' => 'required',
             'kilometrage' => 'required', 'puissance' => 'required',
             'boiteVitesse' => 'required', 'tailleMoteur' => 'required',
@@ -132,11 +155,21 @@ class VehiculeController extends Controller
             }
 
             foreach ($request->file('imageFile') as $file) {
+                // Get the contents of the file
+                $contents = $file->openFile()->fread($file->getSize());
+
                 $name = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path() . '/uploads/', $name);
+                //$file->move(public_path() . '/uploads/', $name);
                 $fileModal = new Photo();
-                $fileModal->image = $name;
-                $fileModal->vehicule_matricule = $vehicule->matricule;
+                $fileModal->name = $name;
+                $fileModal->vehicule_matricule = $request->matricule;
+                //$fileModal->save();
+
+
+                // Get the file from the request
+                //$mfile = $request->file('imageFile');
+                // Store the contents to the database
+                $fileModal->image = $contents;
                 $fileModal->save();
             }
             //return back()->with('success', 'File has successfully uploaded!');
@@ -155,12 +188,12 @@ class VehiculeController extends Controller
      */
     public function destroy(Vehicule $vehicule)
     {
-        $images = Photo::where("vehicule_matricule", $vehicule->matricule)->get();
-        foreach ($images as $image) {
+        //$images = Photo::where("vehicule_matricule", $vehicule->matricule)->get();
+        /*foreach ($images as $image) {
             if (File::exists("uploads/" . $image->image)) {
                 File::delete("uploads/" . $image->image);
             }
-        }
+        }*/
         $vehicule->delete();
 
         return redirect()->route('vehicules.index')
@@ -168,13 +201,30 @@ class VehiculeController extends Controller
     }
 
 
-
-
     public function getPhotos($vehicule_matricule)
     {
         // Passing vehicule matricule into find()
         return Vehicule::find($vehicule_matricule)->photos;
     }
+
+    public function updateDisponibilite(Request $request)
+    {
+        $vehicule = Vehicule::findOrFail($request->vehicule_matricule);
+        $vehicule->disponibilite = $request->disponibilite;
+        $vehicule->save();
+
+        return response()->json(['message' => 'Vehicule disponibilite updated successfully.']);
+    }
+
+    public function updateClimatisatione(Request $request)
+    {
+        $vehicule = Vehicule::findOrFail($request->vehicule_matricule);
+        $vehicule->climatisation = $request->climatisation;
+        $vehicule->save();
+
+        return response()->json(['message' => 'Vehicule climatisation updated successfully.']);
+    }
+
     /*
     public function getVehicule($photo_id)
     {

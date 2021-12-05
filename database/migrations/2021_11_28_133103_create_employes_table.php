@@ -19,7 +19,7 @@ class CreateEmployesTable extends Migration
             $table->string('prenom', 25);
             $table->integer('tel');
             $table->string('email', 35);
-            $table->string('password', 35);
+            $table->string('password');
             $table->string('statut');
             $table->integer('entreprise_id')->unsigned();
             $table->timestamp('email_verified_at')->nullable();

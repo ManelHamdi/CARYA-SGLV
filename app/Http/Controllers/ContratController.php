@@ -92,7 +92,7 @@ class ContratController extends Controller
     }
 
     // To get all clients by vehicule
-    public function getUsers($vehicule_matricule)
+    public function getClients($vehicule_matricule)
     {
         return Vehicule::find($vehicule_matricule)->clients;
     }

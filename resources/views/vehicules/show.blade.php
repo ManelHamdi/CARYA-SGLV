@@ -1,24 +1,22 @@
-@extends('vehicules.layout')
+@extends('layouts.app', ['activePage' => 'Véhicule', 'titlePage' => __('Véhicules')])
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Vehicule</h2>
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Details Véhicule de matricule: {{$vehicule->matricule}}</h4>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('vehicules.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
 
+            <div class="card-body">
+                <div id="typography">
 
     <table class="table table-bordered">
         <tr>
             <th>Images</th>
             <td colspan="3">
                 @foreach ($vehicule->photos as $photo)
-                    <img src="{{ asset('/uploads/' . $photo->image) }}" style="height:60px; width:100px" />
+                    <img src="{{ 'data:image/*;base64,' . base64_encode( $photo->image) }}" style="height:60px; width:100px" />
                 @endforeach
             </td>
         </tr>
@@ -54,7 +52,7 @@
             <th>Climatisation</th>
             <td>{{ $vehicule->climatisation }}</td>
             <th>Carburation</th>
-            <td>{{ $vehicule->carburation }}</td>
+            <td>{{ $vehicule->carburation == 1 ? 'climatisé' : 'non climatisé' }}</td>
         </tr>
         <tr>
             <th>Kilometrage</th>
@@ -70,7 +68,7 @@
         </tr>
         <tr>
             <th>Disponibilite</th>
-            <td>{{ $vehicule->disponibilite }}</td>
+            <td>{{ $vehicule->disponibilite == 1 ? 'disponible' : 'pas disponible' }}</td>
             <th width="280px">Action</th>
 
             <td>
@@ -81,12 +79,41 @@
                     @csrf
                     @method('DELETE')
 
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger show_confirm">Delete</button>
                 </form>
             </td>
         </tr>
 
 
     </table>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+
+         $('.show_confirm').click(function(event) {
+              var form =  $(this).closest("form");
+              var name = $(this).data("name");
+              event.preventDefault();
+              swal({
+                  title: `Are you sure you want to delete this record?`,
+                  text: "If you delete this, it will be gone forever.",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  form.submit();
+                }
+              });
+          });
+
+    </script>
+    @endpush
 
 @endsection

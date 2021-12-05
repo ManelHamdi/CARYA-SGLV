@@ -22,14 +22,14 @@ class CreateVehiculesTable extends Migration
             $table->string('marque', 30);
             $table->string('couleur', 30);
             $table->integer('nbrPlaces');
-            $table->boolean('climatisation');
+            $table->boolean('climatisation')->default(0);
             $table->string('description');
             $table->string('carburation', 30);
             $table->string('kilometrage', 30);
             $table->string('puissance', 30);
             $table->string('boiteVitesse', 30);
             $table->string('tailleMoteur', 30);
-            $table->boolean('disponibilite');
+            $table->boolean('disponibilite')->default(0);
             $table->timestamps();
         });
     }

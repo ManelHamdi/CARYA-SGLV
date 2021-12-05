@@ -1,104 +1,97 @@
-@extends('vehicules.layout')
+@extends('layouts.app', ['activePage' => 'Véhicule', 'titlePage' => __('Véhicules')])
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Gerer Vehicule</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('vehicules.create') }}"> Create New Vehicule</a>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <div class="pull-left">
+                        <h4 class="card-title">Gerer véhicules</h4>
+                        <p class="card-category">Cree, modifier, supprimer, détailler</p>
+                    </div>
+                    <div class="pull-right">
+                        <a class="btn btn-success" href="{{ route('vehicules.create') }}"> Nouveau vehicule</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="typography">
+                        <div class="card-title">
+
+                        </div>
+
+                        <table class="table table-bordered">
+                            @foreach ($vehicules as $vehicule)
+                                <tr>
+                                    <th>Images</th>
+                                    <td colspan="5">
+                                        @foreach ($vehicule->photos as $photo)
+                                            <img src="{{ 'data:image/*;base64,' . base64_encode( $photo->image) }}"
+                                                style="height:100px; width:140px" />
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Matricule</th>
+                                    <td>{{ $vehicule->matricule }}</td>
+                                    <th>Prix Location</th>
+                                    <td>{{ $vehicule->prixLoc }}</td>
+                                    <th>Disponibilite</th>
+                                    <td>{{ $vehicule->disponibilite == 1 ? 'disponible' : 'pas disponible' }}</td>
+                                </tr>
+                                <tr>
+
+                                    <th width="280px">Action</th>
+
+                                    <td colspan="5">
+                                        <form action="{{ route('vehicules.destroy', $vehicule->matricule) }}"
+                                            method="POST">
+
+                                            <a class="btn btn-info"
+                                                href="{{ route('vehicules.show', $vehicule->matricule) }}">Details</a>
+
+                                            <a class="btn btn-primary"
+                                                href="{{ route('vehicules.edit', $vehicule->matricule) }}">Modifier</a>
+
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-danger show_confirm">Supprimer</button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            @endforeach
+                        </table>
+
+                        {!! $vehicules->links() !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+    @push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
 
-    <table class="table table-bordered">
-        @foreach ($vehicules as $vehicule)
-            <tr>
-                <th>Images</th>
-                <td colspan="3">
-                    @foreach ($vehicule->photos as $photo)
-                        <img src="{{ asset('/uploads/' . $photo->image) }}" style="height:60px; width:100px" />
-                    @endforeach
-                </td>
-            </tr>
-            <tr>
-                <th>Matricule</th>
-                <td>{{ $vehicule->matricule }}</td>
-                <th>Prix Location</th>
-                <td>{{ $vehicule->prixLoc }}</td>
-            </tr>
-            <tr>
-                <th>Marque</th>
-                <td>{{ $vehicule->marque }}</td>
-                <th>Type</th>
-                <td>{{ $vehicule->type }}</td>
-            </tr>
-            <tr>
-                <th>Model</th>
-                <td>{{ $vehicule->model }}</td>
-                <th>Date Achat</th>
-                <td>{{ $vehicule->dateAchat }}</td>
-            </tr>
-            <tr>
-                <th>Couleur</th>
-                <td>{{ $vehicule->couleur }}</td>
-                <th>Nombre places</th>
-                <td>{{ $vehicule->nbrPlaces }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td colspan="3">{{ $vehicule->description }}</td>
-            </tr>
-            <tr>
-                <th>Climatisation</th>
-                <td>{{ $vehicule->climatisation }}</td>
-                <th>Carburation</th>
-                <td>{{ $vehicule->carburation }}</td>
-            </tr>
-            <tr>
-                <th>Kilometrage</th>
-                <td>{{ $vehicule->kilometrage }}</td>
-                <th>Puissance</th>
-                <td>{{ $vehicule->puissance }}</td>
-            </tr>
-            <tr>
-                <th>Boite Vitesse</th>
-                <td>{{ $vehicule->boiteVitesse }}</td>
-                <th>Taille Moteur</th>
-                <td>{{ $vehicule->tailleMoteur }}</td>
-            </tr>
-            <tr>
-                <th>Disponibilite</th>
-                <td>{{ $vehicule->disponibilite }}</td>
-                <th width="280px">Action</th>
+         $('.show_confirm').click(function(event) {
+              var form =  $(this).closest("form");
+              var name = $(this).data("name");
+              event.preventDefault();
+              swal({
+                  title: `Are you sure you want to delete this record?`,
+                  text: "If you delete this, it will be gone forever.",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  form.submit();
+                }
+              });
+          });
 
-                <td>
-                    <form action="{{ route('vehicules.destroy', $vehicule->matricule) }}" method="POST">
-
-                        <a class="btn btn-info" href="{{ route('vehicules.show', $vehicule->matricule) }}">Show</a>
-
-                        <a class="btn btn-primary" href="{{ route('vehicules.edit', $vehicule->matricule) }}">Edit</a>
-
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4"></td>
-            </tr>
-        @endforeach
-    </table>
-
-    {!! $vehicules->links() !!}
-
+    </script>
+    @endpush
 @endsection

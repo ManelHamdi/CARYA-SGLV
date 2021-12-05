@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePhotosTable extends Migration
@@ -15,12 +16,14 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
+            $table->string('name');
+            $table->binary('image');
             $table->string('vehicule_matricule')->index();
             $table->timestamps();
             $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            //DB::statement("ALTER TABLE photos ADD image LONGBLOB");
         });
     }
 
