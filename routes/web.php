@@ -50,9 +50,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth:employe');
 
 Route::group(['middleware' => 'auth:employe'], function () {
-	Route::get('table-list', function () {
-		return view('pages.table_list');
-	})->name('table');
+	Route::get('contrat', [App\Http\Controllers\ContratController::class, 'index'], function () {
+		return view('contrats.index');
+	})->name('contrat');
 
 	Route::get('vehicule', [App\Http\Controllers\VehiculeController::class, 'index'], function () {
 		return view('vehicules.index');

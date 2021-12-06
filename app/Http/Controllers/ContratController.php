@@ -16,7 +16,10 @@ class ContratController extends Controller
      */
     public function index()
     {
-        //
+        $contrats = Contrat::latest()->paginate(5);
+
+        return view('contrats.index', compact('contrats'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -26,7 +29,7 @@ class ContratController extends Controller
      */
     public function create()
     {
-        //
+        return view('contrats.create');
     }
 
     /**
@@ -48,7 +51,7 @@ class ContratController extends Controller
      */
     public function show(Contrat $contrat)
     {
-        //
+        return view('contrats.show', compact('contrat'));
     }
 
     /**
@@ -59,7 +62,7 @@ class ContratController extends Controller
      */
     public function edit(Contrat $contrat)
     {
-        //
+        return view('contrats.edit', compact('contrat'));
     }
 
     /**

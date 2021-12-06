@@ -64,7 +64,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{ route('table') }}">
+            <a class="nav-link" href="{{ route('contrat') }}">
               <i class="material-icons">content_paste</i>
               <p>جدول</p>
             </a>
