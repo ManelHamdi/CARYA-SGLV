@@ -50,9 +50,9 @@
         </tr>
         <tr>
             <th>Climatisation</th>
-            <td>{{ $vehicule->climatisation }}</td>
+            <td>{{ $vehicule->climatisation == 1 ? 'climatisé' : 'non climatisé' }}</td>
             <th>Carburation</th>
-            <td>{{ $vehicule->carburation == 1 ? 'climatisé' : 'non climatisé' }}</td>
+            <td>{{ $vehicule->carburation }}</td>
         </tr>
         <tr>
             <th>Kilometrage</th>

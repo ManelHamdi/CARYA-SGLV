@@ -18,8 +18,8 @@
           <i class="material-icons">search</i>
           <div class="ripple-container"></div>
         </button>
-        </div>
-      </form>-->
+        </div>-->
+      </form>
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="{{ route('home') }}">
@@ -29,7 +29,7 @@
             </p>
           </a>
         </li>
-        
+
         <li class="nav-item dropdown">
           <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">person</i>

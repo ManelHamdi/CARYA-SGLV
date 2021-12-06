@@ -24,15 +24,15 @@
 
     </head>
     <body class="{{ $class ?? '' }}">
-        @auth()
+        @auth('employe')
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
             @include('layouts.page_templates.auth')
-        @endauth
-        @guest()
+        @endauth('employe')
+        @guest('employe')
             @include('layouts.page_templates.guest')
-        @endguest
+        @endguest('employe')
 
         <!--   Core JS Files   -->
         <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
@@ -68,7 +68,7 @@
         <!-- Library for adding dinamically elements -->
         <script src="{{ asset('material') }}/js/plugins/arrive.min.js"></script>
         <!--  Google Maps Plugin    -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script>
+        <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script>-->
         <!-- Chartist JS -->
         <script src="{{ asset('material') }}/js/plugins/chartist.min.js"></script>
         <!--  Notifications Plugin    -->

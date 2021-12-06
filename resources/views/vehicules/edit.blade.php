@@ -268,27 +268,6 @@
                                 });
                             });
                         </script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js">
-                            $(document).ready(function() {
-                                $('.js-switch').change(function() {
-                                    let status = $(this).prop('checked') === true ? 1 : 0;
-                                    let vehiculeMat = $(this).data('matricule');
-                                    console.log($(this).data('matricule'));
-                                    $.ajax({
-                                        type: "GET",
-                                        dataType: "json",
-                                        url: '{{ route('vehicules.update.disponibilite') }}',
-                                        data: {
-                                            'disponibilite': status,
-                                            'vehicule_matricule': vehiculeMat
-                                        },
-                                        success: function(data) {
-                                            console.log(data.message);
-                                        }
-                                    });
-                                });
-                            });
-                        </script>
 
 
                         <!-- jQuery -->

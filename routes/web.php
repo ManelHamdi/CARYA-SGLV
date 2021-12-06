@@ -30,8 +30,8 @@ Route::resource('contrats', 'App\Http\Controllers\ContratController');
 Route::resource('rapports', 'App\Http\Controllers\RapportController');
 
 //Route::get('getphotos/{matricule}', [SiteController::class, 'getPhotos']);
-Route::get('/disponibilite/update', 'VehiculeController@updateDisponibilite')->name('vehicules.update.disponibilite');
-Route::get('/climatisation/update', 'VehiculeController@updateClimatisation')->name('vehicules.update.climatisation');
+//Route::get('/disponibilite/update', 'VehiculeController@updateDisponibilite')->name('vehicules.update.disponibilite');
+//Route::get('/climatisation/update', 'VehiculeController@updateClimatisation')->name('vehicules.update.climatisation');
 
 
 /*
@@ -106,3 +106,8 @@ Route::post('/login/employe', 'App\Http\Controllers\Auth\LoginController@employe
 Route::get('loginadmin', function () {
     return view('auth.loginadmin');
 })->name('loginadmin');
+
+Route::post('/save', [
+    'uses' => 'App\Http\Controllers\VehiculeController@store',
+    'as' => 'vehicules',
+]);

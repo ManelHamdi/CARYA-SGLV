@@ -1,41 +1,43 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
-  <div class="container">
+    <div class="container">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="navbar-toggler-icon icon-bar"></span>
-      <span class="navbar-toggler-icon icon-bar"></span>
-      <span class="navbar-toggler-icon icon-bar"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="{{ route('home') }}" class="nav-link">
-            <i class="material-icons">dashboard</i> {{ __('Dashboard') }}
-          </a>
-        </li>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{ route('home') }}" class="nav-link">
+                        <i class="material-icons">dashboard</i> {{ __('Dashboard') }}
+                    </a>
+                </li>
 
-        <li class="nav-item{{ $activePage == 'loginAdmin' ? ' active' : '' }}">
-          <a href="{{ route('loginadmin') }}" class="nav-link">
-            <i class="material-icons">fingerprint</i> {{ __('Administrateur') }}
-          </a>
-        </li>
+                <li class="nav-item{{ $activePage == 'loginAdmin' ? ' active' : '' }}">
+                    <a href="{{ route('loginadmin') }}" class="nav-link">
+                        <i class="material-icons">fingerprint</i> {{ __('Administrateur') }}
+                    </a>
+                </li>
 
-        <li class="nav-item{{ $activePage == 'loginEmploye' ? ' active' : '' }}">
-            <a href="{{ route('login') }}" class="nav-link">
-              <i class="material-icons">fingerprint</i> {{ __('Employe') }}
-            </a>
-          </li>
+                <li class="nav-item{{ $activePage == 'loginEmploye' ? ' active' : '' }}">
+                    <a href="{{ route('login') }}" class="nav-link">
+                        <i class="material-icons">fingerprint</i> {{ __('Employe') }}
+                    </a>
+                </li>
 
-        <!--<li class="nav-item ">
-          <a href="{{ route('profile.edit') }}" class="nav-link">
-            <i class="material-icons">face</i> {{ __('Profile') }}
-          </a>
-        </li>-->
+                <li class="nav-item ">
+                    <a href="{{ route('profile.edit') }}" class="nav-link">
+                      <i class="material-icons">face</i> {{ __('Profile') }}
+                    </a>
+                  </li>
 
-      </ul>
+
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 <!-- End Navbar -->

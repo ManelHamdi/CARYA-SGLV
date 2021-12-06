@@ -42,6 +42,7 @@ class VehiculeController extends Controller
      */
     public function store(Request $request)
     {
+
         try {
             $request->validate([
                 'matricule' => 'required', 'prixLoc' => 'required',
@@ -92,8 +93,6 @@ class VehiculeController extends Controller
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
-        //return back()->with('success', 'File has successfully uploaded!');
-
 
         return redirect()->route('vehicules.index')
             ->with('success', 'Vehicule created successfully.');
@@ -206,7 +205,7 @@ class VehiculeController extends Controller
         // Passing vehicule matricule into find()
         return Vehicule::find($vehicule_matricule)->photos;
     }
-
+/*
     public function updateDisponibilite(Request $request)
     {
         $vehicule = Vehicule::findOrFail($request->vehicule_matricule);
@@ -224,7 +223,7 @@ class VehiculeController extends Controller
 
         return response()->json(['message' => 'Vehicule climatisation updated successfully.']);
     }
-
+*/
     /*
     public function getVehicule($photo_id)
     {
