@@ -163,10 +163,10 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Climatisation</strong>
-                                                    <input type="checkbox" name="climatisation" value="1"
+                                                    <input type="checkbox" name="climatisation"
+                                                        data-id="{{ $vehicule->matricule }}" value="1"
                                                         class="js-switch" id="climaup"
                                                         {{ $vehicule->climatisation == 1 ? 'checked' : '' }}>
-
                                                 </div>
                                             </div>
                                         </td>

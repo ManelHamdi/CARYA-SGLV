@@ -215,7 +215,7 @@ class VehiculeController extends Controller
         return response()->json(['message' => 'Vehicule disponibilite updated successfully.']);
     }
 
-    public function updateClimatisatione(Request $request)
+    public function updateClimatisation(Request $request)
     {
         $vehicule = Vehicule::findOrFail($request->vehicule_matricule);
         $vehicule->climatisation = $request->climatisation;
