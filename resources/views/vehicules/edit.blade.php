@@ -164,7 +164,7 @@
                                                 <div class="form-group">
                                                     <strong>Climatisation</strong>
                                                     <input type="checkbox" name="climatisation" value="1"
-                                                        class="js-switch"
+                                                        class="js-switch" id="climaup"
                                                         {{ $vehicule->climatisation == 1 ? 'checked' : '' }}>
 
                                                 </div>
@@ -228,10 +228,10 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <strong>Disponibilite</strong>
-                                                    <input type="checkbox" name="disponibilite" data-id="{{ $vehicule->matricule }}" value="1"
-                                                        class="js-switch"
+                                                    <input type="checkbox" name="disponibilite"
+                                                        data-id="{{ $vehicule->matricule }}" value="1"
+                                                        class="js-switch" id="dispoup"
                                                         {{ $vehicule->disponibilite == 1 ? 'checked' : '' }}>
-
                                                 </div>
                                             </div>
                                         </td>
@@ -265,6 +265,50 @@
                             elems.forEach(function(html) {
                                 let switchery = new Switchery(html, {
                                     size: 'small'
+                                });
+                            });
+                        </script>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                $('#dispoup').change(function() {
+                                    let status = $(this).prop('checked') === true ? 1 : 0;
+                                    let mat = $(this).data('id');
+
+                                    $.ajax({
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        type: "GET",
+                                        dataType: "json",
+                                        url: '{{ route('vehicules.update.disponibilite') }}',
+                                        data: {
+                                            'disponibilite': status,
+                                            'vehicule_matricule': mat
+                                        },
+                                        success: function(data) {
+                                            console.log(data.message);
+                                        }
+                                    });
+                                });
+                                $('#climaup').change(function() {
+                                    let status = $(this).prop('checked') === true ? 1 : 0;
+                                    let mat = $(this).data('id');
+
+                                    $.ajax({
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        type: "GET",
+                                        dataType: "json",
+                                        url: '{{ route('vehicules.update.climatisation') }}',
+                                        data: {
+                                            'climatisation': status,
+                                            'vehicule_matricule': mat
+                                        },
+                                        success: function(data) {
+                                            console.log(data.message);
+                                        }
+                                    });
                                 });
                             });
                         </script>

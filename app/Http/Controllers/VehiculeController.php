@@ -205,12 +205,12 @@ class VehiculeController extends Controller
         // Passing vehicule matricule into find()
         return Vehicule::find($vehicule_matricule)->photos;
     }
-/*
+
     public function updateDisponibilite(Request $request)
     {
         $vehicule = Vehicule::findOrFail($request->vehicule_matricule);
         $vehicule->disponibilite = $request->disponibilite;
-        $vehicule->save();
+        $vehicule->update();
 
         return response()->json(['message' => 'Vehicule disponibilite updated successfully.']);
     }
@@ -219,11 +219,11 @@ class VehiculeController extends Controller
     {
         $vehicule = Vehicule::findOrFail($request->vehicule_matricule);
         $vehicule->climatisation = $request->climatisation;
-        $vehicule->save();
+        $vehicule->update();
 
         return response()->json(['message' => 'Vehicule climatisation updated successfully.']);
     }
-*/
+
     /*
     public function getVehicule($photo_id)
     {

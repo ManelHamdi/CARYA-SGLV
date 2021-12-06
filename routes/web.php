@@ -30,8 +30,8 @@ Route::resource('contrats', 'App\Http\Controllers\ContratController');
 Route::resource('rapports', 'App\Http\Controllers\RapportController');
 
 //Route::get('getphotos/{matricule}', [SiteController::class, 'getPhotos']);
-//Route::get('/disponibilite/update', 'VehiculeController@updateDisponibilite')->name('vehicules.update.disponibilite');
-//Route::get('/climatisation/update', 'VehiculeController@updateClimatisation')->name('vehicules.update.climatisation');
+Route::get('/disponibilite/update', 'App\Http\Controllers\VehiculeController@updateDisponibilite')->name('vehicules.update.disponibilite');
+Route::get('/climatisation/update', 'App\Http\Controllers\VehiculeController@updateClimatisation')->name('vehicules.update.climatisation');
 
 
 /*
