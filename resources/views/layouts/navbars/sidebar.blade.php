@@ -42,7 +42,7 @@
         </div>
       </li>
       <li class="nav-item{{ $activePage == 'Véhicule' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('typography') }}">
+        <a class="nav-link" href="{{ route('vehicule') }}">
           <i class="material-icons">library_books</i>
             <p>{{ __('Gerer Vehicule') }}</p>
         </a>

@@ -54,9 +54,9 @@ Route::group(['middleware' => 'auth:employe'], function () {
 		return view('pages.table_list');
 	})->name('table');
 
-	Route::get('typography', [App\Http\Controllers\VehiculeController::class, 'index'], function () {
+	Route::get('vehicule', [App\Http\Controllers\VehiculeController::class, 'index'], function () {
 		return view('vehicules.index');
-	})->name('typography');
+	})->name('vehicule');
 
 	Route::get('icons', function () {
 		return view('pages.icons');

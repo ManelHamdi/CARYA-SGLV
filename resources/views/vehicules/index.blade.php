@@ -22,25 +22,25 @@
                         <table class="table table-bordered">
                             @foreach ($vehicules as $vehicule)
                                 <tr>
-                                    <th>Images</th>
+                                    <th style="white-space: nowrap;">Images</th>
                                     <td colspan="5">
                                         @foreach ($vehicule->photos as $photo)
                                             <img src="{{ 'data:image/*;base64,' . base64_encode( $photo->image) }}"
-                                                style="height:100px; width:140px" />
+                                                style="height:80px; width:120px" />
                                         @endforeach
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Matricule</th>
+                                    <th style="white-space: nowrap;">Matricule</th>
                                     <td>{{ $vehicule->matricule }}</td>
-                                    <th>Prix Location</th>
+                                    <th  style="white-space: nowrap;">Prix Location</th>
                                     <td>{{ $vehicule->prixLoc }}</td>
-                                    <th>Disponibilite</th>
+                                    <th style="white-space: nowrap;">Disponibilite</th>
                                     <td>{{ $vehicule->disponibilite == 1 ? 'disponible' : 'pas disponible' }}</td>
                                 </tr>
                                 <tr>
 
-                                    <th width="280px">Action</th>
+                                    <th style="white-space: nowrap;">Action</th>
 
                                     <td colspan="5">
                                         <form action="{{ route('vehicules.destroy', $vehicule->matricule) }}"
@@ -79,9 +79,9 @@
               var name = $(this).data("name");
               event.preventDefault();
               swal({
-                  title: `Are you sure you want to delete this record?`,
-                  text: "If you delete this, it will be gone forever.",
-                  icon: "warning",
+                  title: `Êtes-vous sûr de vouloir supprimer cette véhicule?`,
+                  text: "Si vous le supprimez, il disparaîtra pour toujours.",
+                  icon: "error",
                   buttons: true,
                   dangerMode: true,
               })
