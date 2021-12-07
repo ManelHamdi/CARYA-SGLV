@@ -20,50 +20,49 @@
                         </div>
 
                         <table class="table table-bordered">
+                            <tr>
+
+                                <th>Images</th>
+                                <th>Matricule</th>
+                                <th>Prix Location</th>
+                                <th>Disponibilite</th>
+                                <th>Action</th>
+                            </tr>
                             @foreach ($vehicules as $vehicule)
                                 <tr>
-                                    <th style="white-space: nowrap;">Images</th>
-                                    <td colspan="5">
-                                        @foreach ($vehicule->photos as $photo)
-                                            <img src="{{ 'data:image/*;base64,' . base64_encode( $photo->image) }}"
-                                                style="height:80px; width:120px" />
-                                        @endforeach
+                                    <td>
+                                        <img src="{{ 'data:image/*;base64,' . base64_encode($vehicule->photos[0]->image) }}"
+                                            style="height:60px; width:100px" />
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th style="white-space: nowrap;">Matricule</th>
                                     <td>{{ $vehicule->matricule }}</td>
-                                    <th  style="white-space: nowrap;">Prix Location</th>
                                     <td>{{ $vehicule->prixLoc }}</td>
-                                    <th style="white-space: nowrap;">Disponibilite</th>
                                     <td>{{ $vehicule->disponibilite == 1 ? 'disponible' : 'pas disponible' }}</td>
-                                </tr>
-                                <tr>
-
-                                    <th style="white-space: nowrap;">Action</th>
-
-                                    <td colspan="5">
+                                    <td>
                                         <form action="{{ route('vehicules.destroy', $vehicule->matricule) }}"
                                             method="POST">
 
-                                            <a class="btn btn-info"
-                                                href="{{ route('vehicules.show', $vehicule->matricule) }}">Details</a>
+                                            <a class="btn btn-info btn-fab btn-fab-mini btn-round"
+                                                href="{{ route('vehicules.show', $vehicule->matricule) }}">
+                                                <i class="material-icons">description</i>
+                                            </a>
 
-                                            <a class="btn btn-primary"
-                                                href="{{ route('vehicules.edit', $vehicule->matricule) }}">Modifier</a>
-
+                                            <a class="btn btn-success btn-fab btn-fab-mini btn-round"
+                                                href="{{ route('vehicules.edit', $vehicule->matricule) }}">
+                                                <i class="material-icons">edit</i>
+                                            </a>
                                             @csrf
                                             @method('DELETE')
-
-                                            <button type="submit" class="btn btn-danger show_confirm">Supprimer</button>
+                                            <button type="submit" class="btn btn-danger btn-fab btn-fab-mini btn-round">
+                                                <i class="material-icons">delete</i>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
 
                             @endforeach
                         </table>
+                        {{ $vehicules->render("pagination::bootstrap-4") }}
 
-                        {!! $vehicules->links() !!}
                     </div>
                 </div>
             </div>
@@ -71,27 +70,25 @@
     </div>
 
     @push('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-    <script type="text/javascript">
-
-         $('.show_confirm').click(function(event) {
-              var form =  $(this).closest("form");
-              var name = $(this).data("name");
-              event.preventDefault();
-              swal({
-                  title: `Êtes-vous sûr de vouloir supprimer cette véhicule?`,
-                  text: "Si vous le supprimez, il disparaîtra pour toujours.",
-                  icon: "error",
-                  buttons: true,
-                  dangerMode: true,
-              })
-              .then((willDelete) => {
-                if (willDelete) {
-                  form.submit();
-                }
-              });
-          });
-
-    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+        <script type="text/javascript">
+            $('.show_confirm').click(function(event) {
+                var form = $(this).closest("form");
+                var name = $(this).data("name");
+                event.preventDefault();
+                swal({
+                        title: `Êtes-vous sûr de vouloir supprimer cette véhicule?`,
+                        text: "Si vous le supprimez, il disparaîtra pour toujours.",
+                        icon: "error",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            form.submit();
+                        }
+                    });
+            });
+        </script>
     @endpush
 @endsection

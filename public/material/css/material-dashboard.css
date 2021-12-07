@@ -14883,8 +14883,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .main-panel>.content {
-  margin-top: 70px;
-  padding: 30px 15px;
+  margin-top: 40px;
+  padding: 15px 10px;
   min-height: calc(100vh - 123px);
 }
 

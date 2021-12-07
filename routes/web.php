@@ -86,8 +86,6 @@ Route::group(['middleware' => 'auth:employe'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
-
-
 Route::get('/login/admin', 'App\Http\Controllers\Auth\LoginController@showAdminLoginForm');
 Route::get('/login/employe', 'App\Http\Controllers\Auth\LoginController@showEmployeLoginForm');
 //Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');

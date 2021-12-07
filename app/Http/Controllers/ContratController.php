@@ -19,7 +19,7 @@ class ContratController extends Controller
         $contrats = Contrat::latest()->paginate(5);
 
         return view('contrats.index', compact('contrats'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -40,7 +40,25 @@ class ContratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'client_id' => 'required', 'vehicule_matricule' => 'required',
+                'dateDebut' => 'required', 'dateFin' => 'required',
+                'nbrJour' => 'required',
+                'remise' => 'required', 'montant' => 'required',
+                'fraisLivraison' => 'required', 'fraisReprise' => 'required',
+            ]);
+
+
+            $input = $request->all();
+            Contrat::create($input);
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
+
+        return redirect()->route('contrats.index')
+            ->with('success', 'Contrat created successfully.');
     }
 
     /**
@@ -74,7 +92,23 @@ class ContratController extends Controller
      */
     public function update(Request $request, Contrat $contrat)
     {
-        //
+        try {
+            $request->validate([
+                'client_id' => 'required', 'vehicule_matricule' => 'required',
+                'dateDebut' => 'required', 'dateFin' => 'required',
+                'nbrJour' => 'required',
+                'remise' => 'required', 'montant' => 'required',
+                'fraisLivraison' => 'required', 'fraisReprise' => 'required',
+            ]);
+
+
+            $input = $request->all();
+            Contrat::update($input);
+
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
+        
     }
 
     /**
@@ -85,7 +119,10 @@ class ContratController extends Controller
      */
     public function destroy(Contrat $contrat)
     {
-        //
+        $contrat->delete();
+
+        return redirect()->route('contrats.index')
+        ->with('success', 'Contrat deleted successfully');
     }
 
     // To get all vehicules of a client

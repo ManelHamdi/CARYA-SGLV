@@ -17,11 +17,12 @@ class VehiculeController extends Controller
     public function index()
     {
         $vehicules = Vehicule::latest()->paginate(5);
+        //$vehicule->photos->first();
 
         //$photos = Photo::with('vehicule')->get();
 
         return view('vehicules.index', compact('vehicules'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 4);
     }
 
     /**
@@ -198,7 +199,6 @@ class VehiculeController extends Controller
         return redirect()->route('vehicules.index')
             ->with('success', 'Vehicule deleted successfully');
     }
-
 
     public function getPhotos($vehicule_matricule)
     {
