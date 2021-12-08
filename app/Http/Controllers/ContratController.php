@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Contrat;
 use App\Models\Vehicule;
+use DateTime;
 use Illuminate\Http\Request;
 
 class ContratController extends Controller
@@ -16,10 +17,11 @@ class ContratController extends Controller
      */
     public function index()
     {
-        $contrats = Contrat::latest()->paginate(5);
-
-        return view('contrats.index', compact('contrats'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        //$contrats = Contrat::latest()->paginate(5);
+        $vehicules = Vehicule::with('clients')->get();
+        //dd($contrats);
+        return view('contrats.index', compact('vehicules'))
+            ->with('cvehicules', Vehicule::with('clients')->paginate(5));
     }
 
     /**
@@ -29,7 +31,9 @@ class ContratController extends Controller
      */
     public function create()
     {
-        return view('contrats.create');
+        $vehicules = Vehicule::all()->where('disponibilite', 1);
+        $clients = Client::all();
+        return view('contrats.create', compact('vehicules', 'clients'));
     }
 
     /**
@@ -44,15 +48,18 @@ class ContratController extends Controller
             $request->validate([
                 'client_id' => 'required', 'vehicule_matricule' => 'required',
                 'dateDebut' => 'required', 'dateFin' => 'required',
-                'nbrJour' => 'required',
                 'remise' => 'required', 'montant' => 'required',
                 'fraisLivraison' => 'required', 'fraisReprise' => 'required',
             ]);
-
-
+            
+            $sdate = $request->dateDebut;
+            $fdate = $request->dateFin;
+            $datetime1 = new DateTime($sdate);
+            $datetime2 = new DateTime($fdate);
+            $interval = $datetime1->diff($datetime2);
+            $days = $interval->format('%a');
             $input = $request->all();
-            Contrat::create($input);
-
+            Contrat::create(array_merge($input, ['nbrJour' => $days]));
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
@@ -67,9 +74,9 @@ class ContratController extends Controller
      * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
-    public function show(Contrat $contrat)
+    public function show(Contrat $contrat, Vehicule $vehicule, Client $client)
     {
-        return view('contrats.show', compact('contrat'));
+        return view('contrats.show', compact('contrat', 'vehicule', 'client'));
     }
 
     /**
@@ -78,9 +85,12 @@ class ContratController extends Controller
      * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contrat $contrat)
+    public function edit(Contrat $contrat, Vehicule $vehicule, Client $client)
     {
-        return view('contrats.edit', compact('contrat'));
+        $vehicules = Vehicule::all()->where('disponibilite', 1);
+        $clients = Client::all();
+        return view('contrats.edit', compact('contrat', 'vehicule', 'client', 'vehicules', 'clients'));
+        //return view('contrats.edit', compact('contrat'));
     }
 
     /**
@@ -96,19 +106,26 @@ class ContratController extends Controller
             $request->validate([
                 'client_id' => 'required', 'vehicule_matricule' => 'required',
                 'dateDebut' => 'required', 'dateFin' => 'required',
-                'nbrJour' => 'required',
                 'remise' => 'required', 'montant' => 'required',
                 'fraisLivraison' => 'required', 'fraisReprise' => 'required',
             ]);
-
-
+            
+            $sdate = $request->dateDebut;
+            $fdate = $request->dateFin;
+            $datetime1 = new DateTime($sdate);
+            $datetime2 = new DateTime($fdate);
+            $interval = $datetime1->diff($datetime2);
+            $days = $interval->format('%a');
+            $request->request->add(['nbrJour' => $days]);
             $input = $request->all();
-            Contrat::update($input);
-
+            $contrat->update($input);
+            
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
-        
+
+        return redirect()->route('contrats.index')
+            ->with('success', 'Contrat updated successfully');
     }
 
     /**
@@ -122,18 +139,6 @@ class ContratController extends Controller
         $contrat->delete();
 
         return redirect()->route('contrats.index')
-        ->with('success', 'Contrat deleted successfully');
-    }
-
-    // To get all vehicules of a client
-    public function getVehicules($client_id)
-    {
-        return Client::find($client_id)->vehicules;
-    }
-
-    // To get all clients by vehicule
-    public function getClients($vehicule_matricule)
-    {
-        return Vehicule::find($vehicule_matricule)->clients;
+            ->with('success', 'Contrat deleted successfully');
     }
 }

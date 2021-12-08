@@ -46,7 +46,7 @@ class VehiculeController extends Controller
 
         try {
             $request->validate([
-                'matricule' => 'required', 'prixLoc' => 'required',
+                'matricule' => 'required|unique:vehicules,matricule', 'prixLoc' => 'required',
                 'marque' => 'required', 'dateAchat' => 'required',
                 'type' => 'required', 'model' => 'required',
                 'couleur' => 'required',

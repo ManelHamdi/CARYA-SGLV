@@ -19,15 +19,15 @@
 
                         </div>
 
-                        <table class="table table-bordered">
-                            <tr>
-
+                        <table class="table">
+                            <thead class=" text-primary">
                                 <th>Images</th>
                                 <th>Matricule</th>
                                 <th>Prix Location</th>
                                 <th>Disponibilite</th>
                                 <th>Action</th>
-                            </tr>
+                            </thead>
+                            <tbody>
                             @foreach ($vehicules as $vehicule)
                                 <tr>
                                     <td>
@@ -58,8 +58,8 @@
                                         </form>
                                     </td>
                                 </tr>
-
                             @endforeach
+                            </tbody>
                         </table>
                         {{ $vehicules->render("pagination::bootstrap-4") }}
 

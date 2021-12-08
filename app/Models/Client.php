@@ -43,6 +43,11 @@ class Client extends Authenticatable
     
     public function vehicules()
     {
-        return $this->belongsToMany(Vehicule::class, 'contrat');
+        return $this->belongsToMany(Vehicule::class, 'contrat', 'client_id', 'vehicule_matricule')
+        ->withTimestamps()
+        ->withPivot('id', 'dateDebut', 'dateFin', 
+        'nbrJour', 'remise', 'montant', 
+        'fraisLivraison', 'fraisReprise')
+        ->as('contrat');
     }
 }

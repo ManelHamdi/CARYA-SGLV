@@ -29,6 +29,10 @@ Route::resource('photos', 'App\Http\Controllers\PhotoController');
 Route::resource('contrats', 'App\Http\Controllers\ContratController');
 Route::resource('rapports', 'App\Http\Controllers\RapportController');
 
+
+Route::get('/contrats/{contrat}/{vehicule}/{client}','App\Http\Controllers\ContratController@show')->name('contrats.showa');
+Route::get('/edit/contrats/{contrat}/{vehicule}/{client}','App\Http\Controllers\ContratController@edit')->name('contrats.edita');
+
 //Route::get('getphotos/{matricule}', [SiteController::class, 'getPhotos']);
 Route::get('/disponibilite/update', 'App\Http\Controllers\VehiculeController@updateDisponibilite')->name('vehicules.update.disponibilite');
 Route::get('/climatisation/update', 'App\Http\Controllers\VehiculeController@updateClimatisation')->name('vehicules.update.climatisation');

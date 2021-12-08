@@ -47,7 +47,7 @@
             <p>{{ __('Gerer Vehicule') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'contrat' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'Contrat' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('contrat') }}">
           <i class="material-icons">content_paste</i>
             <p>{{ __('Gerer Contrats') }}</p>

@@ -10,8 +10,8 @@
 
             <div class="card-body">
                 <div id="typography">
-
-    <table class="table table-bordered">
+                    <div class="table-responsive">
+    <table class="table">
         <tr>
             <th>Images</th>
             <td colspan="3">
@@ -74,18 +74,23 @@
             <td>
                 <form action="{{ route('vehicules.destroy', $vehicule->matricule) }}" method="POST">
 
-                    <a class="btn btn-primary" href="{{ route('vehicules.edit', $vehicule->matricule) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('vehicules.edit', $vehicule->matricule) }}">
+                        <i class="material-icons">edit</i> Edit
+                    </a>
 
                     @csrf
                     @method('DELETE')
 
-                    <button type="submit" class="btn btn-danger show_confirm">Delete</button>
+                    <button type="submit" class="btn btn-danger show_confirm">
+                        <i class="material-icons">delete</i> Delete
+                    </button>
                 </form>
             </td>
         </tr>
 
 
     </table>
+                    </div>
 </div>
                 </div>
             </div>
