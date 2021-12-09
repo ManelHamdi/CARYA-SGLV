@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateEntreprisesTable extends Migration
@@ -19,9 +20,9 @@ class CreateEntreprisesTable extends Migration
             $table->string('adresse', 35);
             $table->string('ville', 25);
             $table->integer('telephone');
-            $table->binary('logo');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE entreprises ADD logo LONGBLOB");
     }
 
     /**

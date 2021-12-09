@@ -43,7 +43,6 @@ class VehiculeController extends Controller
      */
     public function store(Request $request)
     {
-
         try {
             $request->validate([
                 'matricule' => 'required|unique:vehicules,matricule', 'prixLoc' => 'required',
@@ -58,37 +57,15 @@ class VehiculeController extends Controller
                 'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048',
             ]);
 
-            //$input = new Vehicule();
             $input = $request->all();
-            /*if ($request->disponibilite == 'on') {
-                $input->disponibilite = '1';
-                dd('onn');
-            } else{
-                $input->disponibilite = '0';
-                dd('of');
-            }*/
 
             Vehicule::create($input);
 
+            $photoController = new PhotoController();
+
             if ($request->hasfile('imageFile')) {
                 foreach ($request->file('imageFile') as $file) {
-                    // Get the contents of the file
-                    //$contents = $file->openFile()->fread($file->getSize());
-                    $contents = $file->openFile()->fread($file->getSize());
-
-                    $name = time() . '_' . $file->getClientOriginalName();
-                    //$file->move(public_path() . '/uploads/', $name);
-                    $fileModal = new Photo();
-                    $fileModal->name = $name;
-                    $fileModal->vehicule_matricule = $request->matricule;
-                    //$fileModal->save();
-
-                    //
-                    // Get the file from the request
-                    //$mfile = $request->file('imageFile');
-                    // Store the contents to the database
-                    $fileModal->image = $contents;
-                    $fileModal->save();
+                    $photoController->addPhoto($request->matricule, $file);
                 }
             }
         } catch (\Illuminate\Database\QueryException $ex) {
@@ -154,23 +131,10 @@ class VehiculeController extends Controller
                 $img->delete();
             }
 
+            $photoController = new PhotoController();
+
             foreach ($request->file('imageFile') as $file) {
-                // Get the contents of the file
-                $contents = $file->openFile()->fread($file->getSize());
-
-                $name = time() . '_' . $file->getClientOriginalName();
-                //$file->move(public_path() . '/uploads/', $name);
-                $fileModal = new Photo();
-                $fileModal->name = $name;
-                $fileModal->vehicule_matricule = $request->matricule;
-                //$fileModal->save();
-
-
-                // Get the file from the request
-                //$mfile = $request->file('imageFile');
-                // Store the contents to the database
-                $fileModal->image = $contents;
-                $fileModal->save();
+                $photoController->addPhoto($request->matricule, $file);
             }
             //return back()->with('success', 'File has successfully uploaded!');
         }
@@ -188,12 +152,6 @@ class VehiculeController extends Controller
      */
     public function destroy(Vehicule $vehicule)
     {
-        //$images = Photo::where("vehicule_matricule", $vehicule->matricule)->get();
-        /*foreach ($images as $image) {
-            if (File::exists("uploads/" . $image->image)) {
-                File::delete("uploads/" . $image->image);
-            }
-        }*/
         $vehicule->delete();
 
         return redirect()->route('vehicules.index')
@@ -224,11 +182,4 @@ class VehiculeController extends Controller
         return response()->json(['message' => 'Vehicule climatisation updated successfully.']);
     }
 
-    /*
-    public function getVehicule($photo_id)
-    {
-        // Passing photo id into find()
-        return Photo::find($photo_id)->vehicule;
-    }
-    */
 }
