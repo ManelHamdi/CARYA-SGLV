@@ -24,11 +24,11 @@ class CreateRapportsTable extends Migration
             $table->integer('employe_id')->unsigned();
             $table->timestamps();
             $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->foreign('employe_id')->references('id')->on('employes')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

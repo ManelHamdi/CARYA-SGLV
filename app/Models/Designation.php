@@ -5,16 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model
+class Designation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'image', 'vehicule_matricule',
+        'contrat_id',
+        'name',
+        'prixUnitaire', 'montant',
     ];
 
-    public function vehicule()
+    public function contrat()
     {
-        return $this->belongsTo(Vehicule::class);
+        return $this->belongsTo(Contrat::class);
     }
 }

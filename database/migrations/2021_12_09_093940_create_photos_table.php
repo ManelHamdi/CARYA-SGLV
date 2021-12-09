@@ -16,15 +16,13 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->binary('image');
             $table->string('vehicule_matricule')->index();
             $table->timestamps();
             $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-            //DB::statement("ALTER TABLE photos ADD image LONGBLOB");
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
+        DB::statement("ALTER TABLE photos ADD image LONGBLOB");
     }
 
     /**

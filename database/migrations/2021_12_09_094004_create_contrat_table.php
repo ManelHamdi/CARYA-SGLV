@@ -17,16 +17,23 @@ class CreateContratTable extends Migration
             $table->increments('id');
             $table->integer('client_id')->unsigned();
             $table->string('vehicule_matricule')->index();
+            $table->string('livraison', 50);
+            $table->string('reprise', 50);
             $table->date('dateDebut');
             $table->date('dateFin');
+            $table->string('carburationL', 30)->nullable();
+            $table->string('carburationR', 30)->nullable();
+            $table->string('kmL', 30)->nullable();
+            $table->string('kmR', 30)->nullable();
             $table->integer('nbrJour');
-            $table->double('remise');
-            $table->double('montant');
-            $table->double('fraisLivraison');
-            $table->double('fraisReprise');
+            $table->string('prolongation', 30)->nullable();
             $table->timestamps();
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules');
+            $table->foreign('client_id')->references('id')->on('clients')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('vehicule_matricule')->references('matricule')->on('vehicules')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
