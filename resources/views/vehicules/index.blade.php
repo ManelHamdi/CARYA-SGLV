@@ -76,7 +76,7 @@
                 var form = $(this).closest("form");
                 var name = $(this).data("name");
                 event.preventDefault();
-                swal({
+                new swal({
                         title: `Êtes-vous sûr de vouloir supprimer cette véhicule?`,
                         text: "Si vous le supprimez, il disparaîtra pour toujours.",
                         icon: "error",
