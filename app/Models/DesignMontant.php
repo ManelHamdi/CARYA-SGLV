@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DesignMontant extends Model
+class Designmontant extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
         'contrat_id', 
         'locationBase', 'conducteur', 

@@ -51,11 +51,19 @@ class ContratController extends Controller
     {
         try {
             $request->validate([
-                'client_id' => 'required', 'vehicule_matricule' => 'required',
+                'vehicule_matricule' => 'required',
+                'nom' => 'required', 'prenom' => 'required',
+                'adresse' => 'required', 'ville' => 'required',
+                'cin' => 'required', 'permisConduire' => 'required',
                 'dateDebut' => 'required', 'dateFin' => 'required',
-                //'remise' => 'required', 'montant' => 'required',
-                //'fraisLivraison' => 'required', 'fraisReprise' => 'required',
+                'livraison' => 'required', 'reprise' => 'required',
+                'sousTotal' => 'required', 'montantNet' => 'required',
+                'montantDuD' => 'required', 'montantRecu' => 'required',
+                'montantDu' => 'required',
             ]);
+
+            $clientController = new ClientController();
+            
 
             $sdate = $request->dateDebut;
             $fdate = $request->dateFin;
@@ -64,7 +72,48 @@ class ContratController extends Controller
             $interval = $datetime1->diff($datetime2);
             $days = $interval->format('%a');
             $input = $request->all();
-            Contrat::create(array_merge($input, ['nbrJour' => $days]));
+
+            $contrat = new Contrat();
+            $contrat->vehicule_matricule = $request->matricule;
+            $contrat->livraison = $request->livraison;
+            $contrat->reprise = $request->reprise;
+            $contrat->dateDebut = $request->dateDebut;
+            $contrat->dateFin = $request->dateFin;
+            $contrat->carburationL = $request->carburationL;
+            $contrat->carburationR = $request->carburationR;
+            $contrat->kmL = $request->kmL;
+            $contrat->kmR = $request->kmR;
+            $contrat->nbrJour = $days;
+            $contrat->prolongation = $request->prolongation;
+
+            $client = $clientController->addClient($request);
+            //$vehicule = Vehicule::find($request->vehicule_matricule);
+            //$vehicule->clients()->attatch($client->id, $contrat);
+
+            $contrat->vehicule_matricule = $request->vehicule_matricule;
+            $contrat->client_id = $client->id;
+            $contrat->save();
+            
+            
+
+            //Contrat::create(array_merge($input, ['nbrJour' => $days]));
+
+            $checkOutController = new ChekoutController();
+            $designunitController = new DesignunitController();
+            $designmontantController = new DesignmontantController;
+            $montantController = new MontantController();
+
+            
+            $checkOutController->addCheckout($request, $contrat);
+            $designunitController->addDesignU($request, $contrat);
+            $designmontantController->addDesignM($request, $contrat);
+            $montantController->addMontant($request, $contrat);
+
+            //$contrat->checkout()->save($checkOut);
+            //$contrat->designUnit()->save($designUnit);
+            //$contrat->designMontant()->save($designMontant);
+            //$contrat->montant()->save($montatnt);
+
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }

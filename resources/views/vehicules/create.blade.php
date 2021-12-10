@@ -76,7 +76,7 @@
                                                 <div class="form-group">
                                                     <label>Prix Location</label>
                                                     <input type="number" name="prixLoc" class="form-control"
-                                                        placeholder="" value="25">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -85,7 +85,7 @@
                                                 <div class="form-group">
                                                     <label>Marque</label>
                                                     <input type="text" name="marque" class="form-control"
-                                                        placeholder="" value="mds">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -96,7 +96,7 @@
                                                 <div class="form-group">
                                                     <label>Type</label>
                                                     <input type="text" name="type" class="form-control"
-                                                        placeholder="" value="sds">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -105,7 +105,7 @@
                                                 <div class="form-group">
                                                     <label>Model</label>
                                                     <input type="text" name="model" class="form-control"
-                                                        placeholder="" value="sd">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -125,7 +125,7 @@
                                                 <div class="form-group">
                                                     <label>Couleur</label>
                                                     <input type="text" name="couleur" class="form-control"
-                                                        placeholder="" value="df">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -134,7 +134,7 @@
                                                 <div class="form-group">
                                                     <label>Nombre place</label>
                                                     <input type="number" name="nbrPlaces" class="form-control"
-                                                        placeholder="" value="4">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -155,7 +155,7 @@
                                                 <div class="form-group">
                                                     <label>Puissance</label>
                                                     <input type="text" name="puissance" class="form-control"
-                                                        placeholder="" value="fppp">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -164,7 +164,7 @@
                                                 <div class="form-group">
                                                     <label>Carburation</label>
                                                     <input type="text" name="carburation" class="form-control"
-                                                        placeholder="" value="sdfh">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -173,7 +173,7 @@
                                                 <div class="form-group">
                                                     <label>Kilometrage</label>
                                                     <input type="text" name="kilometrage" class="form-control"
-                                                        placeholder="" value="df">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -184,7 +184,7 @@
                                                 <div class="form-group">
                                                     <label>Boite vitesse</label>
                                                     <input type="text" name="boiteVitesse" class="form-control"
-                                                        placeholder="" value="rfff">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -193,7 +193,7 @@
                                                 <div class="form-group">
                                                     <label>Taille moteur</label>
                                                     <input type="text" name="tailleMoteur" class="form-control"
-                                                        placeholder="" value="rth">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -215,7 +215,7 @@
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <input type="textarea" name="description" class="form-control"
-                                                        placeholder="" value="drg">
+                                                        placeholder="">
                                                 </div>
                                             </div>
                                         </td>

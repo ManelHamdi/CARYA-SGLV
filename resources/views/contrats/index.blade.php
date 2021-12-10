@@ -22,7 +22,6 @@
                                         <th> Matricule </th>
                                         <th> Client </th>
                                         <th> Nombre jour </th>
-                                        <th> Montant </th>
                                         <th> Actions </th>
                                     </thead>
                                     <tbody>
@@ -41,9 +40,7 @@
                                                 <td>
                                                     {{ $client->contrat->nbrJour }}
                                                 </td>
-                                                <td>
-                                                    {{ $client->contrat->prolongation }}
-                                                </td>
+                                                
                                                 <td>
                                                     <form action="{{ route('contrats.destroy', $client->contrat->id) }}" method="POST">
                                                         <a class="btn btn-info btn-fab btn-fab-mini btn-round"

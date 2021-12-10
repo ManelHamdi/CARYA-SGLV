@@ -28,7 +28,7 @@ class CreateCheckoutsTable extends Migration
             $table->boolean('antenne')->default(0);
             $table->boolean('allumeCigar')->default(0);
             $table->boolean('trianglePanne')->default(0);
-            $table->string('autre', 50)->nullable();
+            $table->boolean('autre')->default(0);
             $table->integer('contrat_id')->unsigned();
             $table->timestamps();
             $table->foreign('contrat_id')->references('id')->on('contrat')

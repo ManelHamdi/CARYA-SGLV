@@ -2,84 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DesignUnit;
+use App\Models\Contrat;
+use App\Models\Designunit;
 use Illuminate\Http\Request;
 
-class DesignUnitController extends Controller
+class DesignunitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function addDesignU(Request $request, Contrat $contrat) 
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\DesignUnit  $designUnit
-     * @return \Illuminate\Http\Response
-     */
-    public function show(DesignUnit $designUnit)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\DesignUnit  $designUnit
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(DesignUnit $designUnit)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DesignUnit  $designUnit
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, DesignUnit $designUnit)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\DesignUnit  $designUnit
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(DesignUnit $designUnit)
-    {
-        //
+        $designunit = new Designunit();
+        $designunit->locationBase = $request->locationBase;
+        $designunit->conducteur = $request->conducteur;
+        $designunit->siegeBebe = $request->siegeBebe;
+        $designunit->chauffeur = $request->chauffeur;
+        $designunit->surchargeAerop = $request->surchargeAerop;
+        $designunit->remise = $request->remise;
+        $designunit->fraisLivraison = $request->fraisLivraison;
+        $designunit->fraisReprise = $request->fraisReprise;
+        $designunit->tva = $request->tva;
+        $designunit->suppFranchise = $request->suppFranchise;
+        $designunit->assurancePassager = $request->assurancePassager;
+        $designunit->timbre = $request->timbre;
+        
+        $designunit->contrat_id = $contrat->id;
+        $designunit->save();
     }
 }

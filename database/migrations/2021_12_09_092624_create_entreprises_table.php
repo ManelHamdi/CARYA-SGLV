@@ -22,7 +22,7 @@ class CreateEntreprisesTable extends Migration
             $table->integer('telephone');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE entreprises ADD logo LONGBLOB");
+        //DB::statement("ALTER TABLE entreprises ADD logo LONGBLOB");
     }
 
     /**

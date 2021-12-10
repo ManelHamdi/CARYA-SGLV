@@ -371,7 +371,7 @@
                                                     Date et heure
                                                 </th>
                                                 <td>
-                                                    <input type="datetime" name="dateDebut" class="form-control"
+                                                    <input type="datetime-local" name="dateDebut" class="form-control"
                                                         placeholder="Date et heure">
                                                 </td>
                                                 <th>
@@ -399,7 +399,7 @@
                                                     Date et heure
                                                 </th>
                                                 <td>
-                                                    <input type="datetime" name="dateFin" class="form-control"
+                                                    <input type="datetime-local" name="dateFin" class="form-control"
                                                         placeholder="Date et heure">
                                                 </td>
                                                 <th>
@@ -616,6 +616,95 @@
                                                 <td colspan="2">
                                                     <input type="number" name="montantDuD" class="form-control" step="any"
                                                         placeholder="Montant">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-primary" style="font-size: 18px">
+                                                    Montant recu avec remerciments
+                                                </th>
+                                                <td>
+                                                    <input type="number" name="montantRecu" class="form-control" step="any"
+                                                        placeholder="Montant">
+                                                </td>
+                                                <th class="text-primary" style="font-size: 18px">
+                                                    Montant du
+                                                </th>
+                                                <td>
+                                                    <input type="number" name="montantDu" class="form-control" step="any"
+                                                        placeholder="Montant">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+
+
+                                    <!-- TODO CheckOut -->
+                                    <p class="accordion"> Check Out </p>
+                                    <div class="panel">
+                                        <table class="table">
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="cartGrise" name="cartGrise" value="1">
+                                                    <strong for="cartGrise"> Carte grise </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="attestAssurance" name="attestAssurance" value="1">
+                                                    <strong for="attestAssurance"> Attestation d'assurance </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="carteExploitation" name="carteExploitation" value="1">
+                                                    <strong for="carteExploitation"> Carte d'exploitation </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="vignatte" name="vignatte" value="1">
+                                                    <strong for="vignatte"> Vignette </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="visiteTechnique" name="visiteTechnique" value="1">
+                                                    <strong for="visiteTechnique"> Visite technique </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="roueSecours" name="roueSecours" value="1">
+                                                    <strong for="roueSecours"> Roue de secours </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="lecteurCd" name="lecteurCd" value="1">
+                                                    <strong for="lecteurCd"> Lecteur CD - Radio </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="tapis" name="tapis" value="1">
+                                                    <strong for="tapis"> Tapis </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="cric" name="cric" value="1">
+                                                    <strong for="cric"> Cric </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="enjoliveur" name="enjoliveur" value="1">
+                                                    <strong for="enjoliveur"> Enjoliveur </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="antenne" name="antenne" value="1">
+                                                    <strong for="antenne"> Antenne </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="allumeCigar" name="allumeCigar" value="1">
+                                                    <strong for="allumeCigar"> Allume cigare </strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" id="trianglePanne" name="trianglePanne" value="1">
+                                                    <strong for="trianglePanne"> Triangle de panne </strong>
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" id="autre" name="autre" value="1">
+                                                    <strong for="autre"> Autre </strong>
                                                 </td>
                                             </tr>
                                         </table>

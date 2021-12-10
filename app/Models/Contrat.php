@@ -10,10 +10,12 @@ class Contrat extends Pivot
 {
     use HasFactory;
 
+    public $incrementing = true;
+    
     public $table = "contrat";
 
     protected $fillable = [
-        'client_id', 'vehicule_matricule',
+        'id', 'client_id', 'vehicule_matricule',
         'livraison', 'reprise',
         'dateDebut', 'dateFin',
         'carburationL', 'carburationR',

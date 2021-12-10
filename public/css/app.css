@@ -78,12 +78,12 @@
 }
 
 html {
-    overflow-y: scroll;
+    overflow: auto;
     height: 101%;
 }
 
 body {
-    overflow-y: scroll;
+    overflow: auto;
     min-height:101%;
     margin: 0;
     font-family: var(--bs-body-font-family);
