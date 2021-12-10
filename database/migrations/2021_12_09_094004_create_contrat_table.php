@@ -19,8 +19,8 @@ class CreateContratTable extends Migration
             $table->string('vehicule_matricule')->index();
             $table->string('livraison', 50);
             $table->string('reprise', 50);
-            $table->date('dateDebut');
-            $table->date('dateFin');
+            $table->dateTime('dateDebut');
+            $table->dateTime('dateFin');
             $table->string('carburationL', 30)->nullable();
             $table->string('carburationR', 30)->nullable();
             $table->string('kmL', 30)->nullable();

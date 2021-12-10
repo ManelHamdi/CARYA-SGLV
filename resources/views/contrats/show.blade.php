@@ -40,16 +40,10 @@
                                         <td colspan="3"> {{ $contrat->nbrJour }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Remise </th>
-                                        <td class="text-primary"> {{ $contrat->remise }} </td>
-                                        <th> Montant </th>
-                                        <td class="text-primary"> {{ $contrat->montant }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Frais livraison </th>
-                                        <td class="text-primary"> {{ $contrat->fraisLivraison }} </td>
-                                        <th> Frais reprise </th>
-                                        <td class="text-primary"> {{ $contrat->fraisReprise }} </td>
+                                        <th> Carburation Depart </th>
+                                        <td class="text-primary"> {{ $contrat->carburationL }} </td>
+                                        <th> Carburation Retour </th>
+                                        <td class="text-primary"> {{ $contrat->carburatiponR }} </td>
                                     </tr>
                                     <tr>
                                         <th> Actions </th>

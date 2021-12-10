@@ -17,11 +17,16 @@ class ContratController extends Controller
      */
     public function index()
     {
+        /*$contrats = Contrat::latest()->paginate(5);
+        $clients = Client::all();
+
+        return view('contrats.index', compact('contrats', 'clients'))
+            ->with('i', (request()->input('page', 1) - 1) * 4);*/
         //$contrats = Contrat::latest()->paginate(5);
         $vehicules = Vehicule::with('clients')->get();
         //dd($contrats);
         return view('contrats.index', compact('vehicules'))
-            ->with('cvehicules', Vehicule::with('clients')->paginate(5));
+            ->with('mvehicules', Vehicule::with('clients')->paginate(5));
     }
 
     /**
@@ -48,10 +53,10 @@ class ContratController extends Controller
             $request->validate([
                 'client_id' => 'required', 'vehicule_matricule' => 'required',
                 'dateDebut' => 'required', 'dateFin' => 'required',
-                'remise' => 'required', 'montant' => 'required',
-                'fraisLivraison' => 'required', 'fraisReprise' => 'required',
+                //'remise' => 'required', 'montant' => 'required',
+                //'fraisLivraison' => 'required', 'fraisReprise' => 'required',
             ]);
-            
+
             $sdate = $request->dateDebut;
             $fdate = $request->dateFin;
             $datetime1 = new DateTime($sdate);
@@ -106,10 +111,10 @@ class ContratController extends Controller
             $request->validate([
                 'client_id' => 'required', 'vehicule_matricule' => 'required',
                 'dateDebut' => 'required', 'dateFin' => 'required',
-                'remise' => 'required', 'montant' => 'required',
-                'fraisLivraison' => 'required', 'fraisReprise' => 'required',
+                //'remise' => 'required', 'montant' => 'required',
+                //'fraisLivraison' => 'required', 'fraisReprise' => 'required',
             ]);
-            
+
             $sdate = $request->dateDebut;
             $fdate = $request->dateFin;
             $datetime1 = new DateTime($sdate);
@@ -119,7 +124,7 @@ class ContratController extends Controller
             $request->request->add(['nbrJour' => $days]);
             $input = $request->all();
             $contrat->update($input);
-            
+
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }

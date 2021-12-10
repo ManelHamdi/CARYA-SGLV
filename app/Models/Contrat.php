@@ -21,9 +21,14 @@ class Contrat extends Pivot
         'nbrJour', 'prolongation',
     ];
 
-    public function designation()
+    public function designUnit()
     {
-        return $this->hasMany(Designation::class);
+        return $this->hasOne(DesignUnit::class);
+    }
+
+    public function designMontant()
+    {
+        return $this->hasOne(DesignMontant::class);
     }
 
     public function checkout()

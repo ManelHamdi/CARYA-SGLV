@@ -10,8 +10,8 @@ class Conduire extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom', 'adresse',
-        'ville', 'tel',
+        'nom', 'prenom',
+        'adresse', 'ville', 'tel',
         'dateNaissance', 'lieuNaissance',
         'nationalite', 'cin', 'dateEmit',
         'permisConduire', 'dateEmitPermis',

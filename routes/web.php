@@ -24,9 +24,14 @@ Route::resource('entreprises', 'App\Http\Controllers\EntrepriseController');
 Route::resource('admins', 'App\Http\Controllers\AdminController');
 Route::resource('employes', 'App\Http\Controllers\EmployeController');
 Route::resource('clients', 'App\Http\Controllers\ClientController');
+Route::resource('conduires', 'App\Http\Controllers\ConduireController');
 Route::resource('vehicules', 'App\Http\Controllers\VehiculeController');
 Route::resource('photos', 'App\Http\Controllers\PhotoController');
 Route::resource('contrats', 'App\Http\Controllers\ContratController');
+Route::resource('designUnits', 'App\Http\Controllers\DesignUnitController');
+Route::resource('designMontants', 'App\Http\Controllers\DesignMontantController');
+Route::resource('montants', 'App\Http\Controllers\MontantController');
+Route::resource('checkouts', 'App\Http\Controllers\CheckoutController');
 Route::resource('rapports', 'App\Http\Controllers\RapportController');
 
 

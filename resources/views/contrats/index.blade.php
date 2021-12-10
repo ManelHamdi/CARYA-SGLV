@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class="text-primary">
                                         <th> Matricule </th>
                                         <th> Client </th>
                                         <th> Nombre jour </th>
@@ -28,45 +28,49 @@
                                     <tbody>
                                         @foreach ($vehicules as $vehicule)
                                             @foreach ($vehicule->clients as $client)
-                                                <tr>
-                                                    <td>
-                                                        <a href="{{ route('vehicules.show', $vehicule->matricule) }}">
-                                                            {{ $vehicule->matricule }}
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ route('vehicules.show', $vehicule->matricule) }}">
+                                                        {{ $vehicule->matricule }}
+                                                    </a>
+
+                                                </td>
+                                                <td>
+                                                    {{ $client->nom }} {{ $client->prenom }}
+                                                </td>
+                                                <td>
+                                                    {{ $client->contrat->nbrJour }}
+                                                </td>
+                                                <td>
+                                                    {{ $client->contrat->prolongation }}
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('contrats.destroy', $client->contrat->id) }}" method="POST">
+                                                        <a class="btn btn-info btn-fab btn-fab-mini btn-round"
+                                                            href="{{ route('contrats.showa', [$client->contrat->id, $vehicule->matricule, $client->id]) }}">
+                                                            <i class="material-icons">description</i>
                                                         </a>
-                                                    </td>
-                                                    <td>
-                                                        {{ $client->nom }} {{ $client->prenom }}
-                                                    </td>
-                                                    <td> {{ $client->contrat->nbrJour }} </td>
-                                                    <td class="text-primary"> {{ $client->contrat->montant }} </td>
-                                                    <td>
-                                                        <form
-                                                            action="{{ route('contrats.destroy', $client->contrat->id) }}"
-                                                            method="POST">
 
-                                                            <a class="btn btn-info btn-fab btn-fab-mini btn-round"
-                                                                href="{{ route('contrats.showa', [$client->contrat->id, $vehicule->matricule, $client->id]) }}">
-                                                                <i class="material-icons">description</i>
-                                                            </a>
+                                                        <a class="btn btn-success btn-fab btn-fab-mini btn-round"
+                                                            href="{{ route('contrats.edita', [$client->contrat->id, $vehicule->matricule, $client->id]) }}">
+                                                            <i class="material-icons">edit</i>
+                                                        </a>
 
-                                                            <a class="btn btn-success btn-fab btn-fab-mini btn-round"
-                                                                href="{{ route('contrats.edita', [$client->contrat->id, $vehicule->matricule, $client->id]) }}">
-                                                                <i class="material-icons">edit</i>
-                                                            </a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger btn-fab btn-fab-mini btn-round show_confirm">
-                                                                <i class="material-icons">delete</i>
-                                                            </button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-danger btn-fab btn-fab-mini btn-round show_confirm">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+
+                                            </tr>
                                             @endforeach
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $cvehicules->render('pagination::bootstrap-4') }}
+                                {{ $mvehicules->render('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </div>
@@ -74,35 +78,35 @@
 
 
                 <!--<div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title mt-0"> Gerer Contrats </h4>
-                                <p class="card-category"> Cree, modifier, supprimer, détailler </p>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="">
-                                            <th> ID </th>
-                                            <th> Name </th>
-                                            <th> Country </th>
-                                            <th> City </th>
-                                            <th> Salary </th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td> 1 </td>
-                                                <td> Dakota Rice </td>
-                                                <td> Niger </td>
-                                                <td> Oud-Turnhout </td>
-                                                <td> $36,738 </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="card card-plain">
+                                    <div class="card-header card-header-primary">
+                                        <h4 class="card-title mt-0"> Gerer Contrats </h4>
+                                        <p class="card-category"> Cree, modifier, supprimer, détailler </p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead class="">
+                                                    <th> ID </th>
+                                                    <th> Name </th>
+                                                    <th> Country </th>
+                                                    <th> City </th>
+                                                    <th> Salary </th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td> 1 </td>
+                                                        <td> Dakota Rice </td>
+                                                        <td> Niger </td>
+                                                        <td> Oud-Turnhout </td>
+                                                        <td> $36,738 </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>-->
+                            </div>-->
 
             </div>
         </div>

@@ -16,6 +16,7 @@ class CreateConduiresTable extends Migration
         Schema::create('conduires', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom', 25);
+            $table->string('prenom', 25);
             $table->string('adresse', 35)->nullable();
             $table->string('ville', 25)->nullable();
             $table->integer('tel')->nullable();

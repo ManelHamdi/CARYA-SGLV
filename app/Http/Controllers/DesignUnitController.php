@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Designation;
+use App\Models\DesignUnit;
 use Illuminate\Http\Request;
 
-class DesignationController extends Controller
+class DesignUnitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class DesignationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Designation  $designation
+     * @param  \App\Models\DesignUnit  $designUnit
      * @return \Illuminate\Http\Response
      */
-    public function show(Designation $designation)
+    public function show(DesignUnit $designUnit)
     {
         //
     }
@@ -52,10 +52,10 @@ class DesignationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Designation  $designation
+     * @param  \App\Models\DesignUnit  $designUnit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Designation $designation)
+    public function edit(DesignUnit $designUnit)
     {
         //
     }
@@ -64,10 +64,10 @@ class DesignationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Designation  $designation
+     * @param  \App\Models\DesignUnit  $designUnit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Designation $designation)
+    public function update(Request $request, DesignUnit $designUnit)
     {
         //
     }
@@ -75,10 +75,10 @@ class DesignationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Designation  $designation
+     * @param  \App\Models\DesignUnit  $designUnit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Designation $designation)
+    public function destroy(DesignUnit $designUnit)
     {
         //
     }

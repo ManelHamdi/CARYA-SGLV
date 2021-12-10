@@ -29,11 +29,23 @@ class Vehicule extends Model
     public function clients()
     {
         return $this->belongsToMany(Client::class, 'contrat', 'vehicule_matricule', 'client_id')
-        ->withTimestamps()
-        ->withPivot('id', 'dateDebut', 'dateFin', 
-        'nbrJour', 'remise', 'montant', 
-        'fraisLivraison', 'fraisReprise')
-        ->as('contrat');
+            ->withTimestamps()
+            ->withPivot(
+                'id',
+                'client_id',
+                'vehicule_matricule',
+                'livraison',
+                'reprise',
+                'dateDebut',
+                'dateFin',
+                'carburationL',
+                'carburationR',
+                'kmL',
+                'kmR',
+                'nbrJour',
+                'prolongation'
+            )
+            ->as('contrat');
     }
 
     public function photos()
