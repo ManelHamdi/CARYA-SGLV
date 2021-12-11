@@ -378,13 +378,13 @@
                                                     KM
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="kmL" class="form-control" placeholder="KM">
+                                                    <input type="text" name="kmD" class="form-control" placeholder="KM">
                                                 </td>
                                                 <th>
                                                     Carburant
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="carburationL" class="form-control"
+                                                    <input type="text" name="carburationD" class="form-control"
                                                         placeholder="Carburant">
                                                 </td>
                                             </tr>

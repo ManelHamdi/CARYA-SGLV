@@ -29,7 +29,7 @@ class CreateDesignUnitsTable extends Migration
             $table->double('assurancePassager')->nullable();
             $table->double('timbre')->nullable();
             $table->timestamps();
-            $table->foreign('contrat_id')->references('id')->on('contrat')
+            $table->foreign('contrat_id')->references('id')->on('contrats')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

@@ -53,18 +53,18 @@ class Client extends Authenticatable
                 'reprise',
                 'dateDebut',
                 'dateFin',
-                'carburationL',
+                'carburationD',
                 'carburationR',
-                'kmL',
+                'kmD',
                 'kmR',
                 'nbrJour',
                 'prolongation'
             )
-            ->as('contrat');
+            ->as('contrats');
     }
 
-    public function conduire()
+    public function conducteur()
     {
-        return $this->hasOne(Conduire::class);
+        return $this->hasOne(Conducteur::class);
     }
 }

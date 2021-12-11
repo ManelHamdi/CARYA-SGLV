@@ -11,26 +11,26 @@ class Contrat extends Pivot
     use HasFactory;
 
     public $incrementing = true;
-    
-    public $table = "contrat";
+
+    public $table = "contrats";
 
     protected $fillable = [
         'id', 'client_id', 'vehicule_matricule',
         'livraison', 'reprise',
         'dateDebut', 'dateFin',
-        'carburationL', 'carburationR',
-        'kmL', 'kmR',
+        'carburationD', 'carburationR',
+        'kmD', 'kmR',
         'nbrJour', 'prolongation',
     ];
 
-    public function designUnit()
+    public function designunit()
     {
-        return $this->hasOne(DesignUnit::class);
+        return $this->hasOne(Designunit::class);
     }
 
-    public function designMontant()
+    public function designmontant()
     {
-        return $this->hasOne(DesignMontant::class);
+        return $this->hasOne(Designmontant::class);
     }
 
     public function checkout()

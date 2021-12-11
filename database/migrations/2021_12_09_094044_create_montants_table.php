@@ -22,7 +22,7 @@ class CreateMontantsTable extends Migration
             $table->double('montantDu');
             $table->integer('contrat_id')->unsigned();
             $table->timestamps();
-            $table->foreign('contrat_id')->references('id')->on('contrat')
+            $table->foreign('contrat_id')->references('id')->on('contrats')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

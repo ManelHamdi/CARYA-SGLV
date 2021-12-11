@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Conduire;
+use App\Models\Conducteur;
 use Illuminate\Http\Request;
 
-class ConduireController extends Controller
+class ConducteurController extends Controller
 {
     public function addConducteur(Request $request)
     {
-        if (empty($request->nomc)) {
-            return null;
-        } else {
-            $conducteur = new Conduire();
+            $conducteur = new Conducteur();
             $conducteur->nom = $request->nomc;
             $conducteur->prenom = $request->prenomc;
             $conducteur->adresse = $request->adressec;
@@ -29,6 +26,5 @@ class ConduireController extends Controller
             //$conducteur->client_id = $request->client_id;
             //$conducteur->save();
             return $conducteur;
-        }
     }
 }

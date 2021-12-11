@@ -27,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'adresse' => 'adr',
             'ville' => 'villent',
             'telephone' => '78545545',
+            'logo' => file_get_contents('public/images/car-image-logo.jpg'),
             'created_at' => now(),
             'updated_at' => now()
         ]);

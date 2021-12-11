@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConduiresTable extends Migration
+class CreateConducteursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateConduiresTable extends Migration
      */
     public function up()
     {
-        Schema::create('conduires', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nom', 25);
-            $table->string('prenom', 25);
+        Schema::create('conducteurs', function (Blueprint $table) {
+            $table->string('nom', 25)->nullable();
+            $table->string('prenom', 25)->nullable();
             $table->string('adresse', 35)->nullable();
             $table->string('ville', 25)->nullable();
             $table->integer('tel')->nullable();
@@ -43,6 +42,6 @@ class CreateConduiresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conduires');
+        Schema::dropIfExists('conducteurs');
     }
 }

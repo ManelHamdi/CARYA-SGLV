@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContratTable extends Migration
+class CreateContratsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateContratTable extends Migration
      */
     public function up()
     {
-        Schema::create('contrat', function (Blueprint $table) {
+        Schema::create('contrats', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id')->unsigned();
             $table->string('vehicule_matricule')->index();
@@ -21,9 +21,9 @@ class CreateContratTable extends Migration
             $table->string('reprise', 50);
             $table->dateTime('dateDebut');
             $table->dateTime('dateFin');
-            $table->string('carburationL', 30)->nullable();
+            $table->string('carburationD', 30)->nullable();
             $table->string('carburationR', 30)->nullable();
-            $table->string('kmL', 30)->nullable();
+            $table->string('kmD', 30)->nullable();
             $table->string('kmR', 30)->nullable();
             $table->integer('nbrJour');
             $table->string('prolongation', 30)->nullable();
@@ -44,6 +44,6 @@ class CreateContratTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contrat');
+        Schema::dropIfExists('contrats');
     }
 }

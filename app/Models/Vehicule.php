@@ -38,14 +38,14 @@ class Vehicule extends Model
                 'reprise',
                 'dateDebut',
                 'dateFin',
-                'carburationL',
+                'carburationD',
                 'carburationR',
-                'kmL',
+                'kmD',
                 'kmR',
                 'nbrJour',
                 'prolongation'
             )
-            ->as('contrat');
+            ->as('contrats');
     }
 
     public function photos()

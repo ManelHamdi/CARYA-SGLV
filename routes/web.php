@@ -24,10 +24,10 @@ Route::resource('entreprises', 'App\Http\Controllers\EntrepriseController');
 Route::resource('admins', 'App\Http\Controllers\AdminController');
 Route::resource('employes', 'App\Http\Controllers\EmployeController');
 Route::resource('clients', 'App\Http\Controllers\ClientController');
-Route::resource('conduires', 'App\Http\Controllers\ConduireController');
+Route::resource('conducteurs', 'App\Http\Controllers\ConducteurController');
 Route::resource('vehicules', 'App\Http\Controllers\VehiculeController');
 Route::resource('photos', 'App\Http\Controllers\PhotoController');
-Route::resource('contrats', 'App\Http\Controllers\ContratController');
+Route::resource('contrats', 'App\Http\livewire\Contrats');
 Route::resource('designunits', 'App\Http\Controllers\DesignunitController');
 Route::resource('designmontants', 'App\Http\Controllers\DesignmontantController');
 Route::resource('montants', 'App\Http\Controllers\MontantController');
@@ -59,7 +59,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth:employe');
 
 Route::group(['middleware' => 'auth:employe'], function () {
-	Route::get('contrat', [App\Http\Controllers\ContratController::class, 'index'], function () {
+	Route::get('contrat', [App\Http\livewire\Contrats::class, 'render'], function () {
 		return view('contrats.index');
 	})->name('contrat');
 

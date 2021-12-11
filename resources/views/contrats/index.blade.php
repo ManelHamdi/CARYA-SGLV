@@ -22,34 +22,44 @@
                                         <th> Matricule </th>
                                         <th> Client </th>
                                         <th> Nombre jour </th>
+                                        <th> Montant </th>
                                         <th> Actions </th>
                                     </thead>
                                     <tbody>
-                                        @foreach ($vehicules as $vehicule)
-                                            @foreach ($vehicule->clients as $client)
+                                        @foreach ($contrats as $contrat)
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('vehicules.show', $vehicule->matricule) }}">
-                                                        {{ $vehicule->matricule }}
+                                                    <a href="{{ route('vehicules.show', $contrat->vehicule_matricule) }}">
+                                                        {{ $contrat->vehicule_matricule }}
                                                     </a>
 
                                                 </td>
                                                 <td>
-                                                    {{ $client->nom }} {{ $client->prenom }}
+                                                    <ul>
+                                                        <li>
+                                                            CIN: {{ $client($contrat->client_id)->cin }}
+                                                        </li>
+                                                        <li>
+                                                            Nom complet: {{ $client($contrat->client_id)->nom }} {{ $client($contrat->client_id)->prenom }}
+                                                        </li>
+                                                    </ul>
+
                                                 </td>
                                                 <td>
-                                                    {{ $client->contrat->nbrJour }}
+                                                    {{ $contrat->nbrJour }}
                                                 </td>
-                                                
                                                 <td>
-                                                    <form action="{{ route('contrats.destroy', $client->contrat->id) }}" method="POST">
+                                                    {{ $montant($contrat->id)->montantRecu }}
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('contrats.destroy', $contrat->id) }}" method="POST">
                                                         <a class="btn btn-info btn-fab btn-fab-mini btn-round"
-                                                            href="{{ route('contrats.showa', [$client->contrat->id, $vehicule->matricule, $client->id]) }}">
+                                                            href="{{ route('contrats.showa', [$contrat->id, $contrat->vehicule_matricule, $contrat->client_id]) }}">
                                                             <i class="material-icons">description</i>
                                                         </a>
 
                                                         <a class="btn btn-success btn-fab btn-fab-mini btn-round"
-                                                            href="{{ route('contrats.edita', [$client->contrat->id, $vehicule->matricule, $client->id]) }}">
+                                                            href="{{ route('contrats.edita', [$contrat->id, $contrat->vehicule_matricule, $contrat->client_id]) }}">
                                                             <i class="material-icons">edit</i>
                                                         </a>
 
@@ -63,11 +73,11 @@
                                                 </td>
 
                                             </tr>
-                                            @endforeach
+
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $mvehicules->render('pagination::bootstrap-4') }}
+                                {{ $contrats->render('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </div>

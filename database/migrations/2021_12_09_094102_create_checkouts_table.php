@@ -31,7 +31,7 @@ class CreateCheckoutsTable extends Migration
             $table->boolean('autre')->default(0);
             $table->integer('contrat_id')->unsigned();
             $table->timestamps();
-            $table->foreign('contrat_id')->references('id')->on('contrat')
+            $table->foreign('contrat_id')->references('id')->on('contrats')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

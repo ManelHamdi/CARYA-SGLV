@@ -17,16 +17,16 @@ class ContratController extends Controller
      */
     public function index()
     {
-        /*$contrats = Contrat::latest()->paginate(5);
-        $clients = Client::all();
-
-        return view('contrats.index', compact('contrats', 'clients'))
-            ->with('i', (request()->input('page', 1) - 1) * 4);*/
         //$contrats = Contrat::latest()->paginate(5);
-        $vehicules = Vehicule::with('clients')->get();
+        //$clients = Client::all();
+
+        return view('contrats.index', compact('contrats'))
+            ->with('i', (request()->input('page', 1) - 1) * 4);
+        //$contrats = Contrat::latest()->paginate(5);
+        /*$vehicules = Vehicule::with('clients')->get();
         //dd($contrats);
         return view('contrats.index', compact('vehicules'))
-            ->with('mvehicules', Vehicule::with('clients')->paginate(5));
+            ->with('mvehicules', Vehicule::with('clients')->paginate(5));*/
     }
 
     /**
@@ -63,7 +63,7 @@ class ContratController extends Controller
             ]);
 
             $clientController = new ClientController();
-            
+
 
             $sdate = $request->dateDebut;
             $fdate = $request->dateFin;
@@ -79,9 +79,9 @@ class ContratController extends Controller
             $contrat->reprise = $request->reprise;
             $contrat->dateDebut = $request->dateDebut;
             $contrat->dateFin = $request->dateFin;
-            $contrat->carburationL = $request->carburationL;
+            $contrat->carburationD = $request->carburationD;
             $contrat->carburationR = $request->carburationR;
-            $contrat->kmL = $request->kmL;
+            $contrat->kmD = $request->kmD;
             $contrat->kmR = $request->kmR;
             $contrat->nbrJour = $days;
             $contrat->prolongation = $request->prolongation;
@@ -93,8 +93,8 @@ class ContratController extends Controller
             $contrat->vehicule_matricule = $request->vehicule_matricule;
             $contrat->client_id = $client->id;
             $contrat->save();
-            
-            
+
+
 
             //Contrat::create(array_merge($input, ['nbrJour' => $days]));
 
@@ -103,7 +103,7 @@ class ContratController extends Controller
             $designmontantController = new DesignmontantController;
             $montantController = new MontantController();
 
-            
+
             $checkOutController->addCheckout($request, $contrat);
             $designunitController->addDesignU($request, $contrat);
             $designmontantController->addDesignM($request, $contrat);

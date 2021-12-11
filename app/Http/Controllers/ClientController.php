@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
     public function addClient(Request $request){
-        $condController = new ConduireController();
+        $condController = new ConducteurController();
         $conducteur = $condController->addConducteur($request);
         $client = new Client();
         $client->nom = $request->nom;
@@ -26,9 +26,7 @@ class ClientController extends Controller
         $client->dateEmitPermis = $request->dateEmitPermis;
         $client->delivrePermis = $request->delivrePermis;
         $client->save();
-        if (!is_null($conducteur)) {
-            $client->conduire()->save($conducteur);
-        }
+        $client->conducteur()->save($conducteur);
         return $client;
     }
 }
