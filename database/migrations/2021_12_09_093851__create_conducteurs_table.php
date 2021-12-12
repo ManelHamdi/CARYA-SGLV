@@ -14,6 +14,7 @@ class CreateConducteursTable extends Migration
     public function up()
     {
         Schema::create('conducteurs', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('nom', 25)->nullable();
             $table->string('prenom', 25)->nullable();
             $table->string('adresse', 35)->nullable();

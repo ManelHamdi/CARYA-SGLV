@@ -21,7 +21,7 @@
                                     <thead class="text-primary">
                                         <th> Matricule </th>
                                         <th> Client </th>
-                                        <th> Nombre jour </th>
+                                        <th> Nombre de jours </th>
                                         <th> Montant </th>
                                         <th> Actions </th>
                                     </thead>
@@ -59,7 +59,7 @@
                                                         </a>
 
                                                         <a class="btn btn-success btn-fab btn-fab-mini btn-round"
-                                                            href="{{ route('contrats.edita', [$contrat->id, $contrat->vehicule_matricule, $contrat->client_id]) }}">
+                                                            href="{{ route('contrats.edit', $contrat) }}">
                                                             <i class="material-icons">edit</i>
                                                         </a>
 

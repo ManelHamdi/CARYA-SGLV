@@ -47,13 +47,18 @@
             height: 60px;
             bottom: 50px;
             right: 40px;
-            background-color: rgb(0, 204, 85);
+            background-color: rgb(8, 151, 67);
             color: #FFF;
             border-radius: 50px;
             text-align: center;
             box-shadow: 2px 2px 3px #999;
         }
-
+        .float:hover {
+            transform: scale(0.98);
+            /* Scaling button to 0.98 to its original size */
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+            /* Lowering the shadow */
+        }
         .my-float {
             margin-top: 22px;
         }
@@ -81,15 +86,13 @@
                             <form action="{{ route('contrats.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
-
-
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tr>
                                             <th> Matricule </th>
                                             <td>
                                                 <select id="matricule" name="vehicule_matricule" class="form-control">
-                                                    <option>--- Select Matricule ---</option>
+                                                    <option>--- Select Matricule *---</option>
                                                     @foreach ($vehicules as $vehicule)
                                                         <option value="{{ $vehicule->matricule }}">
                                                             {{ $vehicule->matricule }}
@@ -111,14 +114,14 @@
                                                 </th>
                                                 <td>
                                                     <input type="text" name="nom" class="form-control"
-                                                        placeholder="Nom client">
+                                                        placeholder="Nom client *">
                                                 </td>
                                                 <th>
                                                     Prenom client
                                                 </th>
                                                 <td>
                                                     <input type="text" name="prenom" class="form-control"
-                                                        placeholder="Prenom client">
+                                                        placeholder="Prenom client *">
                                                 </td>
 
                                             </tr>
@@ -144,14 +147,14 @@
                                                 </th>
                                                 <td>
                                                     <input type="text" name="adresse" class="form-control"
-                                                        placeholder="Adresse du domicile">
+                                                        placeholder="Adresse du domicile *">
                                                 </td>
                                                 <th>
                                                     Adresse locale
                                                 </th>
                                                 <td>
                                                     <input type="text" name="ville" class="form-control"
-                                                        placeholder="Adresse locale">
+                                                        placeholder="Adresse locale *">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -183,7 +186,7 @@
                                                 </th>
                                                 <td>
                                                     <input type="number" name="cin" class="form-control"
-                                                        placeholder="CIN">
+                                                        placeholder="CIN *">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -201,7 +204,7 @@
                                                 </th>
                                                 <td>
                                                     <input type="text" name="permisConduire" class="form-control"
-                                                        placeholder="Permis de conduire">
+                                                        placeholder="Permis de conduire *">
                                                 </td>
                                                 <th>
                                                     Date d'émission (permis conduire)
@@ -350,14 +353,14 @@
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="text" name="livraison" class="form-control"
-                                                        placeholder="Livraison">
+                                                        placeholder="Livraison *">
                                                 </td>
                                                 <th>
                                                     Reprise
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="text" name="reprise" class="form-control"
-                                                        placeholder="Reprise">
+                                                        placeholder="Reprise *">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -372,7 +375,7 @@
                                                 </th>
                                                 <td>
                                                     <input type="datetime-local" name="dateDebut" class="form-control"
-                                                        placeholder="Date et heure">
+                                                        placeholder="Date et heure *">
                                                 </td>
                                                 <th>
                                                     KM
@@ -400,7 +403,7 @@
                                                 </th>
                                                 <td>
                                                     <input type="datetime-local" name="dateFin" class="form-control"
-                                                        placeholder="Date et heure">
+                                                        placeholder="Date et heure *">
                                                 </td>
                                                 <th>
                                                     KM
@@ -427,7 +430,6 @@
                                             </tr>
                                         </table>
                                     </div>
-
 
 
 
@@ -506,7 +508,7 @@
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="number" name="sousTotal" class="form-control" step="any"
-                                                        placeholder="Montant">
+                                                        placeholder="Montant *">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -554,7 +556,7 @@
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="number" name="montantNet" class="form-control" step="any"
-                                                        placeholder="Prix Unitaire">
+                                                        placeholder="Montant *">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -615,7 +617,7 @@
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="number" name="montantDuD" class="form-control" step="any"
-                                                        placeholder="Montant">
+                                                        placeholder="Montant *">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -624,14 +626,14 @@
                                                 </th>
                                                 <td>
                                                     <input type="number" name="montantRecu" class="form-control" step="any"
-                                                        placeholder="Montant">
+                                                        placeholder="Montant *">
                                                 </td>
                                                 <th class="text-primary" style="font-size: 18px">
                                                     Montant du
                                                 </th>
                                                 <td>
                                                     <input type="number" name="montantDu" class="form-control" step="any"
-                                                        placeholder="Montant">
+                                                        placeholder="Montant *">
                                                 </td>
                                             </tr>
                                         </table>
@@ -713,12 +715,10 @@
 
 
 
-
-
                                 </div>
-                                <button type="submit" class="float">Submit</button>
+                                <button type="submit" class="float"> Ajouter </button>
                             </form>
-                        </div><!-- nnnnn -->
+                        </div>
                     </div>
                 </div>
 
