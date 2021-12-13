@@ -172,7 +172,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Kilometrage</strong>
-                                                <input type="text" name="kilometrage"
+                                                <input type="number" name="kilometrage"
                                                     value="{{ $vehicule->kilometrage }}" class="form-control"
                                                     placeholder="Kilometrage">
                                             </div>

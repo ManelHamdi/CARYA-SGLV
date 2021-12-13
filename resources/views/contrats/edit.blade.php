@@ -387,7 +387,7 @@
                                                     KM
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="kmD" class="form-control"
+                                                    <input type="number" name="kmD" class="form-control"
                                                     value="{{ $contrat->kmD }}" placeholder="KM">
                                                 </td>
                                                 <th>
@@ -417,7 +417,7 @@
                                                     KM
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="kmR" class="form-control"
+                                                    <input type="number" name="kmR" class="form-control"
                                                     value="{{ $contrat->kmR }}" placeholder="KM">
                                                 </td>
                                                 <th>

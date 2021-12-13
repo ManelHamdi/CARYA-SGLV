@@ -15,14 +15,14 @@ class CreateConducteursTable extends Migration
     {
         Schema::create('conducteurs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom', 25)->nullable();
-            $table->string('prenom', 25)->nullable();
+            $table->string('nom', 35)->nullable();
+            $table->string('prenom', 35)->nullable();
             $table->string('adresse', 35)->nullable();
-            $table->string('ville', 25)->nullable();
+            $table->string('ville', 35)->nullable();
             $table->integer('tel')->nullable();
             $table->date('dateNaissance')->nullable();
-            $table->string('lieuNaissance', 25)->nullable();
-            $table->string('nationalite', 25)->nullable();
+            $table->string('lieuNaissance', 35)->nullable();
+            $table->string('nationalite', 35)->nullable();
             $table->integer('cin')->nullable();
             $table->date('dateEmit')->nullable();
             $table->string('permisConduire', 35)->nullable();

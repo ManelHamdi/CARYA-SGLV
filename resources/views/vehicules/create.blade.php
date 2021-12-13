@@ -172,7 +172,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Kilometrage</label>
-                                                    <input type="text" name="kilometrage" class="form-control"
+                                                    <input type="number" name="kilometrage" class="form-control"
                                                         placeholder="">
                                                 </div>
                                             </div>

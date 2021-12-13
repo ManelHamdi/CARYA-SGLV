@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\ContratController;
-use App\Http\Controllers\Controller;
 use App\Models\Checkout;
 use App\Models\Client;
 use App\Models\Conducteur;
@@ -12,11 +11,8 @@ use App\Models\Designmontant;
 use App\Models\Designunit;
 use App\Models\Montant;
 use App\Models\Vehicule;
-use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Livewire\Component;
-use RealRashid\SweetAlert\Facades\Alert;
-use RealRashid\SweetAlert\Toaster;
 
 class Contrats extends Component
 {

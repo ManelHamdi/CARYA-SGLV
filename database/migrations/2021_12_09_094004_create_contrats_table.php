@@ -21,12 +21,12 @@ class CreateContratsTable extends Migration
             $table->string('reprise', 50);
             $table->dateTime('dateDebut');
             $table->dateTime('dateFin');
-            $table->string('carburationD', 30)->nullable();
-            $table->string('carburationR', 30)->nullable();
-            $table->string('kmD', 30)->nullable();
-            $table->string('kmR', 30)->nullable();
+            $table->string('carburationD', 35)->nullable();
+            $table->string('carburationR', 35)->nullable();
+            $table->integer('kmD')->nullable();
+            $table->integer('kmR')->nullable();
             $table->integer('nbrJour');
-            $table->string('prolongation', 30)->nullable();
+            $table->string('prolongation', 35)->nullable();
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')
                 ->onDelete('cascade')

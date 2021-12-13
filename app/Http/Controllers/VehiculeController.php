@@ -6,6 +6,7 @@ use App\Models\Photo;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class VehiculeController extends Controller
 {
@@ -45,21 +46,32 @@ class VehiculeController extends Controller
     {
         try {
             $request->validate([
-                'matricule' => 'required|unique:vehicules,matricule', 'prixLoc' => 'required',
-                'marque' => 'required', 'dateAchat' => 'required',
-                'type' => 'required', 'model' => 'required',
-                'couleur' => 'required',
-                'nbrPlaces' => 'required',
-                'description' => 'required', 'carburation' => 'required',
-                'kilometrage' => 'required', 'puissance' => 'required',
-                'boiteVitesse' => 'required', 'tailleMoteur' => 'required',
-                'imageFile' => 'required',
+                'matricule' => 'required|unique:vehicules,matricule',
                 'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048',
             ]);
-
-            $input = $request->all();
-
-            Vehicule::create($input);
+            if (Str::contains($request->matricule, 'TU')) {
+                $input = $request->all();
+                Vehicule::create($input);
+            } else {
+                $vehic = new Vehicule();
+                $vehic->matricule = $request->matricule . "TU";
+                $vehic->prixLoc = $request->prixLoc;
+                $vehic->dateAchat = $request->dateAchat;
+                $vehic->type = $request->type;
+                $vehic->model = $request->model;
+                $vehic->marque = $request->marque;
+                $vehic->couleur = $request->couleur;
+                $vehic->nbrPlaces = $request->nbrPlaces;
+                $vehic->climatisation = $request->climatisation;
+                $vehic->description = $request->description;
+                $vehic->carburation = $request->carburation;
+                $vehic->kilometrage = $request->kilometrage;
+                $vehic->puissance = $request->puissance;
+                $vehic->boiteVitesse = $request->boiteVitesse;
+                $vehic->tailleMoteur = $request->tailleMoteur;
+                $vehic->disponibilite = $request->disponibilite;
+                $vehic->save();
+            }
 
             $photoController = new PhotoController();
 
@@ -108,14 +120,8 @@ class VehiculeController extends Controller
     public function update(Request $request, Vehicule $vehicule)
     {
         $request->validate([
-            'matricule' => 'required', 'prixLoc' => 'required',
-            'marque' => 'required', 'dateAchat' => 'required',
-            'type' => 'required', 'model' => 'required',
-            'couleur' => 'required',
-            'nbrPlaces' => 'required',
-            'description' => 'required', 'carburation' => 'required',
-            'kilometrage' => 'required', 'puissance' => 'required',
-            'boiteVitesse' => 'required', 'tailleMoteur' => 'required',
+            'matricule' => 'required|unique:vehicules,matricule',
+            'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048',
         ]);
 
         $input = $request->all();
@@ -190,5 +196,4 @@ class VehiculeController extends Controller
 
         return response()->json(['message' => 'Vehicule climatisation updated successfully.']);
     }
-
 }

@@ -381,7 +381,8 @@
                                                     KM
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="kmD" class="form-control" placeholder="KM">
+                                                    <input type="number" name="kmD" class="form-control"
+                                                        placeholder="KM">
                                                 </td>
                                                 <th>
                                                     Carburant
@@ -401,14 +402,16 @@
                                                 <th>
                                                     Date et heure
                                                 </th>
-                                                <td>
+                                                <td colspan="2">
                                                     <input type="datetime-local" name="dateFin" class="form-control"
                                                         placeholder="Date et heure *">
                                                 </td>
-                                                <th>
+                                                <!--<th>
                                                     KM
                                                 </th>
                                                 <td>
+                                                    <input type="number" name="kmR" class="form-control"
+                                                        placeholder="KM">
                                                     <input type="text" name="kmR" class="form-control" placeholder="KM">
                                                 </td>
                                                 <th>
@@ -417,13 +420,12 @@
                                                 <td>
                                                     <input type="text" name="carburationR" class="form-control"
                                                         placeholder="Carburant">
-                                                </td>
-                                            </tr>
-                                            <tr>
+                                                </td>-->
+
                                                 <th>
                                                     Prolongation autorisé
                                                 </th>
-                                                <td>
+                                                <td colspan="2">
                                                     <input type="text" name="prolongation" class="form-control"
                                                         placeholder="Prolongation autorisé">
                                                 </td>
