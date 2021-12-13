@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Contrats;
 use App\Models\Checkout;
 use App\Models\Client;
 use App\Models\Conducteur;
@@ -22,16 +23,8 @@ class ContratController extends Controller
      */
     public function index()
     {
-        //$contrats = Contrat::latest()->paginate(5);
-        //$clients = Client::all();
-
-        return view('contrats.index', compact('contrats'))
-            ->with('i', (request()->input('page', 1) - 1) * 4);
-        //$contrats = Contrat::latest()->paginate(5);
-        /*$vehicules = Vehicule::with('clients')->get();
-        //dd($contrats);
-        return view('contrats.index', compact('vehicules'))
-            ->with('mvehicules', Vehicule::with('clients')->paginate(5));*/
+        $contratscomp = new Contrats();
+        $contratscomp->render();
     }
 
     /**
@@ -118,14 +111,13 @@ class ContratController extends Controller
 
             $vehiculeController = new VehiculeController();
             $vehiculeController->updatennDispo($request->vehicule_matricule);
-
-
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
 
-        return redirect()->route('contrats.index')
-            ->with('success', 'Contrat created successfully.');
+        //return view('contrats.index')
+          //  ->with('success', 'Contrat created successfully.');
+          return true;
     }
 
     /**
@@ -160,10 +152,16 @@ class ContratController extends Controller
      * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contrat $contrat,
-    Checkout $checkOut, Designunit $designUnit,
-    Designmontant $designMontant, Montant $montant, Client $client, Conducteur $conducteur)
-    {
+    public function update(
+        Request $request,
+        Contrat $contrat,
+        Checkout $checkOut,
+        Designunit $designUnit,
+        Designmontant $designMontant,
+        Montant $montant,
+        Client $client,
+        Conducteur $conducteur
+    ) {
         try {
             $request->validate([
                 'vehicule_matricule' => 'required',
@@ -209,7 +207,6 @@ class ContratController extends Controller
             $contrat->update();
 
 
-
             //Contrat::create(array_merge($input, ['nbrJour' => $days]));
 
             $checkOutController = new ChekoutController();
@@ -223,16 +220,16 @@ class ContratController extends Controller
             $designmontantController->updateDesignM($request, $contrat, $designMontant);
             $montantController->updateMontant($request, $contrat, $montant);
 
-            $vehiculeController = new VehiculeController();
-            $vehiculeController->updatennDispo($request->matricule);
-
+            if (!empty($request->matricule)) {
+                $vehiculeController = new VehiculeController();
+                $vehiculeController->updatennDispo($request->matricule);
+            }
 
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
 
-        return redirect()->route('contrats.index')
-            ->with('success', 'Contrat updated successfully');
+        return true;
     }
 
     /**

@@ -219,7 +219,7 @@
                                                     Délivré par
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="delivrePermid" class="form-control"
+                                                    <input type="text" name="delivrePermis" class="form-control"
                                                         placeholder="Délivré par">
                                                 </td>
                                             </tr>
@@ -335,7 +335,7 @@
                                                     Délivré par
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="delivrePermidc" class="form-control"
+                                                    <input type="text" name="delivrePermisc" class="form-control"
                                                         placeholder="Délivré par">
                                                 </td>
                                             </tr>

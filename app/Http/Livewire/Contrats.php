@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\ContratController;
+use App\Http\Controllers\Controller;
 use App\Models\Checkout;
 use App\Models\Client;
 use App\Models\Conducteur;
@@ -11,8 +12,11 @@ use App\Models\Designmontant;
 use App\Models\Designunit;
 use App\Models\Montant;
 use App\Models\Vehicule;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Livewire\Component;
+use RealRashid\SweetAlert\Facades\Alert;
+use RealRashid\SweetAlert\Toaster;
 
 class Contrats extends Component
 {
@@ -31,8 +35,6 @@ class Contrats extends Component
     public function render()
     {
         $this->contrats = Contrat::latest()->paginate(5);
-
-        $this->client_id = 221133;
         return view('contrats.index', [
             'contrats' => $this->contrats,
             'client' => $this->client,
@@ -45,9 +47,29 @@ class Contrats extends Component
         return Client::find($client_id);
     }
 
+    static function getConducteur($client_id)
+    {
+        return Conducteur::where('client_id', $client_id)->first();
+    }
+
     static function getMontant($contrat_id)
     {
         return Montant::where('contrat_id', $contrat_id)->first();
+    }
+
+    static function getCheckOut($contrat_id)
+    {
+        return Checkout::where('contrat_id', $contrat_id)->first();
+    }
+
+    static function getDesignUnit($contrat_id)
+    {
+        return Designunit::where('contrat_id', $contrat_id)->first();
+    }
+
+    static function getDesignMontant($contrat_id)
+    {
+        return Designmontant::where('contrat_id', $contrat_id)->first();
     }
 
     public function create()
@@ -64,33 +86,50 @@ class Contrats extends Component
     {
         $contratController = new ContratController();
         $contratController->store($request);
+        toast('Contrat cree avec success', 'success');
+        return redirect()->to('/contrats');
     }
 
     public function edit(Contrat $contrat)
     {
         //dd($contrat->vehicule_matricule);
         $vehicules = Vehicule::all()->where('disponibilite', 1);
-        $client = Client::find($contrat->client_id);
+        $client = $this->findClient($contrat->client_id);
+        $montant = $this->getMontant($contrat->id);
+        $checkOut = $this->getCheckOut($contrat->id);
+        $designUnit = $this->getDesignUnit($contrat->id);
+        $designMontant = $this->getDesignMontant($contrat->id);
+        $conducteur = $this->getConducteur($client->id);
         return view('contrats.edit', [
             'contrat' => $contrat,
             'vehicule' => $contrat->vehicule_matricule,
             'client' => $client,
             'vehicules' => $vehicules,
+            'montant' => $montant,
+            'checkOut' => $checkOut,
+            'designUnit' => $designUnit,
+            'designMontant' => $designMontant,
+            'conducteur' => $conducteur,
         ]);
         //return view('contrats.edit', compact('contrat'));
     }
 
     public function update(Request $request, Contrat $contrat)
     {
-        $client = Client::find($contrat->client_id);
-        $montant = Montant::where('contrat_id', $contrat->id)->first();
-        $checkOut = Checkout::where('contrat_id', $contrat->id)->first();
-        $designUnit = Designunit::where('contrat_id', $contrat->id)->first();
-        $designMontant = Designmontant::where('contrat_id', $contrat->id)->first();
-        $conducteur = Conducteur::where('client_id', $client->id)->first();
+        $client = $this->findClient($contrat->client_id);
+        $montant = $this->getMontant($contrat->id);
+        $checkOut = $this->getCheckOut($contrat->id);
+        $designUnit = $this->getDesignUnit($contrat->id);
+        $designMontant = $this->getDesignMontant($contrat->id);
+        $conducteur = $this->getConducteur($client->id);
         $contratController = new ContratController();
         $contratController->update($request, $contrat, $checkOut, $designUnit, $designMontant, $montant, $client, $conducteur);
+
+        //Alert::success('Contrat', 'modifier avec success');
+        //Alert::toast('Toast Message', 'success');
+        toast('Contrat modifier avec success', 'success');
+        return redirect()->to('/contrats');
+
+
     }
-
-
 }

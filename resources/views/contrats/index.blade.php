@@ -16,6 +16,13 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <div>
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+                            </div>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class="text-primary">
@@ -78,6 +85,7 @@
                                     </tbody>
                                 </table>
                                 {{ $contrats->render('pagination::bootstrap-4') }}
+                                <!-- simple-bootstrap-4 -->
                             </div>
                         </div>
                     </div>

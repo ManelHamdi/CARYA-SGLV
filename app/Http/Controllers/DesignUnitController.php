@@ -11,18 +11,18 @@ class DesignunitController extends Controller
     public function addDesignU(Request $request, Contrat $contrat)
     {
         $designunit = new Designunit();
-        $designunit->locationBase = $request->locationBase;
-        $designunit->conducteur = $request->conducteur;
-        $designunit->siegeBebe = $request->siegeBebe;
-        $designunit->chauffeur = $request->chauffeur;
-        $designunit->surchargeAerop = $request->surchargeAerop;
-        $designunit->remise = $request->remise;
-        $designunit->fraisLivraison = $request->fraisLivraison;
-        $designunit->fraisReprise = $request->fraisReprise;
-        $designunit->tva = $request->tva;
-        $designunit->suppFranchise = $request->suppFranchise;
-        $designunit->assurancePassager = $request->assurancePassager;
-        $designunit->timbre = $request->timbre;
+        $designunit->locationBase = $request->locationBaseu;
+        $designunit->conducteur = $request->conducteuru;
+        $designunit->siegeBebe = $request->siegeBebeu;
+        $designunit->chauffeur = $request->chauffeuru;
+        $designunit->surchargeAerop = $request->surchargeAeropu;
+        $designunit->remise = $request->remiseu;
+        $designunit->fraisLivraison = $request->fraisLivraisonu;
+        $designunit->fraisReprise = $request->fraisRepriseu;
+        $designunit->tva = $request->tvau;
+        $designunit->suppFranchise = $request->suppFranchiseu;
+        $designunit->assurancePassager = $request->assurancePassageru;
+        $designunit->timbre = $request->timbreu;
 
         $designunit->contrat_id = $contrat->id;
         $designunit->save();
@@ -30,18 +30,18 @@ class DesignunitController extends Controller
 
     public function updateDesignU(Request $request, Contrat $contrat, Designunit $designunit)
     {
-        $designunit->locationBase = $request->locationBase;
-        $designunit->conducteur = $request->conducteur;
-        $designunit->siegeBebe = $request->siegeBebe;
-        $designunit->chauffeur = $request->chauffeur;
-        $designunit->surchargeAerop = $request->surchargeAerop;
-        $designunit->remise = $request->remise;
-        $designunit->fraisLivraison = $request->fraisLivraison;
-        $designunit->fraisReprise = $request->fraisReprise;
-        $designunit->tva = $request->tva;
-        $designunit->suppFranchise = $request->suppFranchise;
-        $designunit->assurancePassager = $request->assurancePassager;
-        $designunit->timbre = $request->timbre;
+        $designunit->locationBase = $request->locationBaseu;
+        $designunit->conducteur = $request->conducteuru;
+        $designunit->siegeBebe = $request->siegeBebeu;
+        $designunit->chauffeur = $request->chauffeuru;
+        $designunit->surchargeAerop = $request->surchargeAeropu;
+        $designunit->remise = $request->remiseu;
+        $designunit->fraisLivraison = $request->fraisLivraisonu;
+        $designunit->fraisReprise = $request->fraisRepriseu;
+        $designunit->tva = $request->tvau;
+        $designunit->suppFranchise = $request->suppFranchiseu;
+        $designunit->assurancePassager = $request->assurancePassageru;
+        $designunit->timbre = $request->timbreu;
 
         $designunit->contrat_id = $contrat->id;
         $designunit->update();

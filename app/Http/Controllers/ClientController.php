@@ -49,7 +49,10 @@ class ClientController extends Controller
         $client->dateEmitPermis = $request->dateEmitPermis;
         $client->delivrePermis = $request->delivrePermis;
         $client->update();
-        $client->conducteur()->update($conducteur);
+        //Tags::whereId($id)->update($tags_data);
+        $conducteur->update();
+        //Conducteur::whereId($conducteur->id)->update($conducteur);
+        //$client->conducteur()->update($conducteur);
         return $client;
     }
 

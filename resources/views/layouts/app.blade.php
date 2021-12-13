@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 
+    @livewireStyles
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth('employe')
@@ -81,7 +83,9 @@
 
 
         @stack('js')
-
         @include('sweetalert::alert')
+        @livewireScripts
+        @stack('scripts')
+
     </body>
 </html>

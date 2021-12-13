@@ -60,8 +60,12 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 
 Route::group(['middleware' => 'auth:employe'], function () {
 	Route::get('contrat', [App\Http\livewire\Contrats::class, 'render'], function () {
-		return view('contrats.index');
+		return view('contrats.render');
 	})->name('contrat');
+
+    Route::get('contrats', [App\Http\livewire\Contrats::class, 'render'], function () {
+		return view('contrats.render');
+	})->name('contrats');
 
 	Route::get('vehicule', [App\Http\Controllers\VehiculeController::class, 'index'], function () {
 		return view('vehicules.index');
