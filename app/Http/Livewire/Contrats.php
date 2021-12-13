@@ -132,4 +132,11 @@ class Contrats extends Component
 
 
     }
+
+    public function destroy(Contrat $contrat)
+    {
+        $contrat->delete();
+        toast('Contrat supprimer avec success', 'info');
+        return redirect()->to('/contrats');
+    }
 }
