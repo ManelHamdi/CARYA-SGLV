@@ -49,9 +49,17 @@ class VehiculeController extends Controller
                 'matricule' => 'required|unique:vehicules,matricule',
                 'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048',
             ]);
+
+            $photoController = new PhotoController();
+
             if (Str::contains($request->matricule, 'TU')) {
                 $input = $request->all();
                 Vehicule::create($input);
+                if ($request->hasfile('imageFile')) {
+                    foreach ($request->file('imageFile') as $file) {
+                        $photoController->addPhoto($request->matricule, $file);
+                    }
+                }
             } else {
                 $vehic = new Vehicule();
                 $vehic->matricule = $request->matricule . "TU";
@@ -71,15 +79,17 @@ class VehiculeController extends Controller
                 $vehic->tailleMoteur = $request->tailleMoteur;
                 $vehic->disponibilite = $request->disponibilite;
                 $vehic->save();
-            }
 
-            $photoController = new PhotoController();
-
-            if ($request->hasfile('imageFile')) {
-                foreach ($request->file('imageFile') as $file) {
-                    $photoController->addPhoto($request->matricule, $file);
+                if ($request->hasfile('imageFile')) {
+                    foreach ($request->file('imageFile') as $file) {
+                        $photoController->addPhoto($request->matricule . "TU", $file);
+                    }
                 }
             }
+
+
+
+
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
@@ -120,7 +130,7 @@ class VehiculeController extends Controller
     public function update(Request $request, Vehicule $vehicule)
     {
         $request->validate([
-            'matricule' => 'required|unique:vehicules,matricule',
+            'matricule' => 'required',
             'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv|max:2048',
         ]);
 

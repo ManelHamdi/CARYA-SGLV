@@ -15,7 +15,7 @@ class CreateRapportsTable extends Migration
     {
         Schema::create('rapports', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('panne', 50);
+            $table->string('panne');
             $table->string('desc');
             $table->double('prix');
             $table->date('datePanna');

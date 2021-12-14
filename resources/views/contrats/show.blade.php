@@ -48,11 +48,12 @@
                                     <tr>
                                         <th> Actions </th>
                                         <td colspan="3">
-                                            <form action="{{ route('contrats.destroy', $contrat->id) }}" method="POST">
+                                            <form action="{{ route('contrats.destroy', $contrat) }}" method="POST">
                                                 <a class="btn btn-success"
-                                                    href="{{ route('contrats.edita', [$contrat->id, $vehicule->matricule, $client->id]) }}">
+                                                    href="{{ route('contrats.edit', $contrat) }}">
                                                     <i class="material-icons">edit</i>Modifier
                                                 </a>
+
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger show_confirm">
