@@ -65,6 +65,25 @@ class Contrats extends Component
         ]);
     }
 
+    public function print(Contrat $contrat)
+    {
+        $idEntreprise = Auth::guard('employe')->user()->entreprise_id;
+        $cemploye = Auth::guard('employe')->user();
+        $entreprise = $this->getEntreprise($idEntreprise);
+        return view('contrats.paper', [
+            'contrat' => $contrat,
+            'client' => $this->client,
+            'vehicule' => $this->vehicule,
+            'entreprise' => $entreprise,
+            'designu' => $this->designu,
+            'designm' => $this->designm,
+            'montant' => $this->montant,
+            'conducteur' => $this->conducteur,
+            'checkOut' => $this->checkOut,
+            'cemploye' => $cemploye,
+        ]);
+    }
+
     public function create()
     {
         $vehicules = Vehicule::all()->where('disponibilite', 1);

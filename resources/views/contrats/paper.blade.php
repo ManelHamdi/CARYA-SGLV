@@ -1,3 +1,6 @@
+<script type="text/javascript">
+    window.print()
+</script>
 <style>
     #table {
         max-width: 2480px;
@@ -104,7 +107,10 @@
         </td>
 
         <td colspan="3">
-            <h3> Contrat de location &nbsp;&nbsp;&nbsp; عقد كراء </h3>
+            <h3> Contrat de location
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                عقد كراء </h3>
         </td>
     </tr>
     <tr>

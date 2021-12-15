@@ -65,6 +65,11 @@
                                                             <i class="material-icons">description</i>
                                                         </a>
 
+                                                        <a class="btn btn-warning btn-fab btn-fab-mini btn-round"
+                                                            href="{{ route('contrats.print', $contrat) }}" target="_blank">
+                                                            <i class="material-icons">print</i>
+                                                        </a>
+
                                                         <a class="btn btn-success btn-fab btn-fab-mini btn-round"
                                                             href="{{ route('contrats.edit', $contrat) }}">
                                                             <i class="material-icons">edit</i>
