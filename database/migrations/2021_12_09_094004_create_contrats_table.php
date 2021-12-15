@@ -35,6 +35,7 @@ class CreateContratsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+        //DB::statement('ALTER TABLE table_name AUTO_INCREMENT = 21520213;');
     }
 
     /**

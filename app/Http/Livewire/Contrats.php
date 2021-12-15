@@ -9,9 +9,11 @@ use App\Models\Conducteur;
 use App\Models\Contrat;
 use App\Models\Designmontant;
 use App\Models\Designunit;
+use App\Models\Entreprise;
 use App\Models\Montant;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Contrats extends Component
@@ -21,10 +23,14 @@ class Contrats extends Component
         $dateDebut, $dateFin,
         $carburationD, $carburationR,
         $kmD, $kmR, $nbrJour, $prolongation,
-        $contrat_id, $vehicule;
+        $contrat_id;
 
     public $client = '\App\Http\Livewire\Contrats::findClient';
+    public $vehicule = '\App\Http\Livewire\Contrats::findVehicule';
     public $montant = '\App\Http\Livewire\Contrats::getMontant';
+    public $designu = '\App\Http\Livewire\Contrats::getDesignUnit';
+    public $designm = '\App\Http\Livewire\Contrats::getDesignMontant';
+    public $conducteur = '\App\Http\Livewire\Contrats::getConducteur';
 
     public $updateMode = false;
 
@@ -38,34 +44,21 @@ class Contrats extends Component
         ]);
     }
 
-    static function findClient($client_id)
+    public function show(Contrat $contrat)
     {
-        return Client::find($client_id);
-    }
-
-    static function getConducteur($client_id)
-    {
-        return Conducteur::where('client_id', $client_id)->first();
-    }
-
-    static function getMontant($contrat_id)
-    {
-        return Montant::where('contrat_id', $contrat_id)->first();
-    }
-
-    static function getCheckOut($contrat_id)
-    {
-        return Checkout::where('contrat_id', $contrat_id)->first();
-    }
-
-    static function getDesignUnit($contrat_id)
-    {
-        return Designunit::where('contrat_id', $contrat_id)->first();
-    }
-
-    static function getDesignMontant($contrat_id)
-    {
-        return Designmontant::where('contrat_id', $contrat_id)->first();
+        //$ident = Auth::employe();
+        $idEntreprise = Auth::guard('employe')->user()->entreprise_id;
+        $entreprise = $this->getEntreprise($idEntreprise);
+        return view('contrats.paper', [
+            'contrat' => $contrat,
+            'client' => $this->client,
+            'vehicule' => $this->vehicule,
+            'entreprise' => $entreprise,
+            'designu' => $this->designu,
+            'designm' => $this->designm,
+            'montant' => $this->montant,
+            'conducteur' => $this->conducteur,
+        ]);
     }
 
     public function create()
@@ -135,4 +128,45 @@ class Contrats extends Component
         toast('Contrat supprimer avec success', 'info');
         return redirect()->to('/contrats');
     }
+
+    static function findClient($client_id)
+    {
+        return Client::find($client_id);
+    }
+
+    static function findVehicule($vehicule_matricule)
+    {
+        return Vehicule::find($vehicule_matricule);
+    }
+
+    static function getEntreprise($idEntreprise)
+    {
+        return Entreprise::find($idEntreprise);
+    }
+
+    static function getConducteur($client_id)
+    {
+        return Conducteur::where('client_id', $client_id)->first();
+    }
+
+    static function getMontant($contrat_id)
+    {
+        return Montant::where('contrat_id', $contrat_id)->first();
+    }
+
+    static function getCheckOut($contrat_id)
+    {
+        return Checkout::where('contrat_id', $contrat_id)->first();
+    }
+
+    static function getDesignUnit($contrat_id)
+    {
+        return Designunit::where('contrat_id', $contrat_id)->first();
+    }
+
+    static function getDesignMontant($contrat_id)
+    {
+        return Designmontant::where('contrat_id', $contrat_id)->first();
+    }
+
 }

@@ -61,7 +61,7 @@
                                                 <td>
                                                     <form action="{{ route('contrats.destroy', $contrat) }}" method="POST">
                                                         <a class="btn btn-info btn-fab btn-fab-mini btn-round"
-                                                            href="{{ route('contrats.showa', [$contrat->id, $contrat->vehicule_matricule, $contrat->client_id]) }}">
+                                                            href="{{ route('contrats.show', $contrat) }}">
                                                             <i class="material-icons">description</i>
                                                         </a>
 

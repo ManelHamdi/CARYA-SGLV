@@ -8,64 +8,16 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Details Contrat de vehivule :
-                                {{ $vehicule->matricule }}
+                                {{ //$vehicule($contrat->vehicule_matricule)->matricule
+                                $contrat->vehicule_matricule
+                                }}
                                 et client :
-                                {{ $client->nom }} {{ $client->prenom }}</h4>
+                                {{ $client($contrat->client_id)->nom }} {{ $client($contrat->client_id)->prenom }}</h4>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tr>
-                                        <th> Matricule </th>
-                                        <td colspan="3">
-                                            <a href="{{ route('vehicules.show', $vehicule->matricule) }}">
-                                                {{ $vehicule->matricule }}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Client </th>
-                                        <td colspan="3">
-                                            {{ $client->nom }} {{ $client->prenom }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Date debut </th>
-                                        <td> {{ $contrat->dateDebut }} </td>
-                                        <th> Date fin </th>
-                                        <td> {{ $contrat->dateFin }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Nombre jour </th>
-                                        <td colspan="3"> {{ $contrat->nbrJour }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Carburation Depart </th>
-                                        <td class="text-primary"> {{ $contrat->carburationL }} </td>
-                                        <th> Carburation Retour </th>
-                                        <td class="text-primary"> {{ $contrat->carburatiponR }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Actions </th>
-                                        <td colspan="3">
-                                            <form action="{{ route('contrats.destroy', $contrat) }}" method="POST">
-                                                <a class="btn btn-success"
-                                                    href="{{ route('contrats.edit', $contrat) }}">
-                                                    <i class="material-icons">edit</i>Modifier
-                                                </a>
+                            <table class="table table-bordered">
 
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger show_confirm">
-                                                    <i class="material-icons">delete</i>Supprimer
-                                                </button>
-                                            </form>
-                                        </td>
-
-                                    </tr>
-
-                                </table>
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>
