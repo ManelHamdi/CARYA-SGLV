@@ -31,6 +31,7 @@ class Contrats extends Component
     public $designu = '\App\Http\Livewire\Contrats::getDesignUnit';
     public $designm = '\App\Http\Livewire\Contrats::getDesignMontant';
     public $conducteur = '\App\Http\Livewire\Contrats::getConducteur';
+    public $checkOut = '\App\Http\Livewire\Contrats::getCheckOut';
 
     public $updateMode = false;
 
@@ -48,8 +49,9 @@ class Contrats extends Component
     {
         //$ident = Auth::employe();
         $idEntreprise = Auth::guard('employe')->user()->entreprise_id;
+        $cemploye = Auth::guard('employe')->user();
         $entreprise = $this->getEntreprise($idEntreprise);
-        return view('contrats.paper', [
+        return view('contrats.show', [
             'contrat' => $contrat,
             'client' => $this->client,
             'vehicule' => $this->vehicule,
@@ -58,6 +60,8 @@ class Contrats extends Component
             'designm' => $this->designm,
             'montant' => $this->montant,
             'conducteur' => $this->conducteur,
+            'checkOut' => $this->checkOut,
+            'cemploye' => $cemploye,
         ]);
     }
 

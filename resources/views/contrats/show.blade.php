@@ -16,7 +16,7 @@
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
-
+                                @include('contrats.paper')
                             </table>
                         </div>
                     </div>
