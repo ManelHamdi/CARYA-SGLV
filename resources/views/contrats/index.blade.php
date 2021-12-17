@@ -65,9 +65,14 @@
                                                             <i class="material-icons">description</i>
                                                         </a>
 
-                                                        <a class="btn btn-warning btn-fab btn-fab-mini btn-round"
+                                                        <a class="btn btn-primary btn-fab btn-fab-mini btn-round"
                                                             href="{{ route('contrats.print', $contrat) }}" target="_blank">
                                                             <i class="material-icons">print</i>
+                                                        </a>
+
+                                                        <a class="btn btn-warning btn-fab btn-fab-mini btn-round"
+                                                            href="{{ route('contrats.printpdf', $contrat) }}" target="_blank">
+                                                            <i class="material-icons">picture_as_pdf</i>
                                                         </a>
 
                                                         <a class="btn btn-success btn-fab btn-fab-mini btn-round"

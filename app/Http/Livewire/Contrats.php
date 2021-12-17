@@ -15,6 +15,7 @@ use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Meneses\LaravelMpdf\Facades\LaravelMpdf as PDf;
 
 class Contrats extends Component
 {
@@ -70,7 +71,7 @@ class Contrats extends Component
         $idEntreprise = Auth::guard('employe')->user()->entreprise_id;
         $cemploye = Auth::guard('employe')->user();
         $entreprise = $this->getEntreprise($idEntreprise);
-        return view('contrats.paper', [
+        return view('contrats.printpaper', [
             'contrat' => $contrat,
             'client' => $this->client,
             'vehicule' => $this->vehicule,
@@ -82,6 +83,49 @@ class Contrats extends Component
             'checkOut' => $this->checkOut,
             'cemploye' => $cemploye,
         ]);
+    }
+
+    public function printpdf(Contrat $contrat)
+    {
+        $idEntreprise = Auth::guard('employe')->user()->entreprise_id;
+        $cemploye = Auth::guard('employe')->user();
+        $entreprise = $this->getEntreprise($idEntreprise);
+        $pdf = PDf::loadView('contrats.paper', [
+            'contrat' => $contrat,
+            'client' => $this->client,
+            'vehicule' => $this->vehicule,
+            'entreprise' => $entreprise,
+            'designu' => $this->designu,
+            'designm' => $this->designm,
+            'montant' => $this->montant,
+            'conducteur' => $this->conducteur,
+            'checkOut' => $this->checkOut,
+            'cemploye' => $cemploye,
+        ]);
+        $nompdf = $contrat->id . $contrat->client_id . $contrat->vehicule_matricule;
+        $mpdf = new PDf('', 'A4');
+        $mpdf->simpleTables = true;
+        $mpdf->packTableData = true;
+        $mpdf->keep_table_proportions = TRUE;
+        $mpdf->shrink_tables_to_fit = 1;
+        $mpdf->useDefaultCSS2 = true;
+        $mm = $mpdf::loadView('contrats.pdfpaper', [
+            'contrat' => $contrat,
+            'client' => $this->client,
+            'vehicule' => $this->vehicule,
+            'entreprise' => $entreprise,
+            'designu' => $this->designu,
+            'designm' => $this->designm,
+            'montant' => $this->montant,
+            'conducteur' => $this->conducteur,
+            'checkOut' => $this->checkOut,
+            'cemploye' => $cemploye,
+        ]);
+
+        //$pdf->simpleTables = false;
+        //$pdf->simpleTables(true);
+
+        return $mm->stream('document.pdf');
     }
 
     public function create()
@@ -141,8 +185,6 @@ class Contrats extends Component
         //Alert::toast('Toast Message', 'success');
         toast('Contrat modifier avec success', 'success');
         return redirect()->to('/contrats');
-
-
     }
 
     public function destroy(Contrat $contrat)
@@ -191,5 +233,4 @@ class Contrats extends Component
     {
         return Designmontant::where('contrat_id', $contrat_id)->first();
     }
-
 }

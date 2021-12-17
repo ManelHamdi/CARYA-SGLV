@@ -1,4 +1,12 @@
+<script type="text/javascript">
+    window.print()
+</script>
+
 <style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+    }
+
     #fright {
         float: right;
         width: 20%;
@@ -15,7 +23,7 @@
         width: 25%;
         overflow: hidden;
         word-wrap: break-word;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     #tableis {
@@ -27,7 +35,7 @@
     #tableis td {
         width: auto;
         border: 1px solid rgb(146, 142, 142);
-        font-size: 14px;
+        font-size: 13px;
     }
 
     #tableit {
@@ -39,7 +47,7 @@
     #tableit td {
         width: auto;
         border: 1px solid rgb(146, 142, 142);
-        font-size: 14px;
+        font-size: 13px;
         padding: 2px;
     }
 
@@ -51,7 +59,7 @@
     }
 
     #tableic td {
-        font-size: 14px;
+        font-size: 13px;
         padding: 0px;
     }
 
@@ -120,6 +128,12 @@
                 style="width:150px; max-height: 100px" />
         </td>
 
+        <td colspan="3">
+            <h3> Contrat de location
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                عقد كراء </h3>
+        </td>
     </tr>
     <tr>
         <td rowspan="2" style="text-align:center;">
@@ -758,151 +772,151 @@
         </td>
     </tr>
     <tr>
-        <td colspan="4">
-            <table id="tableic">
-                <tr>
-                    <td rowspan="7" colspan="1" style="text-align: center" width="30%">
-                        <strong> CHECK OUT </strong> <br />
-                        <img src={{ 'data:image/*;base64,' . base64_encode(file_get_contents(public_path() . '/images/car-check-out.png')) }}
-                            style="height:130px;" />
-                    </td>
-                    <td width="37%">
-                        <input type="checkbox" id="cartGrise" name="cartGrise" onclick="return false;"
-                            {{ $checkOut($contrat->id)->cartGrise == 1 ? 'checked="checked"' : '' }}>
-                        <strong for="cartGrise"> Carte grise / البطاقة الرمادية </strong><br />
-                    </td>
-                    <td width="33%">
-                        <input type="checkbox" id="tapis" name="tapis" onclick="return false;"
-                            {{ $checkOut($contrat->id)->tapis == 1 ? 'checked' : '' }}>
-                        <strong for="tapis"> Tapis / تابي </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="attestAssurance" name="attestAssurance" onclick="return false;"
-                            {{ $checkOut($contrat->id)->attestAssurance == 1 ? 'checked' : '' }}>
-                        <strong for="attestAssurance"> Attestation d'assurance / شهادة التأمين </strong>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="cric" name="cric" onclick="return false;"
-                            {{ $checkOut($contrat->id)->cric == 1 ? 'checked' : '' }}>
-                        <strong for="cric"> Cric / رافعة </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="carteExploitation" name="carteExploitation" onclick="return false;"
-                            {{ $checkOut($contrat->id)->carteExploitation == 1 ? 'checked' : '' }}>
-                        <strong for="carteExploitation"> Carte d'exploitation / بطاقة الإستغلال </strong><br />
-                    </td>
-                    <td>
-                        <input type="checkbox" id="enjoliveur" name="enjoliveur" onclick="return false;"
-                            {{ $checkOut($contrat->id)->enjoliveur == 1 ? 'checked' : '' }}>
-                        <strong for="enjoliveur"> Enjoliveur / غطاء العجلات </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="vignatte" name="vignatte" onclick="return false;"
-                            {{ $checkOut($contrat->id)->vignatte == 1 ? 'checked' : '' }}>
-                        <strong for="vignatte"> Vignette / معلوم الجولان </strong>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="antenne" name="antenne" onclick="return false;"
-                            {{ $checkOut($contrat->id)->antenne == 1 ? 'checked' : '' }}>
-                        <strong for="antenne"> Antenne / هوائي </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="visiteTechnique" name="visiteTechnique" onclick="return false;"
-                            {{ $checkOut($contrat->id)->visiteTechnique == 1 ? 'checked' : '' }}>
-                        <strong for="visiteTechnique"> Visite technique / شهادة الفحص الفني </strong>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="allumeCigar" name="allumeCigar" onclick="return false;"
-                            {{ $checkOut($contrat->id)->allumeCigar == 1 ? 'checked' : '' }}>
-                        <strong for="allumeCigar"> Allume cigare / ولاعة السجائر </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="roueSecours" name="roueSecours" onclick="return false;"
-                            {{ $checkOut($contrat->id)->roueSecours == 1 ? 'checked' : '' }}>
-                        <strong for="roueSecours"> Roue de secours / العجلة الاحتياطية </strong>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="trianglePanne" name="trianglePanne" onclick="return false;"
-                            {{ $checkOut($contrat->id)->trianglePanne == 1 ? 'checked' : '' }}>
-                        <strong for="trianglePanne"> Triangle de panne / مثلث العطب </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="lecteurCd" name="lecteurCd" onclick="return false;"
-                            {{ $checkOut($contrat->id)->lecteurCd == 1 ? 'checked' : '' }}>
-                        <strong for="lecteurCd"> Lecteur CD - Radio / مشغل أقراص - راديو </strong>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="autre" name="autre" onclick="return false;"
-                            {{ $checkOut($contrat->id)->autre == 1 ? 'checked' : '' }}>
-                        <strong for="autre"> Autre / آخر </strong>
-                    </td>
-                </tr>
-            </table>
-        </td>
+
+        <table id="tableic">
+            <tr>
+                <td rowspan="7" colspan="1" style="text-align: center" width="30%">
+                    <strong> CHECK OUT </strong>
+                    <img src={{ 'data:image/*;base64,' . base64_encode(file_get_contents(public_path() . '/images/car-check-out.png')) }}
+                        style="height:130px; width:190px" />
+                </td>
+                <td width="37%">
+                    <input type="checkbox" id="cartGrise" name="cartGrise" onclick="return false;"
+                        {{ $checkOut($contrat->id)->cartGrise == 1 ? 'checked="checked"' : '' }}>
+                    <strong for="cartGrise"> Carte grise / البطاقة الرمادية </strong><br />
+                </td>
+                <td width="33%">
+                    <input type="checkbox" id="tapis" name="tapis" onclick="return false;"
+                        {{ $checkOut($contrat->id)->tapis == 1 ? 'checked' : '' }}>
+                    <strong for="tapis"> Tapis / تابي </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="attestAssurance" name="attestAssurance" onclick="return false;"
+                        {{ $checkOut($contrat->id)->attestAssurance == 1 ? 'checked' : '' }}>
+                    <strong for="attestAssurance"> Attestation d'assurance / شهادة التأمين </strong>
+                </td>
+                <td>
+                    <input type="checkbox" id="cric" name="cric" onclick="return false;"
+                        {{ $checkOut($contrat->id)->cric == 1 ? 'checked' : '' }}>
+                    <strong for="cric"> Cric / رافعة </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="carteExploitation" name="carteExploitation" onclick="return false;"
+                        {{ $checkOut($contrat->id)->carteExploitation == 1 ? 'checked' : '' }}>
+                    <strong for="carteExploitation"> Carte d'exploitation / بطاقة الإستغلال </strong><br />
+                </td>
+                <td>
+                    <input type="checkbox" id="enjoliveur" name="enjoliveur" onclick="return false;"
+                        {{ $checkOut($contrat->id)->enjoliveur == 1 ? 'checked' : '' }}>
+                    <strong for="enjoliveur"> Enjoliveur / غطاء العجلات </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="vignatte" name="vignatte" onclick="return false;"
+                        {{ $checkOut($contrat->id)->vignatte == 1 ? 'checked' : '' }}>
+                    <strong for="vignatte"> Vignette / معلوم الجولان </strong>
+                </td>
+                <td>
+                    <input type="checkbox" id="antenne" name="antenne" onclick="return false;"
+                        {{ $checkOut($contrat->id)->antenne == 1 ? 'checked' : '' }}>
+                    <strong for="antenne"> Antenne / هوائي </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="visiteTechnique" name="visiteTechnique" onclick="return false;"
+                        {{ $checkOut($contrat->id)->visiteTechnique == 1 ? 'checked' : '' }}>
+                    <strong for="visiteTechnique"> Visite technique / شهادة الفحص الفني </strong>
+                </td>
+                <td>
+                    <input type="checkbox" id="allumeCigar" name="allumeCigar" onclick="return false;"
+                        {{ $checkOut($contrat->id)->allumeCigar == 1 ? 'checked' : '' }}>
+                    <strong for="allumeCigar"> Allume cigare / ولاعة السجائر </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="roueSecours" name="roueSecours" onclick="return false;"
+                        {{ $checkOut($contrat->id)->roueSecours == 1 ? 'checked' : '' }}>
+                    <strong for="roueSecours"> Roue de secours / العجلة الاحتياطية </strong>
+                </td>
+                <td>
+                    <input type="checkbox" id="trianglePanne" name="trianglePanne" onclick="return false;"
+                        {{ $checkOut($contrat->id)->trianglePanne == 1 ? 'checked' : '' }}>
+                    <strong for="trianglePanne"> Triangle de panne / مثلث العطب </strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="lecteurCd" name="lecteurCd" onclick="return false;"
+                        {{ $checkOut($contrat->id)->lecteurCd == 1 ? 'checked' : '' }}>
+                    <strong for="lecteurCd"> Lecteur CD - Radio / مشغل أقراص - راديو </strong>
+                </td>
+                <td>
+                    <input type="checkbox" id="autre" name="autre" onclick="return false;"
+                        {{ $checkOut($contrat->id)->autre == 1 ? 'checked' : '' }}>
+                    <strong for="autre"> Autre / آخر </strong>
+                </td>
+            </tr>
+        </table>
+
     </tr>
     <tr>
-        <td colspan="4">
-            <table id="tableie">
-                <tr>
-                    <td valign="top" width="30%">
-                        J'accuse réception du véhicule susmentionné
-                        et accepte qu'il me soit loué aux conditions
-                        fixées en page 1 et 2. Je reconnais que le
-                        véhicule m'est remis tel que mentionné ci-dessus
-                        et que le franchise pour dommages à ma charge
-                        est de 1000DT à moins que je n'accepte de payer
-                        le supplément pour supprimer la franchise en
-                        apposant mes initiales ci-dessus.
-                        <p style="text-align: right; margin-top: 0px;">
-                            أعترف بتسليم السيارة المذكورة أعلاه. واقبل بكل
-                            الشروط المذكورة في الصفحة الأولى والثانية واعترف
-                            بتسليمي السيارة في الحالة المذكورة أعلاه وان قيمة
-                            القسط المحمول على كاهل المؤمن له 5%
-                            من قيمة السيارة والتزم بذلك.
-                        </p>
-                    </td>
-                    <td valign="top" width="70%">
-                        <strong> TRES IMPORTANT </strong> <br />
-                        L'assurance ne couvre pas les accesoires,
-                        bris de glace ainsi que le vol et les dégâts
-                        occasionnés aux pneumatiques qui son exclusivement
-                        à la charge du locataire.
-                        <p style="text-align: right; margin-top: 0px;margin-bottom: 0px">
-                            <strong> هام جدا </strong> <br />
-                            التأمين لا يغطي الإكسسوارات (الملحقات) والأضرار
-                            (الملحقة) الناتجة عن السرقة وعطب العجلات التي
-                            تبقى على ذمة المستأجر حصريا.
-                        </p>
 
-                        <table id="tableii">
-                            <tr>
-                                <td>
-                                    Préparé par / محرر من <br />
-                                    {{ $cemploye->nom . ' ' . $cemploye->tel }}
-                                    &nbsp;
-                                </td>
-                                <td>
-                                    Signature du conducteur / إمضاء السائق <br />
-                                    {{ $client($contrat->client_id)->nom . ' ' . $client($contrat->client_id)->prenom }}
-                                    &nbsp;
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
+        <table id="tableie">
+            <tr>
+                <td valign="top" width="40%">
+                    J'accuse réception du véhicule susmentionné
+                    et accepte qu'il me soit loué aux conditions
+                    fixées en page 1 et 2. Je reconnais que le
+                    véhicule m'est remis tel que mentionné ci-dessus
+                    et que le franchise pour dommages à ma charge
+                    est de 1000DT à moins que je n'accepte de payer
+                    le supplément pour supprimer la franchise en
+                    apposant mes initiales ci-dessus.
+                    <p style="text-align: right; margin-top: 0px;">
+                        أعترف بتسليم السيارة المذكورة أعلاه. واقبل بكل
+                        الشروط المذكورة في الصفحة الأولى والثانية واعترف
+                        بتسليمي السيارة في الحالة المذكورة أعلاه وان قيمة
+                        القسط المحمول على كاهل المؤمن له 5%
+                        من قيمة السيارة والتزم بذلك.
+                    </p>
+                </td>
+                <td valign="top" width="60%">
+                    <strong> TRES IMPORTANT </strong> <br />
+                    L'assurance ne couvre pas les accesoires,
+                    bris de glace ainsi que le vol et les dégâts
+                    occasionnés aux pneumatiques qui son exclusivement
+                    à la charge du locataire.
+                    <p style="text-align: right; margin-top: 0px;margin-bottom: 0px">
+                        <strong> هام جدا </strong> <br />
+                        التأمين لا يغطي الإكسسوارات (الملحقات) والأضرار
+                        (الملحقة) الناتجة عن السرقة وعطب العجلات التي
+                        تبقى على ذمة المستأجر حصريا.
+                    </p>
+
+                    <table id="tableii">
+                        <tr>
+                            <td>
+                                Préparé par / محرر من <br />
+                                {{ $cemploye->nom . ' ' . $cemploye->tel }}
+                                &nbsp;
+                            </td>
+                            <td>
+                                Signature du conducteur / إمضاء السائق <br />
+                                {{ $client($contrat->client_id)->nom . ' ' . $client($contrat->client_id)->prenom }}
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
     </tr>
 </table>

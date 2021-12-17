@@ -7,12 +7,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Details Contrat de vehivule :
-                                {{ //$vehicule($contrat->vehicule_matricule)->matricule
-                                $contrat->vehicule_matricule
-                                }}
-                                et client :
-                                {{ $client($contrat->client_id)->nom }} {{ $client($contrat->client_id)->prenom }}</h4>
+                            <h4 class="card-title "> Details Contrat de location. </h4>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">

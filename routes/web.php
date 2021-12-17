@@ -40,6 +40,8 @@ Route::get('/edit/contrats/{contrat}/{vehicule}/{client}','App\Http\Controllers\
 
 Route::get('/contrats/print/{contrat}','App\Http\livewire\Contrats@print')->name('contrats.print');
 
+Route::get('/contrats/printpdf/{contrat}','App\Http\livewire\Contrats@printpdf')->name('contrats.printpdf');
+
 //Route::get('getphotos/{matricule}', [SiteController::class, 'getPhotos']);
 Route::get('/disponibilite/update', 'App\Http\Controllers\VehiculeController@updateDisponibilite')->name('vehicules.update.disponibilite');
 Route::get('/climatisation/update', 'App\Http\Controllers\VehiculeController@updateClimatisation')->name('vehicules.update.climatisation');
@@ -64,6 +66,10 @@ Route::group(['middleware' => 'auth:employe'], function () {
 	Route::get('contrat', [App\Http\livewire\Contrats::class, 'render'], function () {
 		return view('contrats.render');
 	})->name('contrat');
+
+    Route::get('mpaper', function () {
+        return view('contrats.paper');
+     });
 
     Route::get('contrats', [App\Http\livewire\Contrats::class, 'render'], function () {
 		return view('contrats.render');
