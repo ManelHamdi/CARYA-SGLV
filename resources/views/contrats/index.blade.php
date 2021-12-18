@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Contrat', 'titlePage' => __('Contrats')])
+@extends('layouts.app', ['activePage' => 'Contrats', 'titlePage' => __('Contrats')])
 
 @section('content')
     <div class="content">
@@ -12,7 +12,7 @@
                                 <p class="card-category"> Cree, modifier, supprimer, détailler </p>
                             </div>
                             <div class="pull-right">
-                                <a class="btn btn-success" href="{{ route('contrats.create') }}"> Nouveau contrat</a>
+                                <a class="btn btn-secondary" href="{{ route('contrats.create') }}"> Nouveau contrat</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -65,7 +65,7 @@
                                                             <i class="material-icons">description</i>
                                                         </a>
 
-                                                        <a class="btn btn-primary btn-fab btn-fab-mini btn-round"
+                                                        <a class="btn btn-default btn-fab btn-fab-mini btn-round"
                                                             href="{{ route('contrats.print', $contrat) }}" target="_blank">
                                                             <i class="material-icons">print</i>
                                                         </a>

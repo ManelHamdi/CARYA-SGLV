@@ -28,10 +28,9 @@
                 </div>
                 <div class="card-body">
                     <div id="typography">
-
+                         <!--<strong>Oups!</strong> Il y a eu des problèmes avec votre entrée.<br><br>-->
                         @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <div class="alert alert-warning">
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -48,7 +47,7 @@
                                     <tr>
                                         <td colspan="1">
                                             <div class="custom-file">
-                                                <label  for="images"></label>
+                                                <label for="images"></label>
                                                 <input class="btn btn-primary" type="file" name="imageFile[]" id="images"
                                                     multiple="multiple" accept="image/*" placeholder="select">
                                             </div>
@@ -60,7 +59,9 @@
 
                                         </td>
                                     </tr>
-                                    <tr><td></td></tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
                                     <tr>
                                         <td>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -84,8 +85,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Marque</label>
-                                                    <input type="text" name="marque" class="form-control"
-                                                        placeholder="">
+                                                    <input type="text" name="marque" class="form-control" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -95,8 +95,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Type</label>
-                                                    <input type="text" name="type" class="form-control"
-                                                        placeholder="">
+                                                    <input type="text" name="type" class="form-control" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -104,8 +103,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Model</label>
-                                                    <input type="text" name="model" class="form-control"
-                                                        placeholder="">
+                                                    <input type="text" name="model" class="form-control" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -124,8 +122,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Couleur</label>
-                                                    <input type="text" name="couleur" class="form-control"
-                                                        placeholder="">
+                                                    <input type="text" name="couleur" class="form-control" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -142,9 +139,10 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Climatisation</label>
-                                                    <input type="checkbox" name="climatisation" value="1" class="js-switch" checked>
+                                                    <input type="checkbox" name="climatisation" value="1"
+                                                        class="js-switch" checked>
                                                     <!--<input type="text" name="climatisation" class="form-control"
-                                                        placeholder="" value="1">-->
+                                                            placeholder="" value="1">-->
                                                 </div>
                                             </div>
                                         </td>
@@ -202,9 +200,10 @@
                                                 <div class="form-group">
                                                     <!--<strong>Disponibilite</strong>-->
                                                     <label>Disponibilite</label>
-                                                    <input type="checkbox" name="disponibilite" value="1" class="js-switch" checked>
+                                                    <input type="checkbox" name="disponibilite" value="1"
+                                                        class="js-switch" checked>
                                                     <!--<input type="text" name="disponibilite" class="form-control"
-                                                        placeholder="" value="0">-->
+                                                            placeholder="" value="0">-->
                                                 </div>
                                             </div>
                                         </td>
@@ -221,7 +220,7 @@
                                         </td>
                                         <td>
                                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-secondary">Submit</button>
                                             </div>
                                         </td>
                                     </tr>
@@ -235,11 +234,16 @@
                         </form>
 
                         <!-- toggle btn -->
-                        <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+                        <script>
+                            let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
                             elems.forEach(function(html) {
-                                let switchery = new Switchery(html,  { size: 'small' });
-                            });</script>
+                                let switchery = new Switchery(html, {
+                                    size: 'small',
+                                    color: '#0F8AC7'
+                                });
+                            });
+                        </script>
 
                         <!-- jQuery -->
                         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

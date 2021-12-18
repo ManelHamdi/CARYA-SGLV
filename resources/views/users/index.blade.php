@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Modifier profile', 'titlePage' => __('Modifier profile')])
+@extends('layouts.app', ['activePage' => 'Demande', 'titlePage' => __('Demande: congé / attestation')])
 
 @section('content')
     <div class="content">

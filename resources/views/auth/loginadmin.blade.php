@@ -11,7 +11,7 @@
 
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-primary text-center">
-            <h4 class="card-title"><strong>{{ __('Login Administrateur') }}</strong></h4>
+            <h4 class="card-title"><strong>{{ __('Espace Administrateur') }}</strong></h4>
           </div>
           <div class="card-body">
               <br>
@@ -37,7 +37,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" value="{{ !$errors->has('password') ? "madmin" : "" }}" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Mot de passe...') }}" value="{{ !$errors->has('password') ? "madmin" : "" }}" required>
               </div>
               @if ($errors->has('password'))
                 <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
@@ -48,7 +48,7 @@
 
             <div class="form-check mr-auto ml-3 mt-3">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember me') }}
+                <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Rester Connecté') }}
                 <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
@@ -56,7 +56,7 @@
             </div>
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Lets Go') }}</button>
+            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Se Connecter') }}</button>
           </div>
         </div>
       </form>
@@ -64,7 +64,7 @@
         <div class="col-6">
             @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}" class="text-light">
-                    <small>{{ __('Forgot password?') }}</small>
+                    <small>{{ __('Mot de passe oublié?') }}</small>
                 </a>
             @endif
         </div>

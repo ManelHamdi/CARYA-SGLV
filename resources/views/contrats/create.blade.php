@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'Contrat', 'titlePage' => __('Contrats')])
+@extends('layouts.app', ['activePage' => 'Contrats', 'titlePage' => __('Contrats')])
 
 @section('content')
     <style>
@@ -75,7 +75,7 @@
                         <div class="card-body">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                     <!-- <strong>Oups!</strong> Il y a eu des problèmes avec votre entrée.<br><br>-->
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>

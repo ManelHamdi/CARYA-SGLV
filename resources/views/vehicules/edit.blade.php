@@ -32,7 +32,6 @@
                     <div id="typography">
                         @if ($errors->any())
                             <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -141,9 +140,8 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Nombre place</strong>
-                                                <input type="number" name="nbrPlaces"
-                                                    value="{{ $vehicule->nbrPlaces }}" class="form-control"
-                                                    placeholder="Nombre place">
+                                                <input type="number" name="nbrPlaces" value="{{ $vehicule->nbrPlaces }}"
+                                                    class="form-control" placeholder="Nombre place">
                                             </div>
                                         </div>
                                     </td>
@@ -182,9 +180,8 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Puissance</strong>
-                                                <input type="text" name="puissance"
-                                                    value="{{ $vehicule->puissance }}" class="form-control"
-                                                    placeholder="Puissance">
+                                                <input type="text" name="puissance" value="{{ $vehicule->puissance }}"
+                                                    class="form-control" placeholder="Puissance">
                                             </div>
                                         </div>
                                     </td>
@@ -195,9 +192,8 @@
                                             <div class="form-group">
                                                 <strong>Climatisation</strong>
                                                 <input type="checkbox" name="climatisation"
-                                                    data-id="{{ $vehicule->matricule }}" value="1"
-                                                    class="js-switch" id="climaup"
-                                                    {{ $vehicule->climatisation == 1 ? 'checked' : '' }}>
+                                                    data-id="{{ $vehicule->matricule }}" value="1" class="js-switch"
+                                                    id="climaup" {{ $vehicule->climatisation == 1 ? 'checked' : '' }}>
                                             </div>
                                         </div>
                                     </td>
@@ -249,7 +245,8 @@
                             let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
                             elems.forEach(function(html) {
                                 let switchery = new Switchery(html, {
-                                    size: 'small'
+                                    size: 'small',
+                                    color: '#0F8AC7'
                                 });
                             });
                         </script>

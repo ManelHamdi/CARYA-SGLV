@@ -10,7 +10,7 @@
                         <p class="card-category">Cree, modifier, supprimer, détailler</p>
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('vehicules.create') }}"> Nouveau vehicule</a>
+                        <a class="btn btn-secondary" href="{{ route('vehicules.create') }}"> Nouveau vehicule</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -78,7 +78,8 @@
         let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
         elems.forEach(function(html) {
             let switchery = new Switchery(html, {
-                size: 'small'
+                size: 'small',
+                color: '#0F8AC7'
             });
         });
     </script>
