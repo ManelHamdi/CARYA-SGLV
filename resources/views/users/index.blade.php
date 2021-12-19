@@ -31,7 +31,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
+                                            <!--<td>
                                                 Admin Admin
                                             </td>
                                             <td>
@@ -46,7 +46,7 @@
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
-                                            </td>
+                                            </td>-->
                                         </tr>
                                     </tbody>
                                 </table>

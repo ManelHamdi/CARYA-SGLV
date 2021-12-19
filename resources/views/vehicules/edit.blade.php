@@ -224,15 +224,14 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Description</strong>
-                                                <input type="text" name="description"
-                                                    value="{{ $vehicule->description }}" class="form-control"
-                                                    placeholder="Description">
+                                                <textarea name="description" class="form-control" rows="3"
+                                                    placeholder="">{{ $vehicule->description }}</textarea>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-secondary">Submit</button>
                                         </div>
                                     </td>
                                 </tr>

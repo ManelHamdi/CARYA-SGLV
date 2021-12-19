@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateContratsTable extends Migration
@@ -14,18 +15,18 @@ class CreateContratsTable extends Migration
     public function up()
     {
         Schema::create('contrats', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('client_id')->unsigned();
             $table->string('vehicule_matricule')->index();
-            $table->string('livraison');
-            $table->string('reprise');
-            $table->dateTime('dateDebut');
-            $table->dateTime('dateFin');
+            $table->string('livraison')->nullable();
+            $table->string('reprise')->nullable();
+            $table->dateTime('dateDebut')->nullable();
+            $table->dateTime('dateFin')->nullable();
             $table->string('carburationD')->nullable();
             $table->string('carburationR')->nullable();
             $table->double('kmD')->nullable();
             $table->double('kmR')->nullable();
-            $table->integer('nbrJour');
+            $table->integer('nbrJour')->nullable();
             $table->string('prolongation')->nullable();
             $table->timestamps();
             $table->foreign('client_id')->references('id')->on('clients')
@@ -35,7 +36,7 @@ class CreateContratsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
-        //DB::statement('ALTER TABLE table_name AUTO_INCREMENT = 21520213;');
+        DB::statement('ALTER TABLE contrats AUTO_INCREMENT = 100000;');
     }
 
     /**

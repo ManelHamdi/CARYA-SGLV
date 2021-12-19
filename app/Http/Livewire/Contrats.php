@@ -90,19 +90,6 @@ class Contrats extends Component
         $idEntreprise = Auth::guard('employe')->user()->entreprise_id;
         $cemploye = Auth::guard('employe')->user();
         $entreprise = $this->getEntreprise($idEntreprise);
-        $pdf = PDf::loadView('contrats.paper', [
-            'contrat' => $contrat,
-            'client' => $this->client,
-            'vehicule' => $this->vehicule,
-            'entreprise' => $entreprise,
-            'designu' => $this->designu,
-            'designm' => $this->designm,
-            'montant' => $this->montant,
-            'conducteur' => $this->conducteur,
-            'checkOut' => $this->checkOut,
-            'cemploye' => $cemploye,
-        ]);
-        $nompdf = $contrat->id . $contrat->client_id . $contrat->vehicule_matricule;
         $mpdf = new PDf('', 'A4');
         $mpdf->simpleTables = true;
         $mpdf->packTableData = true;
@@ -122,9 +109,6 @@ class Contrats extends Component
             'cemploye' => $cemploye,
         ]);
 
-        //$pdf->simpleTables = false;
-        //$pdf->simpleTables(true);
-
         return $mm->stream('document.pdf');
     }
 
@@ -143,7 +127,7 @@ class Contrats extends Component
         $contratController = new ContratController();
         $contratController->store($request);
         toast('Contrat cree avec success', 'success');
-        return redirect()->to('/contrats');
+        return redirect()->to('/contrat');
     }
 
     public function edit(Contrat $contrat)
@@ -184,14 +168,14 @@ class Contrats extends Component
         //Alert::success('Contrat', 'modifier avec success');
         //Alert::toast('Toast Message', 'success');
         toast('Contrat modifier avec success', 'success');
-        return redirect()->to('/contrats');
+        return redirect()->to('/contrat');
     }
 
     public function destroy(Contrat $contrat)
     {
         $contrat->delete();
         toast('Contrat supprimer avec success', 'info');
-        return redirect()->to('/contrats');
+        return redirect()->to('/contrat');
     }
 
     static function findClient($client_id)

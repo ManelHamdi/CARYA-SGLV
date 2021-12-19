@@ -15,7 +15,7 @@ class CreateDesignMontantsTable extends Migration
     {
         Schema::create('designMontants', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('contrat_id')->unsigned();
+            $table->bigInteger('contrat_id')->unsigned();
             $table->double('locationBase')->nullable();
             $table->double('conducteur')->nullable();
             $table->double('siegeBebe')->nullable();

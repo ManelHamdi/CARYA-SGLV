@@ -47,7 +47,8 @@
                                                             CIN: {{ $client($contrat->client_id)->cin }}
                                                         </li>
                                                         <li>
-                                                            Nom complet: {{ $client($contrat->client_id)->nom }} {{ $client($contrat->client_id)->prenom }}
+                                                            Nom complet: {{ $client($contrat->client_id)->nom }}
+                                                            {{ $client($contrat->client_id)->prenom }}
                                                         </li>
                                                     </ul>
 
@@ -56,22 +57,28 @@
                                                     {{ $contrat->nbrJour }}
                                                 </td>
                                                 <td>
-                                                    {{ $montant($contrat->id)->montantRecu }}
+                                                    @if (!empty($montant($contrat->id)))
+                                                        {{ $montant($contrat->id)->montantRecu }}
+                                                    @endif
+
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('contrats.destroy', $contrat) }}" method="POST">
+                                                    <form action="{{ route('contrats.destroy', $contrat) }}"
+                                                        method="POST">
                                                         <a class="btn btn-info btn-fab btn-fab-mini btn-round"
                                                             href="{{ route('contrats.show', $contrat) }}">
                                                             <i class="material-icons">description</i>
                                                         </a>
 
                                                         <a class="btn btn-default btn-fab btn-fab-mini btn-round"
-                                                            href="{{ route('contrats.print', $contrat) }}" target="_blank">
+                                                            href="{{ route('contrats.print', $contrat) }}"
+                                                            target="_blank">
                                                             <i class="material-icons">print</i>
                                                         </a>
 
                                                         <a class="btn btn-warning btn-fab btn-fab-mini btn-round"
-                                                            href="{{ route('contrats.printpdf', $contrat) }}" target="_blank">
+                                                            href="{{ route('contrats.printpdf', $contrat) }}"
+                                                            target="_blank">
                                                             <i class="material-icons">picture_as_pdf</i>
                                                         </a>
 
@@ -103,35 +110,35 @@
 
 
                 <!--<div class="col-md-12">
-                                <div class="card card-plain">
-                                    <div class="card-header card-header-primary">
-                                        <h4 class="card-title mt-0"> Gerer Contrats </h4>
-                                        <p class="card-category"> Cree, modifier, supprimer, détailler </p>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover">
-                                                <thead class="">
-                                                    <th> ID </th>
-                                                    <th> Name </th>
-                                                    <th> Country </th>
-                                                    <th> City </th>
-                                                    <th> Salary </th>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td> 1 </td>
-                                                        <td> Dakota Rice </td>
-                                                        <td> Niger </td>
-                                                        <td> Oud-Turnhout </td>
-                                                        <td> $36,738 </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                    <div class="card card-plain">
+                                        <div class="card-header card-header-primary">
+                                            <h4 class="card-title mt-0"> Gerer Contrats </h4>
+                                            <p class="card-category"> Cree, modifier, supprimer, détailler </p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <thead class="">
+                                                        <th> ID </th>
+                                                        <th> Name </th>
+                                                        <th> Country </th>
+                                                        <th> City </th>
+                                                        <th> Salary </th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td> 1 </td>
+                                                            <td> Dakota Rice </td>
+                                                            <td> Niger </td>
+                                                            <td> Oud-Turnhout </td>
+                                                            <td> $36,738 </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>-->
+                                </div>-->
 
             </div>
         </div>

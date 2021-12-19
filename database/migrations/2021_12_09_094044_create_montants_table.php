@@ -15,12 +15,12 @@ class CreateMontantsTable extends Migration
     {
         Schema::create('montants', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('sousTotal');
-            $table->double('montantNet');
-            $table->double('montantDuD');
-            $table->double('montantRecu');
-            $table->double('montantDu');
-            $table->integer('contrat_id')->unsigned();
+            $table->double('sousTotal')->nullable();
+            $table->double('montantNet')->nullable();
+            $table->double('montantDuD')->nullable();
+            $table->double('montantRecu')->nullable();
+            $table->double('montantDu')->nullable();
+            $table->bigInteger('contrat_id')->unsigned();
             $table->timestamps();
             $table->foreign('contrat_id')->references('id')->on('contrats')
                 ->onDelete('cascade')

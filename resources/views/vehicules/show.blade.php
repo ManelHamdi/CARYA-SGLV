@@ -85,7 +85,7 @@
                                         <form action="{{ route('vehicules.destroy', $vehicule->matricule) }}"
                                             method="POST">
 
-                                            <a class="btn btn-primary"
+                                            <a class="btn btn-secondary"
                                                 href="{{ route('vehicules.edit', $vehicule->matricule) }}">
                                                 <i class="material-icons">edit</i> Edit
                                             </a>
@@ -166,8 +166,6 @@
         });
     </script>
 
-
-
     @push('js')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
         <script type="text/javascript">
@@ -176,9 +174,9 @@
                 var name = $(this).data("name");
                 event.preventDefault();
                 new swal({
-                        title: `Are you sure you want to delete this record?`,
-                        text: "If you delete this, it will be gone forever.",
-                        icon: "warning",
+                        title: `Êtes-vous sûr de vouloir supprimer cette véhicule?`,
+                        text: "Si vous le supprimez, il disparaîtra pour toujours.",
+                        icon: "error",
                         buttons: true,
                         dangerMode: true,
                     })
@@ -190,5 +188,4 @@
             });
         </script>
     @endpush
-
 @endsection

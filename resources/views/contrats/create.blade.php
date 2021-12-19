@@ -92,7 +92,7 @@
                                             <th> Matricule </th>
                                             <td>
                                                 <select id="matricule" name="vehicule_matricule" class="form-control">
-                                                    <option>--- Select Matricule *---</option>
+                                                    <option>--- Sélectionnez Matricule *---</option>
                                                     @foreach ($vehicules as $vehicule)
                                                         <option value="{{ $vehicule->matricule }}">
                                                             {{ $vehicule->matricule }}
@@ -113,14 +113,14 @@
                                                     Nom client
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="nom" class="form-control"
+                                                    <input type="text" name="nom" class="form-control"  value="{{ old('nom') }}"
                                                         placeholder="Nom client *">
                                                 </td>
                                                 <th>
                                                     Prenom client
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="prenom" class="form-control"
+                                                    <input type="text" name="prenom" class="form-control" value="{{ old('prenom') }}"
                                                         placeholder="Prenom client *">
                                                 </td>
 
@@ -130,14 +130,14 @@
                                                     Telephone
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="tel" class="form-control"
+                                                    <input type="number" name="tel" class="form-control" value="{{ old('tel') }}"
                                                         placeholder="Telephone">
                                                 </td>
                                                 <th>
                                                     Email
                                                 </th>
                                                 <td>
-                                                    <input type="email" name="email" class="form-control"
+                                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                                                         placeholder="Email">
                                                 </td>
                                             </tr>
@@ -146,14 +146,14 @@
                                                     Adresse du domicile
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="adresse" class="form-control"
+                                                    <input type="text" name="adresse" class="form-control" value="{{ old('adresse') }}"
                                                         placeholder="Adresse du domicile *">
                                                 </td>
                                                 <th>
                                                     Adresse locale
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="ville" class="form-control"
+                                                    <input type="text" name="ville" class="form-control" value="{{ old('ville') }}"
                                                         placeholder="Adresse locale *">
                                                 </td>
                                             </tr>
@@ -162,14 +162,14 @@
                                                     Date de naissance
                                                 </th>
                                                 <td>
-                                                    <input type="date" name="dateNaissance" class="form-control"
+                                                    <input type="date" name="dateNaissance" class="form-control" value="{{ old('dateNaissance') }}"
                                                         placeholder="Date naissance">
                                                 </td>
                                                 <th>
                                                     Lieu de naissance
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="lieuNaissance" class="form-control"
+                                                    <input type="text" name="lieuNaissance" class="form-control" value="{{ old('lieuNaissance') }}"
                                                         placeholder="Lieu naissance">
                                                 </td>
                                             </tr>
@@ -178,14 +178,14 @@
                                                     Nationalite
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="nationalite" class="form-control"
+                                                    <input type="text" name="nationalite" class="form-control" value="{{ old('nationalite') }}"
                                                         placeholder="Nationalite">
                                                 </td>
                                                 <th>
                                                     CIN
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="cin" class="form-control"
+                                                    <input type="number" name="cin" class="form-control" value="{{ old('cin') }}"
                                                         placeholder="CIN *">
                                                 </td>
                                             </tr>
@@ -194,7 +194,7 @@
                                                     Date d'émission
                                                 </th>
                                                 <td>
-                                                    <input type="date" name="dateEmit" class="form-control"
+                                                    <input type="date" name="dateEmit" class="form-control" value="{{ old('dateEmit') }}"
                                                         placeholder="Date d'émission">
                                                 </td>
                                             </tr>
@@ -203,14 +203,14 @@
                                                     Permis de conduire
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="permisConduire" class="form-control"
+                                                    <input type="text" name="permisConduire" class="form-control" value="{{ old('permisConduire') }}"
                                                         placeholder="Permis de conduire *">
                                                 </td>
                                                 <th>
                                                     Date d'émission (permis conduire)
                                                 </th>
                                                 <td>
-                                                    <input type="date" name="dateEmitPermis" class="form-control"
+                                                    <input type="date" name="dateEmitPermis" class="form-control" value="{{ old('dateEmitPermis') }}"
                                                         placeholder="Date d'émission">
                                                 </td>
                                             </tr>
@@ -219,7 +219,7 @@
                                                     Délivré par
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="delivrePermis" class="form-control"
+                                                    <input type="text" name="delivrePermis" class="form-control" value="{{ old('delivrePermis') }}"
                                                         placeholder="Délivré par">
                                                 </td>
                                             </tr>
@@ -236,14 +236,14 @@
                                                     Nom conducteur
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="nomc" class="form-control"
+                                                    <input type="text" name="nomc" class="form-control" value="{{ old('nomc') }}"
                                                         placeholder="Nom conducteur">
                                                 </td>
                                                 <th>
                                                     Prenom conducteur
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="prenomc" class="form-control"
+                                                    <input type="text" name="prenomc" class="form-control" value="{{ old('prenomc') }}"
                                                         placeholder="Prenom conducteur">
                                                 </td>
 
@@ -253,14 +253,14 @@
                                                     Telephone conducteur
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="telc" class="form-control"
+                                                    <input type="number" name="telc" class="form-control" value="{{ old('telc') }}"
                                                         placeholder="Telephone conducteur">
                                                 </td>
                                                 <th>
                                                     Lieu de naissance
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="lieuNaissancec" class="form-control"
+                                                    <input type="text" name="lieuNaissancec" class="form-control" value="{{ old('lieuNaissancec') }}"
                                                         placeholder="Lieu naissance">
                                                 </td>
                                             </tr>
@@ -269,14 +269,14 @@
                                                     Adresse du domicile
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="adressec" class="form-control"
+                                                    <input type="text" name="adressec" class="form-control" value="{{ old('adressec') }}"
                                                         placeholder="Adresse du domicile">
                                                 </td>
                                                 <th>
                                                     Adresse locale
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="villec" class="form-control"
+                                                    <input type="text" name="villec" class="form-control" value="{{ old('villec') }}"
                                                         placeholder="Adresse locale">
                                                 </td>
                                             </tr>
@@ -285,14 +285,14 @@
                                                     Date de naissance
                                                 </th>
                                                 <td>
-                                                    <input type="date" name="dateNaissancec" class="form-control"
+                                                    <input type="date" name="dateNaissancec" class="form-control" value="{{ old('dateNaissancec') }}"
                                                         placeholder="Date naissance">
                                                 </td>
                                                 <th>
                                                     Nationalite
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="nationalitec" class="form-control"
+                                                    <input type="text" name="nationalitec" class="form-control" value="{{ old('nationalitec') }}"
                                                         placeholder="Nationalite">
                                                 </td>
                                             </tr>
@@ -302,14 +302,14 @@
                                                     CIN
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="cinc" class="form-control"
+                                                    <input type="number" name="cinc" class="form-control" value="{{ old('cinc') }}"
                                                         placeholder="CIN">
                                                 </td>
                                                 <th>
                                                     Date d'émission
                                                 </th>
                                                 <td>
-                                                    <input type="date" name="dateEmitc" class="form-control"
+                                                    <input type="date" name="dateEmitc" class="form-control" value="{{ old('dateEmitc') }}"
                                                         placeholder="Date d'émission">
                                                 </td>
                                             </tr>
@@ -319,14 +319,14 @@
                                                     Permis de conduire
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="permisConduirec" class="form-control"
+                                                    <input type="text" name="permisConduirec" class="form-control" value="{{ old('permisConduirec') }}"
                                                         placeholder="Permis de conduire">
                                                 </td>
                                                 <th>
                                                     Date d'émission (permis conduire)
                                                 </th>
                                                 <td>
-                                                    <input type="date" name="dateEmitPermisc" class="form-control"
+                                                    <input type="date" name="dateEmitPermisc" class="form-control" value="{{ old('dateEmitPermisc') }}"
                                                         placeholder="Date d'émission">
                                                 </td>
                                             </tr>
@@ -335,7 +335,7 @@
                                                     Délivré par
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="delivrePermisc" class="form-control"
+                                                    <input type="text" name="delivrePermisc" class="form-control" value="{{ old('delivrePermisc') }}"
                                                         placeholder="Délivré par">
                                                 </td>
                                             </tr>
@@ -352,14 +352,14 @@
                                                     Livraison
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="text" name="livraison" class="form-control"
+                                                    <input type="text" name="livraison" class="form-control" value="{{ old('livraison') }}"
                                                         placeholder="Livraison *">
                                                 </td>
                                                 <th>
                                                     Reprise
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="text" name="reprise" class="form-control"
+                                                    <input type="text" name="reprise" class="form-control" value="{{ old('reprise') }}"
                                                         placeholder="Reprise *">
                                                 </td>
                                             </tr>
@@ -374,21 +374,21 @@
                                                     Date et heure
                                                 </th>
                                                 <td>
-                                                    <input type="datetime-local" name="dateDebut" class="form-control"
+                                                    <input type="datetime-local" name="dateDebut" class="form-control" value="{{ old('dateDebut') }}"
                                                         placeholder="Date et heure *">
                                                 </td>
                                                 <th>
                                                     KM
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="kmD" class="form-control"
+                                                    <input type="number" name="kmD" class="form-control" value="{{ old('kmD') }}"
                                                         placeholder="KM">
                                                 </td>
                                                 <th>
                                                     Carburant
                                                 </th>
                                                 <td>
-                                                    <input type="text" name="carburationD" class="form-control"
+                                                    <input type="text" name="carburationD" class="form-control" value="{{ old('carburationD') }}"
                                                         placeholder="Carburant">
                                                 </td>
                                             </tr>
@@ -403,30 +403,15 @@
                                                     Date et heure
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="datetime-local" name="dateFin" class="form-control"
+                                                    <input type="datetime-local" name="dateFin" class="form-control" value="{{ old('dateFin') }}"
                                                         placeholder="Date et heure *">
                                                 </td>
-                                                <!--<th>
-                                                    KM
-                                                </th>
-                                                <td>
-                                                    <input type="number" name="kmR" class="form-control"
-                                                        placeholder="KM">
-                                                    <input type="text" name="kmR" class="form-control" placeholder="KM">
-                                                </td>
-                                                <th>
-                                                    Carburant
-                                                </th>
-                                                <td>
-                                                    <input type="text" name="carburationR" class="form-control"
-                                                        placeholder="Carburant">
-                                                </td>-->
 
                                                 <th>
                                                     Prolongation autorisé
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="text" name="prolongation" class="form-control"
+                                                    <input type="text" name="prolongation" class="form-control" value="{{ old('prolongation') }}"
                                                         placeholder="Prolongation autorisé">
                                                 </td>
                                             </tr>
@@ -444,11 +429,11 @@
                                                     Location de base
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="locationBaseu" class="form-control"
+                                                    <input type="number" name="locationBaseu" class="form-control" value="{{ old('locationBaseu') }}"
                                                         step="any" placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="locationBasem" class="form-control"
+                                                    <input type="number" name="locationBasem" class="form-control" value="{{ old('locationBasem') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -457,11 +442,11 @@
                                                     2éme Conducteur
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="conducteuru" class="form-control"
+                                                    <input type="number" name="conducteuru" class="form-control" value="{{ old('conducteuru') }}"
                                                         step="any" placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="conducteurm" class="form-control"
+                                                    <input type="number" name="conducteurm" class="form-control" value="{{ old('conducteurm') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -470,11 +455,11 @@
                                                     Siege bébé
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="siegeBebeu" class="form-control" step="any"
+                                                    <input type="number" name="siegeBebeu" class="form-control" step="any"  value="{{ old('siegeBebeu') }}"
                                                         placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="siegeBebem" class="form-control" step="any"
+                                                    <input type="number" name="siegeBebem" class="form-control" step="any" value="{{ old('siegeBebem') }}"
                                                         placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -483,11 +468,11 @@
                                                     Chauffeur
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="chauffeuru" class="form-control" step="any"
+                                                    <input type="number" name="chauffeuru" class="form-control" step="any" value="{{ old('chauffeuru') }}"
                                                         placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="chauffeurm" class="form-control" step="any"
+                                                    <input type="number" name="chauffeurm" class="form-control" step="any" value="{{ old('chauffeurm') }}"
                                                         placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -496,11 +481,11 @@
                                                     Surcharge Aéroport
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="surchargeAeropu" class="form-control"
+                                                    <input type="number" name="surchargeAeropu" class="form-control" value="{{ old('surchargeAeropu') }}"
                                                         step="any" placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="surchargeAeropm" class="form-control"
+                                                    <input type="number" name="surchargeAeropm" class="form-control" value="{{ old('surchargeAeropm') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -509,7 +494,7 @@
                                                     Sous Total HT
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="sousTotal" class="form-control" step="any"
+                                                    <input type="number" name="sousTotal" class="form-control" step="any" value="{{ old('sousTotal') }}"
                                                         placeholder="Montant *">
                                                 </td>
                                             </tr>
@@ -518,11 +503,11 @@
                                                     Remise
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="remiseu" class="form-control" step="any"
+                                                    <input type="number" name="remiseu" class="form-control" step="any" value="{{ old('remiseu') }}"
                                                         placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="remisem" class="form-control" step="any"
+                                                    <input type="number" name="remisem" class="form-control" step="any" value="{{ old('remisem') }}"
                                                         placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -531,11 +516,11 @@
                                                     Frais de livraison
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="fraisLivraisonu" class="form-control"
+                                                    <input type="number" name="fraisLivraisonu" class="form-control" value="{{ old('fraisLivraisonu') }}"
                                                         step="any" placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="fraisLivraisonm" class="form-control"
+                                                    <input type="number" name="fraisLivraisonm" class="form-control" value="{{ old('fraisLivraisonm') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -544,11 +529,11 @@
                                                     Frais de reprise
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="fraisRepriseu" class="form-control"
+                                                    <input type="number" name="fraisRepriseu" class="form-control" value="{{ old('fraisRepriseu') }}"
                                                         step="any" placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="fraisReprisem" class="form-control"
+                                                    <input type="number" name="fraisReprisem" class="form-control" value="{{ old('fraisReprisem') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -557,7 +542,7 @@
                                                     Montant Net HT
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="montantNet" class="form-control" step="any"
+                                                    <input type="number" name="montantNet" class="form-control" step="any" value="{{ old('montantNet') }}"
                                                         placeholder="Montant *">
                                                 </td>
                                             </tr>
@@ -566,11 +551,11 @@
                                                     TVA
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="tvau" class="form-control" step="any"
+                                                    <input type="number" name="tvau" class="form-control" step="any" value="{{ old('tvau') }}"
                                                         placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="tvam" class="form-control" step="any"
+                                                    <input type="number" name="tvam" class="form-control" step="any" value="{{ old('tvam') }}"
                                                         placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -579,11 +564,11 @@
                                                     Suppression Franchise
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="suppFranchiseu" class="form-control"
+                                                    <input type="number" name="suppFranchiseu" class="form-control" value="{{ old('suppFranchiseu') }}"
                                                         step="any" placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="suppFranchisem" class="form-control"
+                                                    <input type="number" name="suppFranchisem" class="form-control" value="{{ old('suppFranchisem') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -592,11 +577,11 @@
                                                     Assurance Passage
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="assurancePassageru" class="form-control"
+                                                    <input type="number" name="assurancePassageru" class="form-control" value="{{ old('assurancePassageru') }}"
                                                         step="any" placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="assurancePassagerm" class="form-control"
+                                                    <input type="number" name="assurancePassagerm" class="form-control" value="{{ old('assurancePassagerm') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -605,11 +590,11 @@
                                                     Timbre
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="timbreu" class="form-control" step="any"
+                                                    <input type="number" name="timbreu" class="form-control" step="any" value="{{ old('timbreu') }}"
                                                         placeholder="Prix Unitaire">
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="timbrem" class="form-control" step="any"
+                                                    <input type="number" name="timbrem" class="form-control" step="any" value="{{ old('timbrem') }}"
                                                         placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -618,7 +603,7 @@
                                                     Montant du
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="montantDuD" class="form-control" step="any"
+                                                    <input type="number" name="montantDuD" class="form-control" step="any" value="{{ old('montantDuD') }}"
                                                         placeholder="Montant *">
                                                 </td>
                                             </tr>
@@ -627,14 +612,14 @@
                                                     Montant recu avec remerciments
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="montantRecu" class="form-control" step="any"
+                                                    <input type="number" name="montantRecu" class="form-control" step="any" value="{{ old('montantRecu') }}"
                                                         placeholder="Montant *">
                                                 </td>
                                                 <th class="text-primary" style="font-size: 18px">
                                                     Montant du
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="montantDu" class="form-control" step="any"
+                                                    <input type="number" name="montantDu" class="form-control" step="any" value="{{ old('montantDu') }}"
                                                         placeholder="Montant *">
                                                 </td>
                                             </tr>

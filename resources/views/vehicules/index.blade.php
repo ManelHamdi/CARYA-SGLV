@@ -31,8 +31,13 @@
                                 @foreach ($vehicules as $vehicule)
                                     <tr>
                                         <td>
-                                            <img src="{{ 'data:image/*;base64,' . base64_encode($vehicule->photos[0]->image) }}"
-                                                style="height:60px; width:100px" />
+                                            @if (!$vehicule->photos->isEmpty())
+                                                <img src="{{ 'data:image/*;base64,' . base64_encode($vehicule->photos[0]->image) }}"
+                                                    style="height:60px; width:100px" />
+                                            @else
+                                                <img src="{{ asset('images') }}/log1.jpeg"
+                                                    style="height:60px; width:100px" />
+                                            @endif
                                         </td>
                                         <td>{{ $vehicule->matricule }}</td>
                                         <td>{{ $vehicule->prixLoc }}</td>
@@ -55,7 +60,7 @@
                                                 </a>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-fab btn-fab-mini btn-round">
+                                                <button type="submit" class="btn btn-danger btn-fab btn-fab-mini btn-round show_confirm">
                                                     <i class="material-icons">delete</i>
                                                 </button>
                                             </form>

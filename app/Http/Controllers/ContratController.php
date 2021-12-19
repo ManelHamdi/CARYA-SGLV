@@ -49,16 +49,18 @@ class ContratController extends Controller
     {
         try {
             $request->validate([
-                'vehicule_matricule' => 'required',
+                'vehicule_matricule' => 'required|not_in:--- Sélectionnez Matricule *---',
                 'nom' => 'required', 'prenom' => 'required',
-                'adresse' => 'required', 'ville' => 'required',
-                'tel' => 'numeric|digits:8', 'telc' => 'numeric|digits:8',
+                //'adresse' => 'required', 'ville' => 'required',
+                'tel' => 'sometimes|nullable|numeric|digits:8', 'telc' => 'sometimes|nullable|numeric|digits:8',
                 'cin' => 'required|numeric|digits:8', 'permisConduire' => 'required',
                 'dateDebut' => 'required', 'dateFin' => 'required',
                 'livraison' => 'required', 'reprise' => 'required',
+                'montantRecu' => 'required',
+                /*
                 'sousTotal' => 'required', 'montantNet' => 'required',
-                'montantDuD' => 'required', 'montantRecu' => 'required',
-                'montantDu' => 'required',
+                'montantDuD' => 'required', 'montantDu' => 'required',
+                */
             ]);
 
             $clientController = new ClientController();

@@ -76,7 +76,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Prix Location</label>
-                                                    <input type="number" name="prixLoc" class="form-control"
+                                                    <input type="number" name="prixLoc" class="form-control" value="{{ old('prixLoc') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -85,7 +85,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Marque</label>
-                                                    <input type="text" name="marque" class="form-control" placeholder="">
+                                                    <input type="text" name="marque" class="form-control" placeholder="" value="{{ old('marque') }}">
                                                 </div>
                                             </div>
                                         </td>
@@ -95,7 +95,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Type</label>
-                                                    <input type="text" name="type" class="form-control" placeholder="">
+                                                    <input type="text" name="type" class="form-control" placeholder="" value="{{ old('type') }}">
                                                 </div>
                                             </div>
                                         </td>
@@ -103,7 +103,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Model</label>
-                                                    <input type="text" name="model" class="form-control" placeholder="">
+                                                    <input type="text" name="model" class="form-control" placeholder="" value="{{ old('model') }}">
                                                 </div>
                                             </div>
                                         </td>
@@ -111,7 +111,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Date achat</label>
-                                                    <input type="date" name="dateAchat" class="form-control"
+                                                    <input type="date" name="dateAchat" class="form-control" value="{{ old('dateAchat') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -122,7 +122,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Couleur</label>
-                                                    <input type="text" name="couleur" class="form-control" placeholder="">
+                                                    <input type="text" name="couleur" class="form-control" placeholder="" value="{{ old('couleur') }}">
                                                 </div>
                                             </div>
                                         </td>
@@ -130,7 +130,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Nombre place</label>
-                                                    <input type="number" name="nbrPlaces" class="form-control"
+                                                    <input type="number" name="nbrPlaces" class="form-control" value="{{ old('nbrPlaces') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -152,7 +152,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Puissance</label>
-                                                    <input type="text" name="puissance" class="form-control"
+                                                    <input type="text" name="puissance" class="form-control" value="{{ old('puissance') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -161,7 +161,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Carburation</label>
-                                                    <input type="text" name="carburation" class="form-control"
+                                                    <input type="text" name="carburation" class="form-control" value="{{ old('carburation') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -170,7 +170,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Kilometrage</label>
-                                                    <input type="number" name="kilometrage" class="form-control"
+                                                    <input type="number" name="kilometrage" class="form-control" value="{{ old('kilometrage') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -181,7 +181,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Boite vitesse</label>
-                                                    <input type="text" name="boiteVitesse" class="form-control"
+                                                    <input type="text" name="boiteVitesse" class="form-control" value="{{ old('boiteVitesse') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -190,7 +190,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Taille moteur</label>
-                                                    <input type="text" name="tailleMoteur" class="form-control"
+                                                    <input type="text" name="tailleMoteur" class="form-control" value="{{ old('tailleMoteur') }}"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -198,12 +198,9 @@
                                         <td>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <!--<strong>Disponibilite</strong>-->
                                                     <label>Disponibilite</label>
                                                     <input type="checkbox" name="disponibilite" value="1"
                                                         class="js-switch" checked>
-                                                    <!--<input type="text" name="disponibilite" class="form-control"
-                                                            placeholder="" value="0">-->
                                                 </div>
                                             </div>
                                         </td>
@@ -213,8 +210,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <input type="textarea" name="description" class="form-control"
-                                                        placeholder="">
+                                                    <textarea name="description" class="form-control"
+                                                        rows="3" placeholder="">{{ old('description') }}</textarea>
                                                 </div>
                                             </div>
                                         </td>

@@ -29,7 +29,7 @@ class CreateCheckoutsTable extends Migration
             $table->boolean('allumeCigar')->default(0);
             $table->boolean('trianglePanne')->default(0);
             $table->boolean('autre')->default(0);
-            $table->integer('contrat_id')->unsigned();
+            $table->bigInteger('contrat_id')->unsigned();
             $table->timestamps();
             $table->foreign('contrat_id')->references('id')->on('contrats')
                 ->onDelete('cascade')
