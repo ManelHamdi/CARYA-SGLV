@@ -31,9 +31,13 @@ Route::group(['middleware' => 'auth:employe'], function () {
         return view('vehicules.index');
     })->name('vehicule');
 
+    Route::get('vehicule/search', 'App\Http\Controllers\VehiculeController@indexFiltering')->name('searchv');
+
 	Route::get('contrat', [App\Http\livewire\Contrats::class, 'render'], function () {
 		return view('contrats.render');
 	})->name('contrat');
+
+    Route::get('contrat/search', 'App\Http\livewire\Contrats@indexFiltering')->name('search');
 
     Route::get('mpaper', function () {
         return view('contrats.paper');

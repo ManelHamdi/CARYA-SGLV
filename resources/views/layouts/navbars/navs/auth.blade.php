@@ -17,7 +17,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
-                        <i><img style="width:25px" src="{{ asset('material') }}/img/dashboard2.png"></i>
+                        <i class="material-icons">dashboard</i>
                         <p class="d-lg-none d-md-block">
                             {{ __('Tableau de bord') }}
                         </p>
@@ -27,7 +27,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <i><img style="width:25px" src="{{ asset('material') }}/img/avatar2.png"></i>
+                        <i class="material-icons">person</i>
                         <p class="d-lg-none d-md-block">
                             {{ __('Compte') }}
                         </p>

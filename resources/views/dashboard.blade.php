@@ -10,15 +10,13 @@
               <div class="card-icon">
                 <i class="material-icons">content_copy</i>
               </div>
-              <p class="card-category">Used Space</p>
-              <h3 class="card-title">49/50
-                <small>GB</small>
-              </h3>
+              <p class="card-category">Voiture disponible</p>
+
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons text-danger">warning</i>
-                <a href="#pablo">Get More Space...</a>
+
+                <a href="#pablo"></a>
               </div>
             </div>
           </div>
@@ -29,12 +27,12 @@
               <div class="card-icon">
                 <i class="material-icons">store</i>
               </div>
-              <p class="card-category">Revenue</p>
-              <h3 class="card-title">$34,245</h3>
+              <p class="card-category">Voiture non disponible</p>
+
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">date_range</i> Last 24 Hours
+
               </div>
             </div>
           </div>
@@ -45,12 +43,12 @@
               <div class="card-icon">
                 <i class="material-icons">info_outline</i>
               </div>
-              <p class="card-category">Fixed Issues</p>
-              <h3 class="card-title">75</h3>
+              <p class="card-category">Voiture en reparation</p>
+
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">local_offer</i> Tracked from Github
+
               </div>
             </div>
           </div>
@@ -59,14 +57,14 @@
           <div class="card card-stats">
             <div class="card-header card-header-info card-header-icon">
               <div class="card-icon">
-                <i class="fa fa-twitter"></i>
+                <i class="material-icons">person</i>
               </div>
-              <p class="card-category">Followers</p>
-              <h3 class="card-title">+245</h3>
+              <p class="card-category">Clients</p>
+
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons">update</i> Just Updated
+
               </div>
             </div>
           </div>
@@ -79,9 +77,9 @@
               <div class="ct-chart" id="dailySalesChart"></div>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Daily Sales</h4>
+              <h4 class="card-title">Disponibilité des voitures par jour</h4>
               <p class="card-category">
-                <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -96,8 +94,8 @@
               <div class="ct-chart" id="websiteViewsChart"></div>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Email Subscriptions</h4>
-              <p class="card-category">Last Campaign Performance</p>
+              <h4 class="card-title">Disponibilité des voitures par mois</h4>
+
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -112,8 +110,8 @@
               <div class="ct-chart" id="completedTasksChart"></div>
             </div>
             <div class="card-body">
-              <h4 class="card-title">Completed Tasks</h4>
-              <p class="card-category">Last Campaign Performance</p>
+              <h4 class="card-title">Augmentation du nombre de clients</h4>
+
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -129,27 +127,8 @@
             <div class="card-header card-header-tabs card-header-primary">
               <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
-                  <span class="nav-tabs-title">Tasks:</span>
-                  <ul class="nav nav-tabs" data-tabs="tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#profile" data-toggle="tab">
-                        <i class="material-icons">bug_report</i> Bugs
-                        <div class="ripple-container"></div>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#messages" data-toggle="tab">
-                        <i class="material-icons">code</i> Website
-                        <div class="ripple-container"></div>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#settings" data-toggle="tab">
-                        <i class="material-icons">cloud</i> Server
-                        <div class="ripple-container"></div>
-                      </a>
-                    </li>
-                  </ul>
+                  <span class="nav-tabs-title">Visites technique:</span>
+
                 </div>
               </div>
             </div>
@@ -372,8 +351,8 @@
         <div class="col-lg-6 col-md-12">
           <div class="card">
             <div class="card-header card-header-warning">
-              <h4 class="card-title">Employees Stats</h4>
-              <p class="card-category">New employees on 15th September, 2016</p>
+              <h4 class="card-title">Retour</h4>
+
             </div>
             <div class="card-body table-responsive">
               <table class="table table-hover">

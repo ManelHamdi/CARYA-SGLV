@@ -8,8 +8,12 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <div class="pull-left">
-                                <h4 class="card-title ">Gerer Contrats</h4>
-                                <p class="card-category"> Cree, modifier, supprimer, détailler </p>
+                                <h4 class="card-title">Gérer les contrats</h4>
+                                <form action="{{ route('search') }}" method="GET">
+                                    <input style="border-radius: 5px; width: 180%; border-color: transparent; background-color: #ffffffe3" type="text" id="search" name="search"
+                                        placeholder="Rechercher par matricule" value="{{ $search }}">
+                                    <button style="display:none" type="submit" class="btn btn-default mb-2">search</button>
+                                </form>
                             </div>
                             <div class="pull-right">
                                 <a class="btn btn-secondary" href="{{ route('contrats.create') }}"> Nouveau contrat</a>
@@ -110,35 +114,35 @@
 
 
                 <!--<div class="col-md-12">
-                                    <div class="card card-plain">
-                                        <div class="card-header card-header-primary">
-                                            <h4 class="card-title mt-0"> Gerer Contrats </h4>
-                                            <p class="card-category"> Cree, modifier, supprimer, détailler </p>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover">
-                                                    <thead class="">
-                                                        <th> ID </th>
-                                                        <th> Name </th>
-                                                        <th> Country </th>
-                                                        <th> City </th>
-                                                        <th> Salary </th>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td> 1 </td>
-                                                            <td> Dakota Rice </td>
-                                                            <td> Niger </td>
-                                                            <td> Oud-Turnhout </td>
-                                                            <td> $36,738 </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                        <div class="card card-plain">
+                                            <div class="card-header card-header-primary">
+                                                <h4 class="card-title mt-0"> Gerer Contrats </h4>
+                                                <p class="card-category"> Cree, modifier, supprimer, détailler </p>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead class="">
+                                                            <th> ID </th>
+                                                            <th> Name </th>
+                                                            <th> Country </th>
+                                                            <th> City </th>
+                                                            <th> Salary </th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td> 1 </td>
+                                                                <td> Dakota Rice </td>
+                                                                <td> Niger </td>
+                                                                <td> Oud-Turnhout </td>
+                                                                <td> $36,738 </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>-->
+                                    </div>-->
 
             </div>
         </div>

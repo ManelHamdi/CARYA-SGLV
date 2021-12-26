@@ -381,7 +381,7 @@
                                                     KM
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="kmD" class="form-control" value="{{ old('kmD') }}"
+                                                    <input type="number" name="kmD" class="form-control" 
                                                         placeholder="KM">
                                                 </td>
                                                 <th>

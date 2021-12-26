@@ -16,18 +16,6 @@ Dashboard')])
                         </div>
                         <div class="card-body">
 
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <strong>Oups!</strong> Il y a eu des problèmes avec votre entrée.<br><br>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
-
                             <br>
                             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <div class="input-group">

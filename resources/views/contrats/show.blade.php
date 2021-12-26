@@ -7,7 +7,34 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title "> Details Contrat de location. </h4>
+                            <div class="pull-left">
+                                <h4 class="card-title "> Details Contrat de location. </h4>
+                            </div>
+                            <div class="pull-right">
+                                <form action="{{ route('contrats.destroy', $contrat) }}" method="POST">
+                                    <a class="btn btn-info btn-fab btn-fab-mini btn-round"
+                                        href="{{ route('contrats.print', $contrat) }}" target="_blank">
+                                        <i class="material-icons">print</i>
+                                    </a>
+
+                                    <a class="btn btn-warning btn-fab btn-fab-mini btn-round"
+                                        href="{{ route('contrats.printpdf', $contrat) }}" target="_blank">
+                                        <i class="material-icons">picture_as_pdf</i>
+                                    </a>
+
+                                    <a class="btn btn-success btn-fab btn-fab-mini btn-round"
+                                        href="{{ route('contrats.edit', $contrat) }}">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="btn btn-danger btn-fab btn-fab-mini btn-round show_confirm">
+                                        <i class="material-icons">delete</i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">

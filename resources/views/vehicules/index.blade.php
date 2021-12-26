@@ -6,8 +6,12 @@
             <div class="card">
                 <div class="card-header card-header-primary">
                     <div class="pull-left">
-                        <h4 class="card-title">Gerer véhicules</h4>
-                        <p class="card-category">Cree, modifier, supprimer, détailler</p>
+                        <h4 class="card-title">Gérer les véhicules</h4>
+                        <form action="{{ route('searchv') }}" method="GET">
+                            <input style="border-radius: 5px; width: 180%; border-color: transparent; background-color: #ffffffe3" type="text" id="search" name="search"
+                                placeholder="Rechercher par matricule" value="{{ $search }}">
+                            <button style="display:none" type="submit" class="btn btn-default mb-2">search</button>
+                        </form>
                     </div>
                     <div class="pull-right">
                         <a class="btn btn-secondary" href="{{ route('vehicules.create') }}"> Nouveau vehicule</a>
@@ -84,7 +88,7 @@
         elems.forEach(function(html) {
             let switchery = new Switchery(html, {
                 size: 'small',
-                color: '#0F8AC7'
+                color: '#2E769B'
             });
         });
     </script>

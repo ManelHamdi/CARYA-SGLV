@@ -24,10 +24,10 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now()
         ]);
         DB::table('entreprises')->insert([
-            'adresse' => 'adr',
-            'ville' => 'villent',
-            'telephone' => '78545545',
-            'logo' => file_get_contents('public/images/contraticon.png'),
+            'adresse' => '8612 N°5 Chargueia 1',
+            'ville' => 'Tunis',
+            'telephone' => '71717171',
+            'logo' => file_get_contents('public/images/logos.png'),
             'created_at' => now(),
             'updated_at' => now()
         ]);

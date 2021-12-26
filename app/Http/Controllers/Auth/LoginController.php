@@ -60,6 +60,7 @@ class LoginController extends Controller
             //dd("admin exists");
             return redirect()->intended('/admin');
         }
+        toast('verifier votre email et votre mot de passe', 'warning');
         return back()->withInput($request->only('email', 'remember'));
     }
 
@@ -81,6 +82,7 @@ class LoginController extends Controller
 
             return redirect()->intended('/home');
         }
+        toast('verifier votre email et votre mot de passe', 'warning');
         return back()->withInput($request->only('email', 'remember'));
     }
 }

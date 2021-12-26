@@ -245,7 +245,7 @@
                             elems.forEach(function(html) {
                                 let switchery = new Switchery(html, {
                                     size: 'small',
-                                    color: '#0F8AC7'
+                                    color: '#2E769B'
                                 });
                             });
                         </script>

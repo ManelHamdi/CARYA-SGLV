@@ -117,7 +117,7 @@
     <tr>
         <td rowspan="2">
             <img src="{{ 'data:image/*;base64,' . base64_encode($entreprise->logo) }}"
-                style="width:150px; max-height: 100px" />
+                style="width:150px; max-height: 80px" />
         </td>
 
     </tr>

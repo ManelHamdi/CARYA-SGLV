@@ -7,7 +7,7 @@
   -->
     <div class="logo">
         <a href="{{ route('home') }}" class="simple-text logo-normal">
-            {{ __('SGLV | Carya TN') }}
+            <img style="height: 40px; width: 100px;" src="{{ asset('images') }}/loloapp.png">
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -15,37 +15,37 @@
             <li class="nav-item{{ $activePage == 'Tableau de bord' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('home') }}">
                     <!--<i class="material-icons">dashboard</i>-->
-                    <i><img style="width:30px" src="{{ asset('material') }}/img/dashboard2.png"></i>
+                    <i class="material-icons">dashboard</i>
                     <p>{{ __('Tableau de bord') }}</p>
                 </a>
             </li>
 
             <li class="nav-item {{ $activePage == 'Véhicule' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('vehicule') }}">
-                    <i><img style="width:30px" src="{{ asset('material') }}/img/car.png"></i>
-                    <p>{{ __('Véhicules') }}</p>
+                    <i class="material-icons">library_books</i>
+                    <p>{{ __('Gestion des véhicules') }}</p>
                 </a>
             </li>
 
             <li class="nav-item {{ $activePage == 'Contrats' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('contrat') }}">
-                    <i><img style="width:25px" src="{{ asset('material') }}/img/contraticon.png"></i>
-                    <p>{{ __('Contrats') }}</p>
+                    <i class="material-icons">content_paste</i>
+                    <p>{{ __('Gestion des contrats') }}</p>
                 </a>
             </li>
 
             <li class="nav-item {{ $activePage == 'Clients' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('client') }}">
-                    <i><img style="width:25px" src="{{ asset('material') }}/img/clientmanage.jpg"></i>
-                    <p>{{ __('Clients') }}</p>
+                    <i class="material-icons">bubble_chart</i>
+                    <p>{{ __('Gestion des clients') }}</p>
                 </a>
             </li>
 
             <li
                 class="nav-item {{ $activePage == 'Mon profile' || $activePage == 'Demande' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="false">
-                    <i><img style="width:20px" src="{{ asset('material') }}/img/avatar2.png"></i>
-                    <p>{{ __('Compte') }}
+                    <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
+                    <p>{{ __('Gestion de compte') }}
                         <b class="caret"></b>
                     </p>
                 </a>

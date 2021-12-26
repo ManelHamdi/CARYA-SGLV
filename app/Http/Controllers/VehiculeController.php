@@ -22,8 +22,17 @@ class VehiculeController extends Controller
 
         //$photos = Photo::with('vehicule')->get();
 
-        return view('vehicules.index', compact('vehicules'))
+        return view('vehicules.index', ['vehicules' => $vehicules, 'search'=>''])
             ->with('i', (request()->input('page', 1) - 1) * 4);
+    }
+
+    public function indexFiltering(Request $request)
+    {
+        $search = $request->query('search');
+        info('search func.');
+        $vehicules = Vehicule::whereLike('matricule', $search ?? '')->paginate(4);
+
+        return view('vehicules.index')->with('vehicules', $vehicules)->with('search', $search);
     }
 
     /**
@@ -95,7 +104,7 @@ class VehiculeController extends Controller
         }
 
         return redirect()->route('vehicules.index')
-            ->with('success', 'Vehicule created successfully.');
+            ->with('success', 'Véhicule créé avec succès.');
     }
 
     /**
@@ -157,7 +166,7 @@ class VehiculeController extends Controller
 
 
         return redirect()->route('vehicules.index')
-            ->with('success', 'Vehicule updated successfully');
+            ->with('success', 'Vehicule mis à jour avec succès');
     }
 
     /**
@@ -171,7 +180,7 @@ class VehiculeController extends Controller
         $vehicule->delete();
 
         return redirect()->route('vehicules.index')
-            ->with('success', 'Vehicule deleted successfully');
+            ->with('success', 'Vehicule supprimé avec succès');
     }
 
     public function getPhotos($vehicule_matricule)
@@ -185,8 +194,8 @@ class VehiculeController extends Controller
         $vehicule = Vehicule::findOrFail($request->vehicule_matricule);
         $vehicule->disponibilite = $request->disponibilite;
         $vehicule->update();
-
-        return response()->json(['message' => 'Vehicule disponibilite updated successfully.']);
+        //toast('Disponibilité du véhicule mise à jour avec succès', 'success');
+        return response()->json(['message' => 'Disponibilité du véhicule mise à jour avec succès.']);
     }
 
     public function updatennDispo(string $vehicule_matricule)
@@ -194,8 +203,8 @@ class VehiculeController extends Controller
         $vehicule = Vehicule::findOrFail($vehicule_matricule);
         $vehicule->disponibilite = 0;
         $vehicule->update();
-
-        return response()->json(['message' => 'Vehicule disponibilite updated successfully.']);
+        //toast('Disponibilité du véhicule mise à jour avec succès', 'success');
+        return response()->json(['message' => 'Disponibilité du véhicule mise à jour avec succès.']);
     }
 
     public function updateClimatisation(Request $request)
@@ -204,6 +213,6 @@ class VehiculeController extends Controller
         $vehicule->climatisation = $request->climatisation;
         $vehicule->update();
 
-        return response()->json(['message' => 'Vehicule climatisation updated successfully.']);
+        return response()->json(['message' => 'Climatisation du véhicule mise à jour avec succès.']);
     }
 }

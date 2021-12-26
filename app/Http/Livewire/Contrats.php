@@ -14,6 +14,7 @@ use App\Models\Montant;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Meneses\LaravelMpdf\Facades\LaravelMpdf as PDf;
 
@@ -35,15 +36,38 @@ class Contrats extends Component
     public $checkOut = '\App\Http\Livewire\Contrats::getCheckOut';
 
     public $updateMode = false;
+    public $search = '';
+
+    public function __construct()
+    {
+        $this->contrats = Contrat::latest()->paginate(4);
+    }
 
     public function render()
     {
-        $this->contrats = Contrat::latest()->paginate(5);
-        return view('contrats.index', [
-            'contrats' => $this->contrats,
+        //Log::error("message: ". $this->search);
+        $this->contrats = Contrat::latest()->paginate(4);
+        //$search = '%'.$this->search.'%';
+
+        return view('Livewire.index', [
+            //'contrats' => $this->contrats,
             'client' => $this->client,
-            'montant' => $this->montant
+            'montant' => $this->montant,
+            //'contrats' => $this->contrats,
+            'search' => $this->search,
+
+            'contrats' => Contrat::whereLike('vehicule_matricule', $this->search ?? '')->paginate(4),
         ]);
+    }
+
+    public function indexFiltering(Request $request)
+    {
+        $this->search = $request->query('search');
+        info('search func.');
+        $this->contrats = Contrat::whereLike('vehicule_matricule', $this->search ?? '')->paginate(4);
+
+        return view('Livewire.index', ['client' => $this->client,
+        'montant' => $this->montant,])->with('contrats', $this->contrats)->with('search', $this->search);
     }
 
     public function show(Contrat $contrat)
@@ -90,26 +114,6 @@ class Contrats extends Component
         $idEntreprise = Auth::guard('employe')->user()->entreprise_id;
         $cemploye = Auth::guard('employe')->user();
         $entreprise = $this->getEntreprise($idEntreprise);
-        $mpdf = new PDf('', 'A4');
-        $mpdf->simpleTables = true;
-        $mpdf->packTableData = true;
-        $mpdf->keep_table_proportions = TRUE;
-        $mpdf->shrink_tables_to_fit = 1;
-        $mpdf->useDefaultCSS2 = true;
-        $mm = $mpdf::loadView('contrats.pdfpaper', [
-            'contrat' => $contrat,
-            'client' => $this->client,
-            'vehicule' => $this->vehicule,
-            'entreprise' => $entreprise,
-            'designu' => $this->designu,
-            'designm' => $this->designm,
-            'montant' => $this->montant,
-            'conducteur' => $this->conducteur,
-            'checkOut' => $this->checkOut,
-            'cemploye' => $cemploye,
-        ]);
-
-        return $mm->stream('document.pdf');
     }
 
     public function create()
