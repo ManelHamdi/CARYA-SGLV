@@ -131,23 +131,23 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Couleur</strong>
-                                                <input type="text" name="couleur" value="{{ $vehicule->couleur }}"  list="couleur"
-                                                    class="form-control" placeholder="Couleur">
-                                                    <datalist id="couleur">
-                                                        <option value="#FFFFFF">
-                                                        <option value="#000000">
-                                                        <option value="#808080">
-                                                        <option value="#C0C0C0">
-                                                        <option value="#FF0000">
-                                                        <option value="#0000FF">
-                                                        <option value="#964B00">
-                                                        <option value="#07BB07">
-                                                        <option value="#F5F5DC">
-                                                        <option value="#FFA500">
-                                                        <option value="#FFD700">
-                                                        <option value="#FFFF00">
-                                                        <option value="#800080">
-                                                    </datalist>
+                                                <input type="text" name="couleur" value="{{ $vehicule->couleur }}"
+                                                    list="couleur" class="form-control" placeholder="Couleur">
+                                                <datalist id="couleur">
+                                                    <option value="#FFFFFF">
+                                                    <option value="#000000">
+                                                    <option value="#808080">
+                                                    <option value="#C0C0C0">
+                                                    <option value="#FF0000">
+                                                    <option value="#0000FF">
+                                                    <option value="#964B00">
+                                                    <option value="#07BB07">
+                                                    <option value="#F5F5DC">
+                                                    <option value="#FFA500">
+                                                    <option value="#FFD700">
+                                                    <option value="#FFFF00">
+                                                    <option value="#800080">
+                                                </datalist>
                                             </div>
                                         </div>
                                     </td>
@@ -175,9 +175,14 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Carburation</strong>
-                                                <input type="text" name="carburation"
+                                                <!--<input type="text" name="carburation"
                                                     value="{{ $vehicule->carburation }}" class="form-control"
-                                                    placeholder="Carburation">
+                                                    placeholder="Carburation">-->
+                                                <select name="carburation" id="carburation" class="form-control">
+                                                    <option value="essence" {{ ($vehicule->carburation == 'essence') ? 'selected' : '' }}>essence</option>
+                                                    <option value="GPL" {{ ($vehicule->carburation == 'GPL') ? 'selected' : '' }}>GPL</option>
+                                                    <option value="diesel" {{ ($vehicule->carburation == 'diesel') ? 'selected' : '' }}>diesel</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </td>

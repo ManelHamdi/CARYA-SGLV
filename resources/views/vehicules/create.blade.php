@@ -180,8 +180,13 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Carburation</label>
-                                                    <input type="text" name="carburation" class="form-control"
-                                                        value="{{ old('carburation') }}" placeholder="">
+                                                    <!--<input type="text" name="carburation" class="form-control"
+                                                        value="{{ old('carburation') }}" placeholder="">-->
+                                                        <select name="carburation" id="carburation" class="form-control">
+                                                            <option value="essence">essence</option>
+                                                            <option value="GPL">GPL</option>
+                                                            <option value="diesel">diesel</option>
+                                                          </select>
                                                 </div>
                                             </div>
                                         </td>
