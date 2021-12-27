@@ -28,7 +28,7 @@
                 </div>
                 <div class="card-body">
                     <div id="typography">
-                         <!--<strong>Oups!</strong> Il y a eu des problèmes avec votre entrée.<br><br>-->
+                        <!--<strong>Oups!</strong> Il y a eu des problèmes avec votre entrée.<br><br>-->
                         @if ($errors->any())
                             <div class="alert alert-warning">
                                 <ul>
@@ -76,8 +76,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Prix Location</label>
-                                                    <input type="number" name="prixLoc" class="form-control" value="{{ old('prixLoc') }}"
-                                                        placeholder="">
+                                                    <input type="number" name="prixLoc" class="form-control"
+                                                        value="{{ old('prixLoc') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -85,7 +85,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Marque</label>
-                                                    <input type="text" name="marque" class="form-control" placeholder="" value="{{ old('marque') }}">
+                                                    <input type="text" name="marque" class="form-control" placeholder=""
+                                                        value="{{ old('marque') }}">
                                                 </div>
                                             </div>
                                         </td>
@@ -95,7 +96,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Type</label>
-                                                    <input type="text" name="type" class="form-control" placeholder="" value="{{ old('type') }}">
+                                                    <input type="text" name="type" class="form-control" placeholder=""
+                                                        value="{{ old('type') }}">
                                                 </div>
                                             </div>
                                         </td>
@@ -103,7 +105,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Model</label>
-                                                    <input type="text" name="model" class="form-control" placeholder="" value="{{ old('model') }}">
+                                                    <input type="text" name="model" class="form-control" placeholder=""
+                                                        value="{{ old('model') }}">
                                                 </div>
                                             </div>
                                         </td>
@@ -111,8 +114,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Date achat</label>
-                                                    <input type="date" name="dateAchat" class="form-control" value="{{ old('dateAchat') }}"
-                                                        placeholder="">
+                                                    <input type="date" name="dateAchat" class="form-control"
+                                                        value="{{ old('dateAchat') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -122,7 +125,23 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Couleur</label>
-                                                    <input type="text" name="couleur" class="form-control" placeholder="" value="{{ old('couleur') }}">
+                                                    <input type="color" name="couleur" class="form-control" list="couleur"
+                                                        placeholder="" value="{{ old('couleur') }}">
+                                                    <datalist id="couleur">
+                                                        <option value="#FFFFFF">
+                                                        <option value="#000000">
+                                                        <option value="#808080">
+                                                        <option value="#C0C0C0">
+                                                        <option value="#FF0000">
+                                                        <option value="#0000FF">
+                                                        <option value="#964B00">
+                                                        <option value="#07BB07">
+                                                        <option value="#F5F5DC">
+                                                        <option value="#FFA500">
+                                                        <option value="#FFD700">
+                                                        <option value="#FFFF00">
+                                                        <option value="#800080">
+                                                    </datalist>
                                                 </div>
                                             </div>
                                         </td>
@@ -130,8 +149,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Nombre place</label>
-                                                    <input type="number" name="nbrPlaces" class="form-control" value="{{ old('nbrPlaces') }}"
-                                                        placeholder="">
+                                                    <input type="number" name="nbrPlaces" class="form-control"
+                                                        value="{{ old('nbrPlaces') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -142,7 +161,7 @@
                                                     <input type="checkbox" name="climatisation" value="1"
                                                         class="js-switch" checked>
                                                     <!--<input type="text" name="climatisation" class="form-control"
-                                                            placeholder="" value="1">-->
+                                                                    placeholder="" value="1">-->
                                                 </div>
                                             </div>
                                         </td>
@@ -152,8 +171,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Puissance</label>
-                                                    <input type="text" name="puissance" class="form-control" value="{{ old('puissance') }}"
-                                                        placeholder="">
+                                                    <input type="text" name="puissance" class="form-control"
+                                                        value="{{ old('puissance') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -161,8 +180,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Carburation</label>
-                                                    <input type="text" name="carburation" class="form-control" value="{{ old('carburation') }}"
-                                                        placeholder="">
+                                                    <input type="text" name="carburation" class="form-control"
+                                                        value="{{ old('carburation') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -170,8 +189,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Kilometrage</label>
-                                                    <input type="number" name="kilometrage" class="form-control" value="{{ old('kilometrage') }}"
-                                                        placeholder="">
+                                                    <input type="number" name="kilometrage" class="form-control"
+                                                        value="{{ old('kilometrage') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -181,8 +200,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Boite vitesse</label>
-                                                    <input type="text" name="boiteVitesse" class="form-control" value="{{ old('boiteVitesse') }}"
-                                                        placeholder="">
+                                                    <input type="text" name="boiteVitesse" class="form-control"
+                                                        value="{{ old('boiteVitesse') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -190,8 +209,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Taille moteur</label>
-                                                    <input type="text" name="tailleMoteur" class="form-control" value="{{ old('tailleMoteur') }}"
-                                                        placeholder="">
+                                                    <input type="text" name="tailleMoteur" class="form-control"
+                                                        value="{{ old('tailleMoteur') }}" placeholder="">
                                                 </div>
                                             </div>
                                         </td>
@@ -210,8 +229,8 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea name="description" class="form-control"
-                                                        rows="3" placeholder="">{{ old('description') }}</textarea>
+                                                    <textarea name="description" class="form-control" rows="3"
+                                                        placeholder="">{{ old('description') }}</textarea>
                                                 </div>
                                             </div>
                                         </td>

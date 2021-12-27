@@ -381,7 +381,7 @@
                                                     KM
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="kmD" class="form-control" 
+                                                    <input type="number" name="kmD" class="form-control"
                                                         placeholder="KM">
                                                 </td>
                                                 <th>
@@ -421,7 +421,7 @@
 
 
                                     <!-- TODO Designation -->
-                                    <p class="accordion"> Désignation </p>
+                                    <p class="accordion"> Facturation </p>
                                     <div class="panel">
                                         <table class="table">
                                             <tr>

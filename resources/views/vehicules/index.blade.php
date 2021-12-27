@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-primary">
                     <div class="pull-left">
-                        <h4 class="card-title">Gérer les véhicules</h4>
+                        <h4 class="card-title">Liste des voitures</h4>
                         <form action="{{ route('searchv') }}" method="GET">
                             <input style="border-radius: 5px; width: 180%; border-color: transparent; background-color: #ffffffe3" type="text" id="search" name="search"
                                 placeholder="Rechercher par matricule" value="{{ $search }}">
@@ -14,7 +14,7 @@
                         </form>
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-secondary" href="{{ route('vehicules.create') }}"> Nouveau vehicule</a>
+                        <a class="btn btn-secondary" href="{{ route('vehicules.create') }}"> Nouvelle voiture </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -27,6 +27,7 @@
                             <thead class=" text-primary">
                                 <th>Images</th>
                                 <th>Matricule</th>
+                                <th>Model</th>
                                 <th>Prix Location</th>
                                 <th>Disponibilite</th>
                                 <th>Action</th>
@@ -44,6 +45,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $vehicule->matricule }}</td>
+                                        <td>{{ $vehicule->model }}</td>
                                         <td>{{ $vehicule->prixLoc }}</td>
                                         <td><input type="checkbox" name="disponibilite"
                                                 data-id="{{ $vehicule->matricule }}" value="1" class="js-switch"

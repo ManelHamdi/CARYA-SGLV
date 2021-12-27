@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <div class="pull-left">
-                                <h4 class="card-title">Gérer les contrats</h4>
+                                <h4 class="card-title">Liste des contrats</h4>
                                 <form action="{{ route('search') }}" method="GET">
                                     <input style="border-radius: 5px; width: 180%; border-color: transparent; background-color: #ffffffe3" type="text" id="search" name="search"
                                         placeholder="Rechercher par matricule" value="{{ $search }}">
