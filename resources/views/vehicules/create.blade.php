@@ -161,7 +161,7 @@
                                                     <input type="checkbox" name="climatisation" value="1"
                                                         class="js-switch" checked>
                                                     <!--<input type="text" name="climatisation" class="form-control"
-                                                                    placeholder="" value="1">-->
+                                                                            placeholder="" value="1">-->
                                                 </div>
                                             </div>
                                         </td>
@@ -181,12 +181,12 @@
                                                 <div class="form-group">
                                                     <label>Carburation</label>
                                                     <!--<input type="text" name="carburation" class="form-control"
-                                                        value="{{ old('carburation') }}" placeholder="">-->
-                                                        <select name="carburation" id="carburation" class="form-control">
-                                                            <option value="essence">essence</option>
-                                                            <option value="GPL">GPL</option>
-                                                            <option value="diesel">diesel</option>
-                                                          </select>
+                                                                value="{{ old('carburation') }}" placeholder="">-->
+                                                    <select name="carburation" id="carburation" class="form-control">
+                                                        <option value="essence">essence</option>
+                                                        <option value="GPL">GPL</option>
+                                                        <option value="diesel">diesel</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </td>
@@ -205,8 +205,12 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Boite vitesse</label>
-                                                    <input type="text" name="boiteVitesse" class="form-control"
-                                                        value="{{ old('boiteVitesse') }}" placeholder="">
+                                                    <!--<input type="text" name="boiteVitesse" class="form-control"
+                                                            value="{{ old('boiteVitesse') }}" placeholder="">-->
+                                                    <select name="boiteVitesse" id="boiteVitesse" class="form-control">
+                                                        <option value="manuel">manuel</option>
+                                                        <option value="automatique">automatique</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </td>

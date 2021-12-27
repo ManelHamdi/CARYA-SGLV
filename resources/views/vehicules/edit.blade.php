@@ -221,9 +221,13 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Boite vitesse</strong>
-                                                <input type="text" name="boiteVitesse"
+                                                <!--<input type="text" name="boiteVitesse"
                                                     value="{{ $vehicule->boiteVitesse }}" class="form-control"
-                                                    placeholder="Boite vitesse">
+                                                    placeholder="Boite vitesse">-->
+                                                    <select name="boiteVitesse" id="boiteVitesse" class="form-control">
+                                                        <option value="manuel" {{ ($vehicule->boiteVitesse == 'manuel') ? 'selected' : '' }}>manuel</option>
+                                                        <option value="automatique" {{ ($vehicule->boiteVitesse == 'automatique') ? 'selected' : '' }}>automatique</option>
+                                                    </select>
                                             </div>
                                         </div>
                                     </td>
