@@ -14,7 +14,6 @@ use App\Models\Montant;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Meneses\LaravelMpdf\Facades\LaravelMpdf as PDf;
 
@@ -55,6 +54,7 @@ class Contrats extends Component
             'montant' => $this->montant,
             //'contrats' => $this->contrats,
             'search' => $this->search,
+
 
             'contrats' => Contrat::whereLike('vehicule_matricule', $this->search ?? '')->paginate(4),
         ]);
@@ -122,6 +122,7 @@ class Contrats extends Component
         //$clients = Client::all();
         return view('contrats.create', [
             'vehicules' => $vehicules,
+            'fvehicule' => $this->vehicule,
             //'clients' => $clients,
         ]);
     }
