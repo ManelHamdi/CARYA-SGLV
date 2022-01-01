@@ -66,9 +66,17 @@
                                         <td>
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="form-group">
-                                                    <label>Matricule</label>
-                                                    <input type="text" name="matricule" class="form-control"
-                                                        placeholder="">
+                                                    <label>Matricule</label><br />
+                                                    <input type="number" width="30%" id="mat1" name="mat1"
+                                                    class="form-control3"  onkeypress="concatmat()" onkeyup="concatmat()"
+                                                        placeholder="" onKeyPress="if(this.value.length==4) return false;">
+                                                    <input type="text" width="30%" name="mat2" class="form-control3"
+                                                        value="تونس" disabled>
+                                                    <input type="number" width="30%" name="matricule3"
+                                                        class="form-control3" placeholder="" id="mat2"
+                                                        onkeypress="concatmat()" onkeyup="concatmat()"
+                                                        onKeyPress="if(this.value.length==4) return false;">
+                                                    <input type="hidden" id="matricule" name = matricule>
                                                 </div>
                                             </div>
                                         </td>
@@ -161,7 +169,7 @@
                                                     <input type="checkbox" name="climatisation" value="1"
                                                         class="js-switch" checked>
                                                     <!--<input type="text" name="climatisation" class="form-control"
-                                                                            placeholder="" value="1">-->
+                                                                                placeholder="" value="1">-->
                                                 </div>
                                             </div>
                                         </td>
@@ -181,7 +189,7 @@
                                                 <div class="form-group">
                                                     <label>Carburation</label>
                                                     <!--<input type="text" name="carburation" class="form-control"
-                                                                value="{{ old('carburation') }}" placeholder="">-->
+                                                                    value="{{ old('carburation') }}" placeholder="">-->
                                                     <select name="carburation" id="carburation" class="form-control">
                                                         <option value="essence">essence</option>
                                                         <option value="GPL">GPL</option>
@@ -206,7 +214,7 @@
                                                 <div class="form-group">
                                                     <label>Boite vitesse</label>
                                                     <!--<input type="text" name="boiteVitesse" class="form-control"
-                                                            value="{{ old('boiteVitesse') }}" placeholder="">-->
+                                                                value="{{ old('boiteVitesse') }}" placeholder="">-->
                                                     <select name="boiteVitesse" id="boiteVitesse" class="form-control">
                                                         <option value="manuel">manuel</option>
                                                         <option value="automatique">automatique</option>
@@ -304,4 +312,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function concatmat() {
+            mat1 = document.getElementById("mat1").value;
+            tun = '\u202B' + 'تونس' + '\u202C';
+            mat2 = document.getElementById("mat2").value;
+            m1 = '\u202A' + mat1 + '\u202C';
+            m2 = '\u202A' + mat2 + '\u202C';
+            document.getElementById("matricule").value = m2 + tun + m1;
+        }
+    </script>
 @endsection

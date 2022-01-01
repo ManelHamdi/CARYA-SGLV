@@ -22,7 +22,7 @@ class VehiculeController extends Controller
 
         //$photos = Photo::with('vehicule')->get();
 
-        return view('vehicules.index', ['vehicules' => $vehicules, 'search'=>''])
+        return view('vehicules.index', ['vehicules' => $vehicules, 'search' => ''])
             ->with('i', (request()->input('page', 1) - 1) * 4);
     }
 
@@ -60,45 +60,30 @@ class VehiculeController extends Controller
             ]);
 
             $photoController = new PhotoController();
+            $vehic = new Vehicule();
+            $vehic->matricule = $request->matricule;
+            $vehic->prixLoc = $request->prixLoc;
+            $vehic->dateAchat = $request->dateAchat;
+            $vehic->type = $request->type;
+            $vehic->model = $request->model;
+            $vehic->marque = $request->marque;
+            $vehic->couleur = $request->couleur;
+            $vehic->nbrPlaces = $request->nbrPlaces;
+            $vehic->climatisation = $request->climatisation;
+            $vehic->description = $request->description;
+            $vehic->carburation = $request->carburation;
+            $vehic->kilometrage = $request->kilometrage;
+            $vehic->puissance = $request->puissance;
+            $vehic->boiteVitesse = $request->boiteVitesse;
+            $vehic->tailleMoteur = $request->tailleMoteur;
+            $vehic->disponibilite = $request->disponibilite;
+            $vehic->save();
 
-            if (Str::contains($request->matricule, 'TU')) {
-                $input = $request->all();
-                Vehicule::create($input);
-                if ($request->hasfile('imageFile')) {
-                    foreach ($request->file('imageFile') as $file) {
-                        $photoController->addPhoto($request->matricule, $file);
-                    }
-                }
-            } else {
-                $vehic = new Vehicule();
-                $vehic->matricule = $request->matricule . "TU";
-                $vehic->prixLoc = $request->prixLoc;
-                $vehic->dateAchat = $request->dateAchat;
-                $vehic->type = $request->type;
-                $vehic->model = $request->model;
-                $vehic->marque = $request->marque;
-                $vehic->couleur = $request->couleur;
-                $vehic->nbrPlaces = $request->nbrPlaces;
-                $vehic->climatisation = $request->climatisation;
-                $vehic->description = $request->description;
-                $vehic->carburation = $request->carburation;
-                $vehic->kilometrage = $request->kilometrage;
-                $vehic->puissance = $request->puissance;
-                $vehic->boiteVitesse = $request->boiteVitesse;
-                $vehic->tailleMoteur = $request->tailleMoteur;
-                $vehic->disponibilite = $request->disponibilite;
-                $vehic->save();
-
-                if ($request->hasfile('imageFile')) {
-                    foreach ($request->file('imageFile') as $file) {
-                        $photoController->addPhoto($request->matricule . "TU", $file);
-                    }
+            if ($request->hasfile('imageFile')) {
+                foreach ($request->file('imageFile') as $file) {
+                    $photoController->addPhoto($request->matricule . "TU", $file);
                 }
             }
-
-
-
-
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }

@@ -535,7 +535,7 @@
                                                     Remise %
                                                 </th>
                                                 <td colspan="2">
-                                                    
+
                                                     <input type="number" name="remisem" class="form-control" id="remisem"
                                                     step="any" onkeypress="resmontantnet()" onkeyup="resmontantnet()"
                                                         value="{{ old('remisem') }}" placeholder="Remise %">
@@ -546,7 +546,7 @@
                                                     Frais de livraison
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="fraisLivraisonm" id="fraisLivraisonm" 
+                                                    <input type="number" name="fraisLivraisonm" id="fraisLivraisonm"
                                                     class="form-control" onkeypress="resmontantnet()" onkeyup="resmontantnet()"
                                                         value="{{ old('fraisLivraisonm') }}" step="any"
                                                         placeholder="Montant">
@@ -557,7 +557,7 @@
                                                     Frais de reprise
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="fraisReprisem" id="fraisReprisem" 
+                                                    <input type="number" name="fraisReprisem" id="fraisReprisem"
                                                     class="form-control" onkeypress="resmontantnet()" onkeyup="resmontantnet()"
                                                         value="{{ old('fraisReprisem') }}" step="any"
                                                         placeholder="Montant">
@@ -578,7 +578,7 @@
                                                     TVA %
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="tvam" class="form-control" id="tvam" 
+                                                    <input type="number" name="tvam" class="form-control" id="tvam"
                                                     step="any" onkeypress="resmontotalttc()" onkeyup="resmontotalttc()"
                                                         value="{{ old('tvam') }}" placeholder="TVA %">
                                                 </td>
@@ -588,7 +588,7 @@
                                                     Suppression Franchise
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="suppFranchisem" id="suppFranchisem" 
+                                                    <input type="number" name="suppFranchisem" id="suppFranchisem"
                                                     class="form-control" onkeypress="resmontotalttc()" onkeyup="resmontotalttc()"
                                                         value="{{ old('suppFranchisem') }}" step="any"
                                                         placeholder="Montant">
@@ -599,7 +599,7 @@
                                                     Assurance Passage
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="assurancePassagerm" id="assurancePassagerm" 
+                                                    <input type="number" name="assurancePassagerm" id="assurancePassagerm"
                                                     class="form-control" onkeypress="resmontotalttc()" onkeyup="resmontotalttc()"
                                                         value="{{ old('assurancePassagerm') }}" step="any"
                                                         placeholder="Montant">
@@ -610,7 +610,7 @@
                                                     Timbre
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="timbrem" class="form-control" id="timbrem" 
+                                                    <input type="number" name="timbrem" class="form-control" id="timbrem"
                                                     step="any" onkeypress="resmontotalttc()" onkeyup="resmontotalttc()"
                                                         value="{{ old('timbrem') }}" placeholder="Montant">
                                                 </td>
@@ -620,7 +620,7 @@
                                                     Total TTC
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="montantDuD" class="form-control" id="montantDuD" 
+                                                    <input type="number" name="montantDuD" class="form-control" id="montantDuD"
                                                     step="any"
                                                         value="{{ old('montantDuD') }}" placeholder="Montant *">
                                                 </td>
@@ -630,7 +630,7 @@
                                                     Montant recu avec remerciments
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="montantRecu" id="montantRecu" 
+                                                    <input type="number" name="montantRecu" id="montantRecu"
                                                     class="form-control" onkeypress="resmontantdu()" onkeyup="resmontantdu()"
                                                         step="any" value="{{ old('montantRecu') }}"
                                                         placeholder="Montant *">
@@ -639,7 +639,7 @@
                                                     Montant du
                                                 </th>
                                                 <td>
-                                                    <input type="number" name="montantDu" id="montantDu" 
+                                                    <input type="number" name="montantDu" id="montantDu"
                                                     class="form-control" step="any"
                                                         value="{{ old('montantDu') }}" placeholder="Montant *">
                                                 </td>
