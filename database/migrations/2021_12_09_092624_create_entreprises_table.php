@@ -19,7 +19,11 @@ class CreateEntreprisesTable extends Migration
             $table->increments('id');
             $table->string('adresse', 40);
             $table->string('ville', 40);
+            $table->string('email', 50);
+            $table->string('rib');
+            $table->string('matfisc');
             $table->integer('telephone');
+            $table->integer('telephone2');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE entreprises ADD logo LONGBLOB");

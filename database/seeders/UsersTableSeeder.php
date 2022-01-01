@@ -25,8 +25,12 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('entreprises')->insert([
             'adresse' => '8612 N°5 Chargueia 1',
-            'ville' => 'Tunis',
-            'telephone' => '71717171',
+            'ville' => 'Rue Energie solaire - Tunis',
+            'rib' => '10120110107218978853 STB',
+            'email' => 'speedway1.rentacar@gmail.com',
+            'matfisc' => '1507580E/A/M/000',
+            'telephone' => '99308408',
+            'telephone2' => '36131699',
             'logo' => file_get_contents('public/images/logos.png'),
             'created_at' => now(),
             'updated_at' => now()
