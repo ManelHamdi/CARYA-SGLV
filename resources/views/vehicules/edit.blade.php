@@ -79,9 +79,17 @@
                                     <td colspan="2">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>Matricule:</strong>
-                                                <input type="text" name="matricule" value="{{ $vehicule->matricule }}"
-                                                    class="form-control" placeholder="Matricule">
+                                                <label>Matricule</label><br />
+                                                <input type="number" width="30%" id="mat1" name="mat1"
+                                                class="form-control3"  onkeypress="concatmat()" onkeyup="concatmat()"
+                                                    placeholder="" onKeyPress="if(this.value.length==4) return false;">
+                                                <input type="text" width="30%" name="mat2" class="form-control3"
+                                                    value="تونس" disabled>
+                                                <input type="number" width="30%" name="matricule3"
+                                                    class="form-control3" placeholder="" id="mat2"
+                                                    onkeypress="concatmat()" onkeyup="concatmat()"
+                                                    onKeyPress="if(this.value.length==4) return false;">
+                                                <input type="hidden" id="matricule" name = matricule>
                                             </div>
                                         </div>
                                     </td>
@@ -353,4 +361,14 @@
             </div>
         </div>
     </div>
+    <script>
+        function concatmat() {
+            mat1 = document.getElementById("mat1").value;
+            tun = '\u202B' + 'تونس' + '\u202C';
+            mat2 = document.getElementById("mat2").value;
+            m1 = '\u202A' + mat1 + '\u202C';
+            m2 = '\u202A' + mat2 + '\u202C';
+            document.getElementById("matricule").value = m2 + tun + m1;
+        }
+    </script>
 @endsection
