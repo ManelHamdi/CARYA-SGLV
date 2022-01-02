@@ -122,14 +122,7 @@
 </style>
 
 <table id="table">
-    <tr>
-        <td colspan="2" valign="top" style="text-align: center; margin-bottom: 0px; margin-top: 0pc;">
-            <h2> Contrat de location </h2>
-        </td>
-        <td colspan="2" valign="top" style="text-align: center; margin-bottom: 0px; margin-top: 0pc;">
-            <h2>  عقد كراء </h2>
-        </td>
-    </tr>
+
 
     <tr>
 
@@ -497,12 +490,12 @@
                 </tr>
                 <tr>
                     <td>
-                        Sous Total HT / تحت الحساب
+                        Montant Dû / المبلغ المطلوب
                     </td>
                     <td colspan="2" style="text-align: center">
                         <p>
                             <strong>
-                                {{ $montant($contrat->id)->sousTotal }} &nbsp;
+                                {{ $montant($contrat->id)->montantDuD }} &nbsp;
                             </strong>
                         </p>
                     </td>
@@ -529,18 +522,7 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td>
-                        Montant Dû / المبلغ المطلوب
-                    </td>
-                    <td colspan="2" style="text-align: center">
-                        <p>
-                            <strong>
-                                {{ $montant($contrat->id)->montantDuD }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
+
             </table>
 
             <table id="tableis" style="margin-top: 3px">
