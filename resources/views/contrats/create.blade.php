@@ -119,19 +119,20 @@
                                         <table class="table">
                                             <tr>
                                                 <th>
-                                                    Nom client
+                                                    Nom complet
                                                 </th>
                                                 <td>
                                                     <input type="text" name="nom" class="form-control"
                                                         value="{{ old('nom') }}" placeholder="Nom client *">
                                                 </td>
-                                                <th>
-                                                    Prenom client
-                                                </th>
                                                 <td>
                                                     <input type="text" name="prenom" class="form-control"
-                                                        value="{{ old('prenom') }}" placeholder="Prenom client *">
+                                                        value="{{ old('prenom') }}" placeholder=" الاسم الكامل *">
                                                 </td>
+                                                <th>
+                                                    الاسم الكامل
+                                                </th>
+
 
                                             </tr>
                                             <tr>
@@ -655,69 +656,69 @@
                                         <table class="table">
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" id="cartGrise" name="cartGrise" value="1">
+                                                    <input type="checkbox" id="cartGrise" name="cartGrise" value="1" checked>
                                                     <strong for="cartGrise"> Carte grise </strong>
                                                 </td>
                                                 <td>
                                                     <input type="checkbox" id="attestAssurance" name="attestAssurance"
-                                                        value="1">
+                                                        value="1" checked>
                                                     <strong for="attestAssurance"> Attestation d'assurance </strong>
                                                 </td>
                                                 <td>
                                                     <input type="checkbox" id="carteExploitation" name="carteExploitation"
-                                                        value="1">
+                                                        value="1" checked>
                                                     <strong for="carteExploitation"> Carte d'exploitation </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="vignatte" name="vignatte" value="1">
+                                                    <input type="checkbox" id="vignatte" name="vignatte" value="1" checked>
                                                     <strong for="vignatte"> Vignette </strong>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <input type="checkbox" id="visiteTechnique" name="visiteTechnique"
-                                                        value="1">
+                                                        value="1" checked>
                                                     <strong for="visiteTechnique"> Visite technique </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="roueSecours" name="roueSecours" value="1">
+                                                    <input type="checkbox" id="roueSecours" name="roueSecours" value="1" checked>
                                                     <strong for="roueSecours"> Roue de secours </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="lecteurCd" name="lecteurCd" value="1">
+                                                    <input type="checkbox" id="lecteurCd" name="lecteurCd" value="1" checked>
                                                     <strong for="lecteurCd"> Lecteur CD - Radio </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="tapis" name="tapis" value="1">
+                                                    <input type="checkbox" id="tapis" name="tapis" value="1" checked>
                                                     <strong for="tapis"> Tapis </strong>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" id="cric" name="cric" value="1">
+                                                    <input type="checkbox" id="cric" name="cric" value="1" checked>
                                                     <strong for="cric"> Cric </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="enjoliveur" name="enjoliveur" value="1">
+                                                    <input type="checkbox" id="enjoliveur" name="enjoliveur" value="1" checked>
                                                     <strong for="enjoliveur"> Enjoliveur </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="antenne" name="antenne" value="1">
+                                                    <input type="checkbox" id="antenne" name="antenne" value="1" checked>
                                                     <strong for="antenne"> Antenne </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="allumeCigar" name="allumeCigar" value="1">
+                                                    <input type="checkbox" id="allumeCigar" name="allumeCigar" value="1" checked>
                                                     <strong for="allumeCigar"> Allume cigare </strong>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <input type="checkbox" id="trianglePanne" name="trianglePanne"
-                                                        value="1">
+                                                        value="1" checked>
                                                     <strong for="trianglePanne"> Triangle de panne </strong>
                                                 </td>
                                                 <td>
-                                                    <input type="checkbox" id="autre" name="autre" value="1">
+                                                    <input type="checkbox" id="autre" name="autre" value="1" checked>
                                                     <strong for="autre"> Autre </strong>
                                                 </td>
                                             </tr>

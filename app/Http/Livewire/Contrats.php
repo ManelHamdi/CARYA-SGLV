@@ -56,7 +56,7 @@ class Contrats extends Component
             'search' => $this->search,
 
 
-            'contrats' => Contrat::whereLike('vehicule_matricule', $this->search ?? '')->paginate(4),
+            'contrats' => Contrat::whereLike('vehicule_matricule', $this->search ?? '')->latest()->paginate(4),
         ]);
     }
 

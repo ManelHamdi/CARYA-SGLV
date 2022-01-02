@@ -114,48 +114,39 @@
 </style>
 
 <table id="table">
+    
+
     <tr>
-        <td rowspan="2">
+
+        <td>
+            <p id="bp"> Adresse: {{ $entreprise->adresse }} &nbsp; </p>
+            <p id="bp"> {{ $entreprise->ville }} &nbsp; </p>
+
+        </td>
+        <td colspan="2" style="text-align:center;">
             <img src="{{ 'data:image/*;base64,' . base64_encode($entreprise->logo) }}"
-                style="width:150px; max-height: 80px" />
+                style="width:190px; max-height: 100px" />
+        </td>
+        <td>
+            <p id="bp"> R.I.B. </p>
+            <p id="bp"> {{ $entreprise->rib }} &nbsp; </p>
         </td>
 
     </tr>
     <tr>
-        <td rowspan="2" style="text-align:center;">
-            <h2> {{ $contrat->id }} &nbsp; </h2>
-        </td>
-        <td style="border: 1px solid rgb(146, 142, 142);">
-            Type / النوع
-            <p id="mp">
-                {{ $vehicule($contrat->vehicule_matricule)->type }} &nbsp;
-            </p>
-        </td>
-        <td style="border: 1px solid rgb(146, 142, 142);">
-            Immatriculation/الرقم المنجمي
-            <p id="mp">
-                {{ $contrat->vehicule_matricule }} &nbsp;
-            </p>
-        </td>
-    </tr>
-    <tr>
+
         <td>
-            <p id="bp"> {{ $entreprise->adresse }} &nbsp; </p>
-            <p id="bp"> {{ $entreprise->ville }} &nbsp; </p>
-            <p id="bp"> Tél : {{ $entreprise->telephone }} &nbsp; </p>
+            <p id="bp"> M.F. {{ $entreprise->matfisc }} &nbsp; </p>
+            <p id="bp"> Email : {{ $entreprise->email }} &nbsp; </p>
         </td>
-        <td style="border: 1px solid rgb(146, 142, 142);">
-            Livraison / التسليم
-            <p id="mp">
-                {{ $contrat->livraison }} &nbsp;
-            </p>
+        <td colspan="2" style="text-align:center;">
+            <h3> {{ $contrat->id }} &nbsp; </h3>
         </td>
-        <td style="border: 1px solid rgb(146, 142, 142);">
-            Reprise / استرجاع
-            <p id="mp">
-                {{ $contrat->reprise }} &nbsp;
-            </p>
+        <td>
+            <p id="bp"> Telephone 1: {{ $entreprise->telephone }} &nbsp; </p>
+            <p id="bp"> Telephone 2: {{ $entreprise->telephone2 }} &nbsp; </p>
         </td>
+
     </tr>
     <tr>
         <td colspan="2">
@@ -269,23 +260,6 @@
                         </p>
                     </td>
                 </tr>
-            </table>
-
-            <table id="tableit" style="margin-top: 3px">
-                <tr>
-                    <td colspan="3">
-                        <p style="text-align:left;margin-bottom: 0px">
-                            2éme Conducteur
-                            <span style="float:right;">
-                                السائق الثاني
-                            </span>
-                        </p>
-                        <p id="mp">
-                            {{ $conducteur($contrat->client_id)->nom . ' ' . $conducteur($contrat->client_id)->prenom }}
-                            &nbsp;
-                        </p>
-                    </td>
-                </tr>
                 <tr>
                     <td colspan="3">
                         <p style="text-align:left;margin-bottom: 0px">
@@ -326,6 +300,24 @@
                         </p>
                     </td>
                 </tr>
+            </table>
+
+            <table id="tableit" style="margin-top: 3px">
+                <tr>
+                    <td colspan="3">
+                        <p style="text-align:left;margin-bottom: 0px">
+                            2éme Conducteur
+                            <span style="float:right;">
+                                السائق الثاني
+                            </span>
+                        </p>
+                        <p id="mp">
+                            {{ $conducteur($contrat->client_id)->nom . ' ' . $conducteur($contrat->client_id)->prenom }}
+                            &nbsp;
+                        </p>
+                    </td>
+                </tr>
+
                 <tr>
                     <td style="border-right: 0px rgb(146, 142, 142); text-align: center">
                         Nationnalite/الجنسية
@@ -376,74 +368,102 @@
                 <tr>
                     <td colspan="3">
                         <p style="text-align:left;">
-                            Départ
+                            Vehicule
                             <span style="float:right;">
+                                السيارة
+                            </span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td colspan="2" style="border-right: 0px;">
+                        <p style="text-align:left;margin-bottom: 0px">
+                            Model
+                            <span id="fright">
+                                طراز السيارة
+                            </span>
+                        </p>
+                        <p id="mp">
+                            {{ $vehicule($contrat->vehicule_matricule)->model }} &nbsp;
+                        </p>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-right: 0px;">
+                        <p style="text-align:left;margin-bottom: 0px">
+                            Immatriculation
+                            <span id="fright">
+                                الرقم المنجمي
+                            </span>
+                        </p>
+                        <p id="mp">
+                            {{ $vehicule($contrat->vehicule_matricule)->matricule }} &nbsp;
+                        </p>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-right: 0px;">
+                        <p style="text-align:left;margin-bottom: 0px">
+                            Départ
+                            <span id="fright">
                                 الخروج
                             </span>
                         </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">
-                        Date et heure / التاريخ و الساعة
                         <p id="mp">
+                            Date et heure / التاريخ و الساعة <br />
                             {{ $contrat->dateDebut }} &nbsp;
                         </p>
-                    </td>
-                    <td style="text-align: center">
-                        KM / العداد
-                        <p id="mp">
-                            {{ $contrat->kmD }} &nbsp;
+                        <p style="text-align:left;margin-bottom: 0px">
+                            Livraison
+                            <span id="fright">
+                                التسليم
+                            </span>
                         </p>
-                    </td>
-                    <td style="text-align: center">
-                        Carburant / مستوى الوقود
+
                         <p id="mp">
-                            {{ $contrat->carburationD }} &nbsp;
+                            {{ $contrat->livraison }} &nbsp;
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
-                        <p style="text-align:left;">
+                    <td colspan="2" style="border-right: 0px;">
+                        <p style="text-align:left;margin-bottom: 0px">
                             Retour
-                            <span style="float:right;">
+                            <span id="fright">
                                 العودة
                             </span>
                         </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">
-                        Date et heure / التاريخ و الساعة
                         <p id="mp">
+                            Date et heure / التاريخ و الساعة <br />
                             {{ $contrat->dateFin }} &nbsp;
                         </p>
-                    </td>
-                    <td style="text-align: center">
-                        KM / العداد
-                        <p id="mp">
-                            {{ $contrat->kmR }} &nbsp;
+                        <p style="text-align:left;margin-bottom: 0px">
+                            Reprise
+                            <span id="fright">
+                                استرجاع
+                            </span>
                         </p>
-                    </td>
-                    <td style="text-align: center">
-                        Carburant / مستوى الوقود
+
                         <p id="mp">
-                            {{ $contrat->carburationR }} &nbsp;
+                            {{ $contrat->reprise }} &nbsp;
                         </p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align: center">
-                        Nombre de jours / عدد الأيام
-                        <p id="mp">
-                            {{ $contrat->nbrJour }} &nbsp;
+                    <td colspan="2" style="border-right: 0px;">
+                        <p style="text-align:left;margin-bottom: 0px">
+                            Retour
+                            <span id="fright">
+                                العودة
+                            </span>
                         </p>
-                    </td>
-                    <td colspan="2" style="text-align: center">
-                        Prolongation autorisé / تمديد مرخص
                         <p id="mp">
-                            {{ $contrat->prolongation }} &nbsp;
+                            Date et heure / التاريخ و الساعة <br />
+                            {{ $contrat->dateFin }} &nbsp;
                         </p>
                     </td>
                 </tr>
@@ -462,42 +482,18 @@
                 </tr>
                 <tr>
                     <td>
-                        Location de base / مدة الكراء
+                        Sous Total HT / تحت الحساب
                     </td>
-                    <td>
-                        <p id="rp">
+                    <td colspan="2" style="text-align: center">
+                        <p>
                             <strong>
-                                {{ $designu($contrat->id)->locationBase }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->locationBase }} &nbsp;
+                                {{ $montant($contrat->id)->sousTotal }} &nbsp;
                             </strong>
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        2éme conducteur / سائق ثاني
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->conducteur }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->conducteur }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
+
+
                 <tr>
                     <td>
                         Siège bébé / كرسي رضيع
@@ -517,201 +513,7 @@
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        Chauffeur / سائق
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->chauffeur }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->chauffeur }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Surcharge Aérop. / معلوم المطار
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->surchargeAerop }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->surchargeAerop }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Sous Total HT / تحت الحساب
-                    </td>
-                    <td colspan="2" style="text-align: center">
-                        <p>
-                            <strong>
-                                {{ $montant($contrat->id)->sousTotal }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Remise / تخفيض
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->remise }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->remise }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Frais de livraison / تكلفة التسليم
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->fraisLivraison }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->fraisLivraison }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Frais de reprise / تكلفة الاسترجاع
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->fraisReprise }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->fraisReprise }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Montant Net HT / المبلغ الصافي
-                    </td>
-                    <td colspan="2" style="text-align: center">
-                        <p>
-                            <strong>
-                                {{ $montant($contrat->id)->montantNet }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        TVA / أ. ق. م
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->tva }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->tva }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Supprission Franchise/jr / التأمين على الأضرار
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->suppFranchise }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->suppFranchise }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Assurance Passager/jr / التأمين على الأشخاص
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->assurancePassager }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->assurancePassager }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Timbre / الطابع الجبائي
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designu($contrat->id)->timbre }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                    <td>
-                        <p id="rp">
-                            <strong>
-                                {{ $designm($contrat->id)->timbre }} &nbsp;
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
+
                 <tr>
                     <td>
                         Montant Dû / المبلغ المطلوب
@@ -761,20 +563,15 @@
         <td colspan="4">
             <table id="tableic">
                 <tr>
-                    <td rowspan="7" colspan="1" style="text-align: center" width="30%">
+                    <td rowspan="8" valign="top" colspan="1" style="text-align: center" width="30%">
                         <strong> CHECK OUT </strong> <br />
                         <img src={{ 'data:image/*;base64,' . base64_encode(file_get_contents(public_path() . '/images/car-check-out.png')) }}
-                            style="height:130px;" />
+                            style="height: 90px; width: 190px;" />
                     </td>
                     <td width="37%">
                         <input type="checkbox" id="cartGrise" name="cartGrise" onclick="return false;"
                             {{ $checkOut($contrat->id)->cartGrise == 1 ? 'checked="checked"' : '' }}>
                         <strong for="cartGrise"> Carte grise / البطاقة الرمادية </strong><br />
-                    </td>
-                    <td width="33%">
-                        <input type="checkbox" id="tapis" name="tapis" onclick="return false;"
-                            {{ $checkOut($contrat->id)->tapis == 1 ? 'checked' : '' }}>
-                        <strong for="tapis"> Tapis / تابي </strong>
                     </td>
                 </tr>
                 <tr>
@@ -783,10 +580,9 @@
                             {{ $checkOut($contrat->id)->attestAssurance == 1 ? 'checked' : '' }}>
                         <strong for="attestAssurance"> Attestation d'assurance / شهادة التأمين </strong>
                     </td>
-                    <td>
-                        <input type="checkbox" id="cric" name="cric" onclick="return false;"
-                            {{ $checkOut($contrat->id)->cric == 1 ? 'checked' : '' }}>
-                        <strong for="cric"> Cric / رافعة </strong>
+                    <td rowspan="8" valign="top">
+                        <img src={{ 'data:image/*;base64,' . base64_encode(file_get_contents(public_path() . '/images/gazgauge.jpg')) }}
+                            style="height:50px; width: 150px;" />
                     </td>
                 </tr>
                 <tr>
@@ -795,22 +591,12 @@
                             {{ $checkOut($contrat->id)->carteExploitation == 1 ? 'checked' : '' }}>
                         <strong for="carteExploitation"> Carte d'exploitation / بطاقة الإستغلال </strong><br />
                     </td>
-                    <td>
-                        <input type="checkbox" id="enjoliveur" name="enjoliveur" onclick="return false;"
-                            {{ $checkOut($contrat->id)->enjoliveur == 1 ? 'checked' : '' }}>
-                        <strong for="enjoliveur"> Enjoliveur / غطاء العجلات </strong>
-                    </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="checkbox" id="vignatte" name="vignatte" onclick="return false;"
                             {{ $checkOut($contrat->id)->vignatte == 1 ? 'checked' : '' }}>
                         <strong for="vignatte"> Vignette / معلوم الجولان </strong>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="antenne" name="antenne" onclick="return false;"
-                            {{ $checkOut($contrat->id)->antenne == 1 ? 'checked' : '' }}>
-                        <strong for="antenne"> Antenne / هوائي </strong>
                     </td>
                 </tr>
                 <tr>
@@ -819,11 +605,6 @@
                             {{ $checkOut($contrat->id)->visiteTechnique == 1 ? 'checked' : '' }}>
                         <strong for="visiteTechnique"> Visite technique / شهادة الفحص الفني </strong>
                     </td>
-                    <td>
-                        <input type="checkbox" id="allumeCigar" name="allumeCigar" onclick="return false;"
-                            {{ $checkOut($contrat->id)->allumeCigar == 1 ? 'checked' : '' }}>
-                        <strong for="allumeCigar"> Allume cigare / ولاعة السجائر </strong>
-                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -831,22 +612,17 @@
                             {{ $checkOut($contrat->id)->roueSecours == 1 ? 'checked' : '' }}>
                         <strong for="roueSecours"> Roue de secours / العجلة الاحتياطية </strong>
                     </td>
+                </tr>
+                <tr>
                     <td>
-                        <input type="checkbox" id="trianglePanne" name="trianglePanne" onclick="return false;"
-                            {{ $checkOut($contrat->id)->trianglePanne == 1 ? 'checked' : '' }}>
-                        <strong for="trianglePanne"> Triangle de panne / مثلث العطب </strong>
+                        <input type="checkbox" id="cric" name="cric" onclick="return false;"
+                            {{ $checkOut($contrat->id)->cric == 1 ? 'checked' : '' }}>
+                        <strong for="cric"> Cric / رافعة </strong>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="checkbox" id="lecteurCd" name="lecteurCd" onclick="return false;"
-                            {{ $checkOut($contrat->id)->lecteurCd == 1 ? 'checked' : '' }}>
-                        <strong for="lecteurCd"> Lecteur CD - Radio / مشغل أقراص - راديو </strong>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="autre" name="autre" onclick="return false;"
-                            {{ $checkOut($contrat->id)->autre == 1 ? 'checked' : '' }}>
-                        <strong for="autre"> Autre / آخر </strong>
+                        .
                     </td>
                 </tr>
             </table>
@@ -867,20 +643,24 @@
                         apposant mes initiales ci-dessus.
                         <p style="text-align: right; margin-top: 0px;">
                             أعترف بتسليم السيارة المذكورة أعلاه. واقبل بكل
-                            الشروط المذكورة في الصفحة الأولى والثانية واعترف
-                            بتسليمي السيارة في الحالة المذكورة أعلاه وان قيمة
-                            القسط المحمول على كاهل المؤمن له 5%
+                            الشروط المنصوص عليها في الصفحة الأولى والثانية واتعهد بتحمل قيمة
+                            القسط المحمول على كاهلي و هو 5%
                             من قيمة السيارة والتزم بذلك.
                         </p>
                     </td>
                     <td valign="top" width="70%">
-                        <strong> TRES IMPORTANT </strong> <br />
+                        <p style="text-align:left;margin-bottom: 0px">
+                            <strong> TRES IMPORTANT </strong>
+                            <span id="fright">
+                                <strong> هام جدا </strong>
+                            </span>
+                        </p>
                         L'assurance ne couvre pas les accesoires,
                         bris de glace ainsi que le vol et les dégâts
                         occasionnés aux pneumatiques qui son exclusivement
                         à la charge du locataire.
                         <p style="text-align: right; margin-top: 0px;margin-bottom: 0px">
-                            <strong> هام جدا </strong> <br />
+
                             التأمين لا يغطي الإكسسوارات (الملحقات) والأضرار
                             (الملحقة) الناتجة عن السرقة وعطب العجلات التي
                             تبقى على ذمة المستأجر حصريا.
@@ -899,7 +679,7 @@
                                     &nbsp;
                                 </td>
                             </tr>
-                        </table>
+                        </table><br /><br />.
                     </td>
                 </tr>
             </table>
