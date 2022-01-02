@@ -81,7 +81,7 @@ class VehiculeController extends Controller
 
             if ($request->hasfile('imageFile')) {
                 foreach ($request->file('imageFile') as $file) {
-                    $photoController->addPhoto($request->matricule . "TU", $file);
+                    $photoController->addPhoto($request->matricule, $file);
                 }
             }
         } catch (\Illuminate\Database\QueryException $ex) {

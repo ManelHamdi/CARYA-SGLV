@@ -47,8 +47,8 @@
                                 </tr>
                                 <tr>
                                     <th cellspacing="0">Couleur</th>
-                                    <td style="background-color:{{ $vehicule->couleur }};">
-                                        
+                                    <td style="background-color:{{ $vehicule->couleur }}; border: 2px solid rgb(197, 189, 189);">
+
                                     </td>
 
                                     <th cellspacing="0">Nombre places</th>
