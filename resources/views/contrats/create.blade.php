@@ -72,7 +72,17 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Nouveau contrat</h4>
+
+                            <div class="pull-left">
+                                <h4 class="card-title ">Nouveau contrat</h4>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn btn-default"
+                                    href="{{ asset('pdf') }}/pdfp.pdf" target="_blank">
+                                    <i class="material-icons">print</i> Imprimer verso contrat
+                                </a>
+
+                            </div>
                         </div>
                         <div class="card-body">
                             @if ($errors->any())
@@ -577,8 +587,8 @@
                                                 </th>
                                                 <td>
                                                     <input type="number" name="montantDu" id="montantDu"
-                                                        onkeypress="resmontantdu()" onkeyup="resmontantdu()" class="form-control"
-                                                        step="any" value="{{ old('montantDu') }}"
+                                                        onkeypress="resmontantdu()" onkeyup="resmontantdu()"
+                                                        class="form-control" step="any" value="{{ old('montantDu') }}"
                                                         placeholder="Montant *">
                                                 </td>
                                             </tr>
@@ -905,25 +915,32 @@
                 vtotalttc = parseFloat(document.getElementById("montantDuD").value);
             }
             document.getElementById("montantNet").value = (vtotalttc - 0.6) / 1.19;
-            resrecu();
+            //resrecu();
+            if (document.getElementById("montantRecu").value != '') {
+                resmontantdu();
+            }
+
         }
 
         function resrecu() {
             // TODO resrecu
-            if (document.getElementById("montantNet").value == '') {
+            /*if (document.getElementById("montantNet").value == '') {
                 vmontantNet = 0;
             } else {
                 vmontantNet = parseFloat(document.getElementById("montantNet").value);
             }
-            document.getElementById("montantRecu").value = vmontantNet;
+            document.getElementById("montantRecu").value = vmontantNet;*/
 
-            if (document.getElementById("montantRecu").value == '') {
+            /*if (document.getElementById("montantRecu").value == '') {
                 document.getElementById("montantDu").value = vmontantNet;
             } else {
                 document.getElementById("montantDu").value = parseFloat(document.getElementById("montantRecu").value);
-            }
+            }*/
 
-            resmontantdu();
+            //resmontantdu();
+            if (document.getElementById("montantDuD").value != '') {
+                resmontantdu();
+            }
 
         }
 

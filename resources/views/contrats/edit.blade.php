@@ -97,7 +97,8 @@
                                         <tr>
                                             <th width="25%"> Matricule </th>
                                             <td>
-                                                <select id="matricule" name="vehicule_matricule" class="form-control">
+                                                <select id="matricule" name="vehicule_matricule"  onchange="update()"
+                                                class="form-control">
                                                     <option> {{ $vehicule }} </option>
                                                     @foreach ($vehicules as $mvehicule)
                                                         <option value="{{ $mvehicule->matricule }}">
@@ -729,229 +730,258 @@
     </script>
 
 
-    <script>
-        function update() {
-            fop = document.getElementById("matricule").value;
-            carb = document.getElementById("matricule").options[document.getElementById("matricule").selectedIndex + 1]
-                .value;
-            km = document.getElementById("matricule").options[document.getElementById("matricule").selectedIndex + 2].value;
-            if (fop != '--- Sélectionnez Matricule *---') {
-                document.getElementById("carburationD").value = carb;
-                document.getElementById("kmD").value = km;
-            } else {
-                document.getElementById("carburationD").value = '';
-                document.getElementById("kmD").value = '';
-            }
+<script>
+    function update() {
+        fop = document.getElementById("matricule").value;
+        carb = document.getElementById("matricule").options[document.getElementById("matricule").selectedIndex + 1]
+            .value;
+        km = document.getElementById("matricule").options[document.getElementById("matricule").selectedIndex + 2].value;
+        if (fop != '--- Sélectionnez Matricule *---') {
+            document.getElementById("carburationD").value = carb;
+            document.getElementById("kmD").value = km;
+        } else {
+            document.getElementById("carburationD").value = '';
+            document.getElementById("kmD").value = '';
+        }
+    }
+
+    /*function resmontantlb() {
+        datedebut = new Date(document.getElementById("dateDebut").value);
+        var dd = String(datedebut.getDate()).padStart(2, '0');
+        var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datedebut.getFullYear();
+        datedebut = yyyy + '-' + mm + '-' + dd;
+
+        datefin = new Date(document.getElementById("dateFin").value);
+        var dd = String(datefin.getDate()).padStart(2, '0');
+        var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datefin.getFullYear();
+        datefin = yyyy + '-' + mm + '-' + dd;
+
+        const diffInMs = new Date(datefin) - new Date(datedebut);
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+        locationBaseu = document.getElementById("locationBaseu").value;
+        document.getElementById("locationBasem").value = locationBaseu * diffInDays;
+    }*/
+
+    function resmontantcond() {
+        datedebut = new Date(document.getElementById("dateDebut").value);
+        var dd = String(datedebut.getDate()).padStart(2, '0');
+        var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datedebut.getFullYear();
+        datedebut = yyyy + '-' + mm + '-' + dd;
+
+        datefin = new Date(document.getElementById("dateFin").value);
+        var dd = String(datefin.getDate()).padStart(2, '0');
+        var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datefin.getFullYear();
+        datefin = yyyy + '-' + mm + '-' + dd;
+
+        const diffInMs = new Date(datefin) - new Date(datedebut);
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+        conducteuru = document.getElementById("conducteuru").value;
+        document.getElementById("conducteurm").value = conducteuru * diffInDays;
+        resttc();
+    }
+
+    function resmontantsb() {
+        datedebut = new Date(document.getElementById("dateDebut").value);
+        var dd = String(datedebut.getDate()).padStart(2, '0');
+        var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datedebut.getFullYear();
+        datedebut = yyyy + '-' + mm + '-' + dd;
+
+        datefin = new Date(document.getElementById("dateFin").value);
+        var dd = String(datefin.getDate()).padStart(2, '0');
+        var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datefin.getFullYear();
+        datefin = yyyy + '-' + mm + '-' + dd;
+
+        const diffInMs = new Date(datefin) - new Date(datedebut);
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+        siegeBebeu = document.getElementById("siegeBebeu").value;
+        document.getElementById("siegeBebem").value = siegeBebeu * diffInDays;
+        resttc();
+    }
+
+    function resmontantchf() {
+        datedebut = new Date(document.getElementById("dateDebut").value);
+        var dd = String(datedebut.getDate()).padStart(2, '0');
+        var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datedebut.getFullYear();
+        datedebut = yyyy + '-' + mm + '-' + dd;
+
+        datefin = new Date(document.getElementById("dateFin").value);
+        var dd = String(datefin.getDate()).padStart(2, '0');
+        var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datefin.getFullYear();
+        datefin = yyyy + '-' + mm + '-' + dd;
+
+        const diffInMs = new Date(datefin) - new Date(datedebut);
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+        chauffeuru = document.getElementById("chauffeuru").value;
+        document.getElementById("chauffeurm").value = chauffeuru * diffInDays;
+        resttc();
+    }
+
+    function resmontantsrch() {
+        datedebut = new Date(document.getElementById("dateDebut").value);
+        var dd = String(datedebut.getDate()).padStart(2, '0');
+        var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datedebut.getFullYear();
+        datedebut = yyyy + '-' + mm + '-' + dd;
+
+        datefin = new Date(document.getElementById("dateFin").value);
+        var dd = String(datefin.getDate()).padStart(2, '0');
+        var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datefin.getFullYear();
+        datefin = yyyy + '-' + mm + '-' + dd;
+
+        const diffInMs = new Date(datefin) - new Date(datedebut);
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+        surchargeAeropu = document.getElementById("surchargeAeropu").value;
+        document.getElementById("surchargeAeropm").value = surchargeAeropu * diffInDays;
+        resttc();
+    }
+
+    function sfraislivr() {
+
+        resttc();
+    }
+
+    function sfraisrep() {
+
+        resttc();
+    }
+
+
+    function tarifjour() {
+        resttc();
+    }
+
+
+    function resttc() {
+        datedebut = new Date(document.getElementById("dateDebut").value);
+        var dd = String(datedebut.getDate()).padStart(2, '0');
+        var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datedebut.getFullYear();
+        datedebut = yyyy + '-' + mm + '-' + dd;
+
+        datefin = new Date(document.getElementById("dateFin").value);
+        var dd = String(datefin.getDate()).padStart(2, '0');
+        var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = datefin.getFullYear();
+        datefin = yyyy + '-' + mm + '-' + dd;
+
+        const diffInMs = new Date(datefin) - new Date(datedebut);
+        const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+
+
+        if (document.getElementById("conducteurm").value == '') {
+            conducteur = 0;
+        } else {
+            conducteur = parseFloat(document.getElementById("conducteurm").value);
+        }
+        if (document.getElementById("siegeBebem").value == '') {
+            siegeBebe = 0;
+        } else {
+            siegeBebe = parseFloat(document.getElementById("siegeBebem").value);
+        }
+        if (document.getElementById("chauffeurm").value == '') {
+            chauffeur = 0;
+        } else {
+            chauffeur = parseFloat(document.getElementById("chauffeurm").value);
+        }
+        if (document.getElementById("surchargeAeropm").value == '') {
+            surchargeAerop = 0;
+        } else {
+            surchargeAerop = parseFloat(document.getElementById("surchargeAeropm").value);
         }
 
-        function resmontantcond() {
-            datedebut = new Date(document.getElementById("dateDebut").value);
-            var dd = String(datedebut.getDate()).padStart(2, '0');
-            var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datedebut.getFullYear();
-            datedebut = yyyy + '-' + mm + '-' + dd;
-
-            datefin = new Date(document.getElementById("dateFin").value);
-            var dd = String(datefin.getDate()).padStart(2, '0');
-            var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datefin.getFullYear();
-            datefin = yyyy + '-' + mm + '-' + dd;
-
-            const diffInMs = new Date(datefin) - new Date(datedebut);
-            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-            conducteuru = document.getElementById("conducteuru").value;
-            document.getElementById("conducteurm").value = conducteuru * diffInDays;
-            resttc();
+        if (document.getElementById("fraisLivraisonm").value == '') {
+            fraisLivrais = 0;
+        } else {
+            fraisLivrais = parseFloat(document.getElementById("fraisLivraisonm").value);
+        }
+        if (document.getElementById("fraisReprisem").value == '') {
+            fraisRep = 0;
+        } else {
+            fraisRep = parseFloat(document.getElementById("fraisReprisem").value);
         }
 
-        function resmontantsb() {
-            datedebut = new Date(document.getElementById("dateDebut").value);
-            var dd = String(datedebut.getDate()).padStart(2, '0');
-            var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datedebut.getFullYear();
-            datedebut = yyyy + '-' + mm + '-' + dd;
-
-            datefin = new Date(document.getElementById("dateFin").value);
-            var dd = String(datefin.getDate()).padStart(2, '0');
-            var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datefin.getFullYear();
-            datefin = yyyy + '-' + mm + '-' + dd;
-
-            const diffInMs = new Date(datefin) - new Date(datedebut);
-            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-            siegeBebeu = document.getElementById("siegeBebeu").value;
-            document.getElementById("siegeBebem").value = siegeBebeu * diffInDays;
-            resttc();
+        if (document.getElementById("montanttarif").value == '') {
+            montanttarif = 0;
+        } else {
+            montanttarif = parseFloat(document.getElementById("montanttarif").value);
         }
 
-        function resmontantchf() {
-            datedebut = new Date(document.getElementById("dateDebut").value);
-            var dd = String(datedebut.getDate()).padStart(2, '0');
-            var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datedebut.getFullYear();
-            datedebut = yyyy + '-' + mm + '-' + dd;
 
-            datefin = new Date(document.getElementById("dateFin").value);
-            var dd = String(datefin.getDate()).padStart(2, '0');
-            var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datefin.getFullYear();
-            datefin = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("montantDuD").value = (montanttarif * diffInDays) +
+            conducteur + siegeBebe + chauffeur + surchargeAerop + fraisLivrais + fraisRep;
 
-            const diffInMs = new Date(datefin) - new Date(datedebut);
-            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+        resnet();
+    }
 
-            chauffeuru = document.getElementById("chauffeuru").value;
-            document.getElementById("chauffeurm").value = chauffeuru * diffInDays;
-            resttc();
+    function resnet() {
+
+        if (document.getElementById("montantDuD").value == '') {
+            vtotalttc = 0;
+        } else {
+            vtotalttc = parseFloat(document.getElementById("montantDuD").value);
         }
-
-        function resmontantsrch() {
-            datedebut = new Date(document.getElementById("dateDebut").value);
-            var dd = String(datedebut.getDate()).padStart(2, '0');
-            var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datedebut.getFullYear();
-            datedebut = yyyy + '-' + mm + '-' + dd;
-
-            datefin = new Date(document.getElementById("dateFin").value);
-            var dd = String(datefin.getDate()).padStart(2, '0');
-            var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datefin.getFullYear();
-            datefin = yyyy + '-' + mm + '-' + dd;
-
-            const diffInMs = new Date(datefin) - new Date(datedebut);
-            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-            surchargeAeropu = document.getElementById("surchargeAeropu").value;
-            document.getElementById("surchargeAeropm").value = surchargeAeropu * diffInDays;
-            resttc();
-        }
-
-        function sfraislivr() {
-
-            resttc();
-        }
-
-        function sfraisrep() {
-
-            resttc();
-        }
-
-        function tarifjour() {
-            resttc();
-        }
-
-        function resttc() {
-            datedebut = new Date(document.getElementById("dateDebut").value);
-            var dd = String(datedebut.getDate()).padStart(2, '0');
-            var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datedebut.getFullYear();
-            datedebut = yyyy + '-' + mm + '-' + dd;
-
-            datefin = new Date(document.getElementById("dateFin").value);
-            var dd = String(datefin.getDate()).padStart(2, '0');
-            var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = datefin.getFullYear();
-            datefin = yyyy + '-' + mm + '-' + dd;
-
-            const diffInMs = new Date(datefin) - new Date(datedebut);
-            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-
-
-
-            if (document.getElementById("conducteurm").value == '') {
-                conducteur = 0;
-            } else {
-                conducteur = parseFloat(document.getElementById("conducteurm").value);
-            }
-            if (document.getElementById("siegeBebem").value == '') {
-                siegeBebe = 0;
-            } else {
-                siegeBebe = parseFloat(document.getElementById("siegeBebem").value);
-            }
-            if (document.getElementById("chauffeurm").value == '') {
-                chauffeur = 0;
-            } else {
-                chauffeur = parseFloat(document.getElementById("chauffeurm").value);
-            }
-            if (document.getElementById("surchargeAeropm").value == '') {
-                surchargeAerop = 0;
-            } else {
-                surchargeAerop = parseFloat(document.getElementById("surchargeAeropm").value);
-            }
-
-            if (document.getElementById("fraisLivraisonm").value == '') {
-                fraisLivrais = 0;
-            } else {
-                fraisLivrais = parseFloat(document.getElementById("fraisLivraisonm").value);
-            }
-            if (document.getElementById("fraisReprisem").value == '') {
-                fraisRep = 0;
-            } else {
-                fraisRep = parseFloat(document.getElementById("fraisReprisem").value);
-            }
-
-            if (document.getElementById("montanttarif").value == '') {
-                montanttarif = 0;
-            } else {
-                montanttarif = parseFloat(document.getElementById("montanttarif").value);
-            }
-
-
-            document.getElementById("montantDuD").value = (montanttarif * diffInDays) +
-                conducteur + siegeBebe + chauffeur + surchargeAerop + fraisLivrais + fraisRep;
-
-            resnet();
-        }
-
-        function resnet() {
-
-            if (document.getElementById("montantDuD").value == '') {
-                vtotalttc = 0;
-            } else {
-                vtotalttc = parseFloat(document.getElementById("montantDuD").value);
-            }
-            document.getElementById("montantNet").value = (vtotalttc - 0.6) / 1.19;
-            resrecu();
-        }
-
-        function resrecu() {
-            // TODO resrecu
-            if (document.getElementById("montantNet").value == '') {
-                vmontantNet = 0;
-            } else {
-                vmontantNet = parseFloat(document.getElementById("montantNet").value);
-            }
-            document.getElementById("montantRecu").value = vmontantNet;
-
-            if (document.getElementById("montantRecu").value == '') {
-                document.getElementById("montantDu").value = vmontantNet;
-            } else {
-                document.getElementById("montantDu").value = parseFloat(document.getElementById("montantRecu").value);
-            }
-
+        document.getElementById("montantNet").value = (vtotalttc - 0.6) / 1.19;
+        //resrecu();
+        if (document.getElementById("montantRecu").value != '') {
             resmontantdu();
-
         }
 
-        function resmontantdu() {
-            mmontantRecu = 0;
-            if (document.getElementById("montantDuD").value == '') {
-                mtotalttc = 0;
+    }
+
+    function resrecu() {
+        // TODO resrecu
+        /*if (document.getElementById("montantNet").value == '') {
+            vmontantNet = 0;
+        } else {
+            vmontantNet = parseFloat(document.getElementById("montantNet").value);
+        }
+        document.getElementById("montantRecu").value = vmontantNet;*/
+
+        /*if (document.getElementById("montantRecu").value == '') {
+            document.getElementById("montantDu").value = vmontantNet;
+        } else {
+            document.getElementById("montantDu").value = parseFloat(document.getElementById("montantRecu").value);
+        }*/
+
+        //resmontantdu();
+        if (document.getElementById("montantDuD").value != '') {
+            resmontantdu();
+        }
+
+    }
+
+    function resmontantdu() {
+        mmontantRecu = 0;
+        if (document.getElementById("montantDuD").value == '') {
+            mtotalttc = 0;
+        } else {
+            mtotalttc = parseFloat(document.getElementById("montantDuD").value);
+            if (document.getElementById("montantRecu").value == '') {
+                mmontantRecu = 0;
             } else {
-                mtotalttc = parseFloat(document.getElementById("montantDuD").value);
-                if (document.getElementById("montantRecu").value == '') {
-                    mmontantRecu = 0;
-                } else {
-                    mmontantRecu = parseFloat(document.getElementById("montantRecu").value);
-                }
+                mmontantRecu = parseFloat(document.getElementById("montantRecu").value);
             }
-
-            montantdu = mtotalttc - mmontantRecu;
-            document.getElementById("montantDu").value = parseFloat(montantdu);
         }
-    </script>
+
+        montantdu = mtotalttc - mmontantRecu;
+        document.getElementById("montantDu").value = parseFloat(montantdu);
+    }
+</script>
 
 
 
