@@ -23,7 +23,7 @@
         width: 25%;
         overflow: hidden;
         word-wrap: break-word;
-        font-size: 13px;
+        font-size: 14px;
     }
 
     #tableis {
@@ -35,7 +35,7 @@
     #tableis td {
         width: auto;
         border: 1px solid rgb(146, 142, 142);
-        font-size: 13px;
+        font-size: 14px;
     }
 
     #tableit {
@@ -47,7 +47,7 @@
     #tableit td {
         width: auto;
         border: 1px solid rgb(146, 142, 142);
-        font-size: 13px;
+        font-size: 14px;
         padding: 2px;
     }
 
@@ -59,7 +59,7 @@
     }
 
     #tableic td {
-        font-size: 13px;
+        font-size: 14px;
         padding: 0px;
     }
 
@@ -119,6 +119,23 @@
         padding-top: 0px;
     }
 
+    #nbp {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-top: 0px;
+    }
+
+    #cp {
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-top: 0px;
+    }
+
 </style>
 
 <table id="table">
@@ -127,32 +144,34 @@
     <tr>
 
         <td>
-            <p id="bp"> Adresse: {{ $entreprise->adresse }} &nbsp; </p>
-            <p id="bp"> {{ $entreprise->ville }} &nbsp; </p>
-
+            <p id="nbp"> Adresse: {{ $entreprise->ville }} &nbsp; </p>
+            <p id="nbp"> {{ $entreprise->adresse }} &nbsp; </p>
+            <p id="nbp"> Tel: (216) {{ $entreprise->telephone }} &nbsp; </p>
+            <p id="nbp"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (216) {{ $entreprise->telephone2 }} &nbsp;
+            </p>
         </td>
-        <td colspan="2" style="text-align:center;">
+        <td colspan="2" valign="top" style="text-align:center;">
             <img src="{{ 'data:image/*;base64,' . base64_encode($entreprise->logo) }}"
-                style="width:190px; max-height: 100px" />
+                style="width:180px; max-height: 90px" />
         </td>
         <td>
-            <p id="bp"> R.I.B. </p>
-            <p id="bp"> {{ $entreprise->rib }} &nbsp; </p>
+            <p id="nbp"> RIB STB : {{ $entreprise->rib }} &nbsp; </p>
+            <p id="nbp"> </p>
+            <p id="nbp"> M.F. {{ $entreprise->matfisc }} &nbsp; </p>
+            <p id="nbp"> Email : {{ $entreprise->email }} &nbsp; </p>
         </td>
 
     </tr>
     <tr>
 
         <td>
-            <p id="bp"> M.F. {{ $entreprise->matfisc }} &nbsp; </p>
-            <p id="bp"> Email : {{ $entreprise->email }} &nbsp; </p>
+            <p id="cp" style="font-size: 16px;"> Contrat N° </p>
         </td>
-        <td colspan="2" style="text-align:center;">
-            <h3> {{ $contrat->id }} &nbsp; </h3>
+        <td colspan="2" style="font-size: 16px; text-align:center;">
+            <cp> 2022 / {{ $contrat->id }} &nbsp; </cp>
         </td>
         <td>
-            <p id="bp"> Telephone 1: {{ $entreprise->telephone }} &nbsp; </p>
-            <p id="bp"> Telephone 2: {{ $entreprise->telephone2 }} &nbsp; </p>
+            <p id="cp" style="font-size: 16px"> عقد عدد </p>
         </td>
 
     </tr>
@@ -186,32 +205,7 @@
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="3">
-                        <p style="text-align:left;margin-bottom: 0px">
-                            Adresse du domicile
-                            <span style="float:right;">
-                                عنوان السكن
-                            </span>
-                        </p>
-                        <p id="mp">
-                            {{ $client($contrat->client_id)->adresse }} &nbsp;
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <p style="text-align:left;margin-bottom: 0px">
-                            Adresse locale
-                            <span style="float:right;">
-                                العنوان المحلي
-                            </span>
-                        </p>
-                        <p id="mp">
-                            {{ $client($contrat->client_id)->ville }} &nbsp;
-                        </p>
-                    </td>
-                </tr>
+
                 <tr>
                     <td colspan="3">
                         <p style="text-align:left;margin-bottom: 0px">
@@ -277,7 +271,7 @@
                             </span>
                         </p>
                         <p id="mp">
-                            {{ $conducteur($contrat->client_id)->adresse }} &nbsp;
+                            {{ $client($contrat->client_id)->adresse }} &nbsp;
                         </p>
                     </td>
                 </tr>
@@ -290,11 +284,11 @@
                             </span>
                         </p>
                         <p id="mp">
-                            {{ $conducteur($contrat->client_id)->ville }} &nbsp;
+                            {{ $client($contrat->client_id)->ville }} &nbsp;
                         </p>
                     </td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td colspan="3">
                         <p style="text-align:left;margin-bottom: 0px">
                             Date et lieu de naissance
@@ -307,7 +301,7 @@
                             &nbsp;
                         </p>
                     </td>
-                </tr>
+                </tr>-->
             </table>
 
             <table id="tableit" style="margin-top: 3px">
@@ -371,7 +365,7 @@
             </table>
 
         </td>
-        <td colspan="2">
+        <td colspan="2" valign="top">
             <table id="tableis">
                 <tr>
                     <td colspan="3">
@@ -425,7 +419,7 @@
                             Date et heure / التاريخ و الساعة <br />
                             {{ $contrat->dateDebut }} &nbsp;
                         </p>
-                        <p style="text-align:left;margin-bottom: 0px">
+                        <p style="text-align:left;margin-bottom: 0px;margin-top: 0px;">
                             Livraison
                             <span id="fright">
                                 التسليم
@@ -579,7 +573,7 @@
                     </td>
                     <td rowspan="8" valign="top">
                         <img src={{ 'data:image/*;base64,' . base64_encode(file_get_contents(public_path() . '/images/gazgauge.jpg')) }}
-                            style="height:50px; width: 150px;" />
+                            style="height:50px; width: 150px; margin-top: 20px; margin-left:20px;" />
                     </td>
                 </tr>
                 <tr>
@@ -630,14 +624,12 @@
             <table id="tableie">
                 <tr>
                     <td valign="top" width="30%">
-                        J'accuse réception du véhicule susmentionné
-                        et accepte qu'il me soit loué aux conditions
-                        fixées en page 1 et 2. Je reconnais que le
-                        véhicule m'est remis tel que mentionné ci-dessus
-                        et que le franchise pour dommages à ma charge
-                        est de 1000DT à moins que je n'accepte de payer
-                        le supplément pour supprimer la franchise en
-                        apposant mes initiales ci-dessus.
+                        J'accuse réception du véhicule ci-dessus.
+                        J'accepte toutes les conditions stipulées sur les
+                        première et deuxième pages, et je m'engage
+                        à supporter la valeur de la prime qui est à ma
+                        charge, soit 5% de la valeur de la voiture,
+                         et je m'engage à le faire..
                         <p style="text-align: right; margin-top: 0px;">
                             أعترف بتسليم السيارة المذكورة أعلاه. واقبل بكل
                             الشروط المنصوص عليها في الصفحة الأولى والثانية واتعهد بتحمل قيمة
