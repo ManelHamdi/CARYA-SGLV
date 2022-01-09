@@ -448,10 +448,10 @@
                                                 </th>
                                                 <td colspan="2">
                                                     <!-- TODO TTC input -->
-                                                    <input type="number" name="montanttarif" class="form-control"
+                                                    <input type="number" name="sousTotal" class="form-control"
                                                         id="montanttarif" step="any" value="{{ old('montanttarif') }}"
                                                         onkeypress="resttc()" onkeyup="resttc()"
-                                                        placeholder="Montant *">
+                                                        placeholder="Tarif par jour *">
                                                 </td>
                                             </tr>
 
