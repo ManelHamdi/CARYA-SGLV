@@ -438,41 +438,23 @@
 
 
 
-                                    <!-- TODO Designation -->
+                                    <!-- TODO Facturation -->
                                     <p class="accordion"> Facturation </p>
                                     <div class="panel">
                                         <table class="table">
                                             <tr>
                                                 <th class="text-primary" style="font-size: 18px">
-                                                    Total TTC
+                                                    Tarif / Jour TTC
                                                 </th>
                                                 <td colspan="2">
-                                                    <input type="number" name="montantDuD" class="form-control"
-                                                        id="montantDuD" step="any" value="{{ old('montantDuD') }}"
-                                                        onkeypress="resmontotalttc()" onkeyup="resmontotalttc()"
+                                                    <!-- TODO TTC input -->
+                                                    <input type="number" name="montanttarif" class="form-control"
+                                                        id="montanttarif" step="any" value="{{ old('montanttarif') }}"
+                                                        onkeypress="resttc()" onkeyup="resttc()"
                                                         placeholder="Montant *">
                                                 </td>
                                             </tr>
 
-
-
-
-                                            <tr>
-                                                <th>
-                                                    Location de base
-                                                </th>
-                                                <td>
-                                                    <input type="number" name="locationBaseu" id="locationBaseu"
-                                                        class="form-control" onkeypress="resmontantlb()"
-                                                        onkeyup="resmontantlb()" value="{{ old('locationBaseu') }}"
-                                                        step="any" placeholder="Prix Unitaire">
-                                                </td>
-                                                <td>
-                                                    <input type="number" name="locationBasem" id="locationBasem"
-                                                        class="form-control" value="{{ old('locationBasem') }}"
-                                                        step="any" placeholder="Montant">
-                                                </td>
-                                            </tr>
                                             <tr>
                                                 <th>
                                                     2éme Conducteur
@@ -536,36 +518,15 @@
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <th class="text-primary" style="font-size: 18px">
-                                                    Sous Total HT
-                                                </th>
-                                                <td colspan="2">
-                                                    <input type="number" name="sousTotal" class="form-control" step="any"
-                                                        id="sousTotal" value="{{ old('sousTotal') }}"
-                                                        onkeypress="resmontotalttc()" onkeyup="resmontotalttc()"
-                                                        placeholder="Montant *">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    Remise %
-                                                </th>
-                                                <td colspan="2">
 
-                                                    <input type="number" name="remisem" class="form-control" id="remisem"
-                                                        step="any" onkeypress="resmontotalttc()" onkeyup="resmontotalttc()"
-                                                        value="{{ old('remisem') }}" placeholder="Remise %">
-                                                </td>
-                                            </tr>
                                             <tr>
                                                 <th>
                                                     Frais de livraison
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="number" name="fraisLivraisonm" id="fraisLivraisonm"
-                                                        class="form-control" onkeypress="resmontotalttc()"
-                                                        onkeyup="resmontotalttc()" value="{{ old('fraisLivraisonm') }}"
+                                                        class="form-control" onkeypress="sfraislivr()"
+                                                        onkeyup="sfraislivr()" value="{{ old('fraisLivraisonm') }}"
                                                         step="any" placeholder="Montant">
                                                 </td>
                                             </tr>
@@ -575,9 +536,19 @@
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="number" name="fraisReprisem" id="fraisReprisem"
-                                                        class="form-control" onkeypress="resmontotalttc()"
-                                                        onkeyup="resmontotalttc()" value="{{ old('fraisReprisem') }}"
+                                                        class="form-control" onkeypress="sfraisrep()"
+                                                        onkeyup="sfraisrep()" value="{{ old('fraisReprisem') }}"
                                                         step="any" placeholder="Montant">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-primary" style="font-size: 18px">
+                                                    Total TTC
+                                                </th>
+                                                <td colspan="2">
+                                                    <input type="number" name="montantDuD" class="form-control"
+                                                        id="montantDuD" step="any" value="{{ old('montantDuD') }}"
+                                                        onkeypress="resttc()" onkeyup="resttc()" placeholder="Montant *">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -586,54 +557,8 @@
                                                 </th>
                                                 <td colspan="2">
                                                     <input type="number" name="montantNet" class="form-control"
-                                                        id="montantNet" onkeypress="resmontotalttc()"
-                                                        onkeyup="resmontotalttc()" step="any"
+                                                        id="montantNet" onkeypress="resnet()" onkeyup="resnet()" step="any"
                                                         value="{{ old('montantNet') }}" placeholder="Montant *">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    TVA %
-                                                </th>
-                                                <td colspan="2">
-                                                    <input type="number" name="tvam" class="form-control" id="tvam"
-                                                        step="any" onkeypress="resmontotalttc()"
-                                                        onkeyup="resmontotalttc()"
-                                                        value="{{ old('tvam') }}" placeholder="TVA %">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    Suppression Franchise
-                                                </th>
-                                                <td colspan="2">
-                                                    <input type="number" name="suppFranchisem" id="suppFranchisem"
-                                                        class="form-control" onkeypress="resmontotalttc()"
-                                                        onkeyup="resmontotalttc()" value="{{ old('suppFranchisem') }}"
-                                                        step="any" placeholder="Montant">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    Assurance Passage
-                                                </th>
-                                                <td colspan="2">
-                                                    <input type="number" name="assurancePassagerm" id="assurancePassagerm"
-                                                        class="form-control" onkeypress="resmontotalttc()"
-                                                        onkeyup="resmontotalttc()"
-                                                        value="{{ old('assurancePassagerm') }}" step="any"
-                                                        placeholder="Montant">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    Timbre
-                                                </th>
-                                                <td colspan="2">
-                                                    <input type="number" name="timbrem" class="form-control" id="timbrem"
-                                                        step="any" onkeypress="resmontotalttc()"
-                                                        onkeyup="resmontotalttc()"
-                                                        value="{{ old('timbrem') }}" placeholder="Montant">
                                                 </td>
                                             </tr>
 
@@ -643,16 +568,17 @@
                                                 </th>
                                                 <td>
                                                     <input type="number" name="montantRecu" id="montantRecu"
-                                                        class="form-control" onkeypress="resmontantdu()"
-                                                        onkeyup="resmontantdu()" step="any"
-                                                        value="{{ old('montantRecu') }}" placeholder="Montant *">
+                                                        class="form-control" onkeypress="resrecu()" onkeyup="resrecu()"
+                                                        step="any" value="{{ old('montantRecu') }}"
+                                                        placeholder="Montant *">
                                                 </td>
                                                 <th class="text-primary" style="font-size: 18px">
                                                     Montant du
                                                 </th>
                                                 <td>
                                                     <input type="number" name="montantDu" id="montantDu"
-                                                        class="form-control" step="any" value="{{ old('montantDu') }}"
+                                                        onkeypress="resmontantdu()" onkeyup="resmontantdu()" class="form-control"
+                                                        step="any" value="{{ old('montantDu') }}"
                                                         placeholder="Montant *">
                                                 </td>
                                             </tr>
@@ -788,7 +714,7 @@
             }
         }
 
-        function resmontantlb() {
+        /*function resmontantlb() {
             datedebut = new Date(document.getElementById("dateDebut").value);
             var dd = String(datedebut.getDate()).padStart(2, '0');
             var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -806,7 +732,7 @@
 
             locationBaseu = document.getElementById("locationBaseu").value;
             document.getElementById("locationBasem").value = locationBaseu * diffInDays;
-        }
+        }*/
 
         function resmontantcond() {
             datedebut = new Date(document.getElementById("dateDebut").value);
@@ -826,7 +752,7 @@
 
             conducteuru = document.getElementById("conducteuru").value;
             document.getElementById("conducteurm").value = conducteuru * diffInDays;
-
+            resttc();
         }
 
         function resmontantsb() {
@@ -847,7 +773,7 @@
 
             siegeBebeu = document.getElementById("siegeBebeu").value;
             document.getElementById("siegeBebem").value = siegeBebeu * diffInDays;
-
+            resttc();
         }
 
         function resmontantchf() {
@@ -868,7 +794,7 @@
 
             chauffeuru = document.getElementById("chauffeuru").value;
             document.getElementById("chauffeurm").value = chauffeuru * diffInDays;
-
+            resttc();
         }
 
         function resmontantsrch() {
@@ -889,15 +815,43 @@
 
             surchargeAeropu = document.getElementById("surchargeAeropu").value;
             document.getElementById("surchargeAeropm").value = surchargeAeropu * diffInDays;
-
+            resttc();
         }
 
-        function ressoustout() {
-            if (document.getElementById("locationBasem").value == '') {
-                locationBase = 0;
-            } else {
-                locationBase = parseFloat(document.getElementById("locationBasem").value);
-            }
+        function sfraislivr() {
+
+            resttc();
+        }
+
+        function sfraisrep() {
+
+            resttc();
+        }
+
+
+        function tarifjour() {
+            resttc();
+        }
+
+
+        function resttc() {
+            datedebut = new Date(document.getElementById("dateDebut").value);
+            var dd = String(datedebut.getDate()).padStart(2, '0');
+            var mm = String(datedebut.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = datedebut.getFullYear();
+            datedebut = yyyy + '-' + mm + '-' + dd;
+
+            datefin = new Date(document.getElementById("dateFin").value);
+            var dd = String(datefin.getDate()).padStart(2, '0');
+            var mm = String(datefin.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = datefin.getFullYear();
+            datefin = yyyy + '-' + mm + '-' + dd;
+
+            const diffInMs = new Date(datefin) - new Date(datedebut);
+            const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+
+
             if (document.getElementById("conducteurm").value == '') {
                 conducteur = 0;
             } else {
@@ -918,103 +872,75 @@
             } else {
                 surchargeAerop = parseFloat(document.getElementById("surchargeAeropm").value);
             }
-            var stotal = locationBase + conducteur + siegeBebe + chauffeur + surchargeAerop;
-            document.getElementById("sousTotal").value = parseFloat(stotal);
 
-            resmontantnet();
+            if (document.getElementById("fraisLivraisonm").value == '') {
+                fraisLivrais = 0;
+            } else {
+                fraisLivrais = parseFloat(document.getElementById("fraisLivraisonm").value);
+            }
+            if (document.getElementById("fraisReprisem").value == '') {
+                fraisRep = 0;
+            } else {
+                fraisRep = parseFloat(document.getElementById("fraisReprisem").value);
+            }
+
+            if (document.getElementById("montanttarif").value == '') {
+                montanttarif = 0;
+            } else {
+                montanttarif = parseFloat(document.getElementById("montanttarif").value);
+            }
+
+
+            document.getElementById("montantDuD").value = (montanttarif * diffInDays) +
+                conducteur + siegeBebe + chauffeur + surchargeAerop + fraisLivrais + fraisRep;
+
+            resnet();
         }
 
-        function resmontantnet() {
-            soutotal = parseFloat(document.getElementById("sousTotal").value);
-            remise = parseFloat(document.getElementById("remisem").value);
-            var mnet = soutotal;
-            if (document.getElementById("remisem").value != '') {
-                mnet = soutotal - (soutotal * remise / 100);
-            } else {
-                mnet = soutotal;
-            }
-            if (document.getElementById("fraisLivraisonm").value != '') {
-                mnet = mnet + parseFloat(document.getElementById("fraisLivraisonm").value);
-            } else {
-                mnet = mnet + 0;
-            }
-            if (document.getElementById("fraisReprisem").value != '') {
-                mnet = mnet + parseFloat(document.getElementById("fraisReprisem").value);
-            } else {
-                mnet = mnet + 0;
-            }
-            document.getElementById("montantNet").value = parseFloat(mnet);
+        function resnet() {
 
-            resmontotalttc();
+            if (document.getElementById("montantDuD").value == '') {
+                vtotalttc = 0;
+            } else {
+                vtotalttc = parseFloat(document.getElementById("montantDuD").value);
+            }
+            document.getElementById("montantNet").value = (vtotalttc - 0.6) / 1.19;
+            resrecu();
         }
 
-        function resmontotalttc() {
-            var ttc = 0;
-            var net = 0;
-            var soutotal = 0;
-            var montantdu = 0;
-            ttc = parseFloat(document.getElementById("montantDuD").value);
+        function resrecu() {
+            // TODO resrecu
+            if (document.getElementById("montantNet").value == '') {
+                vmontantNet = 0;
+            } else {
+                vmontantNet = parseFloat(document.getElementById("montantNet").value);
+            }
+            document.getElementById("montantRecu").value = vmontantNet;
 
-            net = ttc;
+            if (document.getElementById("montantRecu").value == '') {
+                document.getElementById("montantDu").value = vmontantNet;
+            } else {
+                document.getElementById("montantDu").value = parseFloat(document.getElementById("montantRecu").value);
+            }
 
-            if (document.getElementById("tvam").value != '') {
-                net = ttc / (1 - parseFloat(document.getElementById("tvam").value) / 100);
-                document.getElementById("montantNet").value = net;
-            } else {
-                net = net;
-            }
-            if (document.getElementById("suppFranchisem").value != '') {
-                net = net - parseFloat(document.getElementById("suppFranchisem").value);
-            } else {
-                net = net - 0;
-            }
-            if (document.getElementById("assurancePassagerm").value != '') {
-                net = net - parseFloat(document.getElementById("assurancePassagerm").value);
-            } else {
-                net = net - 0;
-            }
-            if (document.getElementById("timbrem").value != '') {
-                net = net - parseFloat(document.getElementById("timbrem").value);
-            } else {
-                net = net - 0;
-            }
-            document.getElementById("montantNet").value = net;
-            document.getElementById("montantRecu").value = ttc;
-
-
-            soutotal = net;
-            //soutotal = parseFloat(document.getElementById("sousTotal").value);
-
-            //var mnet = soutotal;
-            if (document.getElementById("remisem").value != '') {
-                remise = parseFloat(document.getElementById("remisem").value);
-                soutotal = net / (1 - remise / 100);
-            } else {
-                soutotal = soutotal;
-            }
-            if (document.getElementById("fraisLivraisonm").value != '') {
-                soutotal = soutotal - parseFloat(document.getElementById("fraisLivraisonm").value);
-            } else {
-                soutotal = soutotal - 0;
-            }
-            if (document.getElementById("fraisReprisem").value != '') {
-                soutotal = soutotal - parseFloat(document.getElementById("fraisReprisem").value);
-            } else {
-                soutotal = soutotal - 0;
-            }
-            document.getElementById("sousTotal").value = soutotal;
-
-            totalttc = parseFloat(document.getElementById("montantDuD").value);
-            montantRecu = parseFloat(document.getElementById("montantRecu").value);
-            montantdu = totalttc - montantRecu;
-            document.getElementById("montantDu").value = montantdu;
+            resmontantdu();
 
         }
 
         function resmontantdu() {
-            totalttc = parseFloat(document.getElementById("montantDuD").value);
-            montantRecu = parseFloat(document.getElementById("montantRecu").value);
-            montantdu = totalttc - montantRecu;
+            mmontantRecu = 0;
+            if (document.getElementById("montantDuD").value == '') {
+                mtotalttc = 0;
+            } else {
+                mtotalttc = parseFloat(document.getElementById("montantDuD").value);
+                if (document.getElementById("montantRecu").value == '') {
+                    mmontantRecu = 0;
+                } else {
+                    mmontantRecu = parseFloat(document.getElementById("montantRecu").value);
+                }
+            }
+
+            montantdu = mtotalttc - mmontantRecu;
             document.getElementById("montantDu").value = parseFloat(montantdu);
         }
     </script>
